@@ -1,15 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using Newtonsoft.Json;
 
 namespace RESTApiExample
 {
     class Sender
     {
-        public string Send(string json)
+        public EnglishTipsResponse Send(string json, string api)
         {
             // Creates request to specific API (/api/test), full path needed.
-            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create("https://englishtips.azurewebsites.net/api/test");
+            HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(api);
             // Tells to Client what type of request to send, we are sending json, so 'application/json'
             httpWebRequest.ContentType = "application/json";
 
@@ -29,17 +30,20 @@ namespace RESTApiExample
             
             // Just reads respons and returns them, we expect here only one response so we will return it, but if there will be more
             // in the future we can use List<string>
-            string result = String.Empty;
+            EnglishTipsResponse responseJsonObject;
 
             // Statemnt with ?? called Nullable it checks if httpResponse.GetResponseStream() is not Null, if it is null we will throw exception, else we will continue
             using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream() ?? throw new InvalidOperationException()))
             {
-                result = streamReader.ReadToEnd();
+                string response = streamReader.ReadToEnd();
+
+                // Here we pass our class as template that expected to be deserialized from response stream
+                responseJsonObject = JsonConvert.DeserializeObject<EnglishTipsResponse>(response);
             }
 
             // Just to be more informative if server returned 200 (OK) status but no text (maybe some logic error om server side) we will
             // return proper message instead of server crash
-            return !string.IsNullOrEmpty(result) ? result : "Empty string";
+            return responseJsonObject;
         }
     }
 }

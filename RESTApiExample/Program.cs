@@ -17,9 +17,12 @@ namespace RESTApiExample
                 age = 75
             });
 
-            // Sends created json to server and returns response on success, exception on failure
-            string response = exampleSender.Send(json);
-            Console.WriteLine(response);
+            // Sends created json to server and returns:  on success - response object that we have created, exception -  on failure
+            EnglishTipsResponse response = exampleSender.Send(json, "http://127.0.0.1:5000/api/test");
+            
+            Console.WriteLine(response.Text);
+            foreach (int index in response.Indexes)
+                Console.WriteLine($"Index: {index}");
         }
     }
 }
