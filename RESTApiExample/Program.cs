@@ -18,7 +18,7 @@ namespace RESTApiExample
             });
 
             // Sends created json to server and returns:  on success - response object that we have created, exception -  on failure
-            EnglishTipsResponse response = exampleSender.Send(json, "http://127.0.0.1:5000/api/test");
+            EnglishTipsResponse response = exampleSender.Send(json, "https://englishtips.azurewebsites.net/api/test");
             
             Console.WriteLine(response.Text);
             foreach (int index in response.Indexes)
