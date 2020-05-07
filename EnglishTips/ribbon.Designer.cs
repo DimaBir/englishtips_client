@@ -41,12 +41,12 @@
             this.checkBox1 = this.Factory.CreateRibbonCheckBox();
             this.checkBox3 = this.Factory.CreateRibbonCheckBox();
             this.checkBox4 = this.Factory.CreateRibbonCheckBox();
-            this.btn_refresh_coloring = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
+            this.btn_refresh_coloring = this.Factory.CreateRibbonButton();
+            this.button1 = this.Factory.CreateRibbonButton();
             this.button2 = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
             this.tab2.SuspendLayout();
@@ -98,25 +98,11 @@
             this.checkBox4.Name = "checkBox4";
             this.checkBox4.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkBox4_Click);
             // 
-            // btn_refresh_coloring
-            // 
-            this.btn_refresh_coloring.Label = "Refresh";
-            this.btn_refresh_coloring.Name = "btn_refresh_coloring";
-            this.btn_refresh_coloring.ShowImage = true;
-            this.btn_refresh_coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button4_Click);
-            // 
             // group2
             // 
             this.group2.Items.Add(this.button1);
             this.group2.Label = "group2";
             this.group2.Name = "group2";
-            // 
-            // button1
-            // 
-            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button1.Label = "Read aloud";
-            this.button1.Name = "button1";
-            this.button1.ShowImage = true;
             // 
             // group3
             // 
@@ -137,6 +123,21 @@
             this.group4.Items.Add(this.button3);
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
+            // 
+            // btn_refresh_coloring
+            // 
+            this.btn_refresh_coloring.Label = "Refresh";
+            this.btn_refresh_coloring.Name = "btn_refresh_coloring";
+            this.btn_refresh_coloring.ShowImage = true;
+            this.btn_refresh_coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button4_Click);
+            // 
+            // button1
+            // 
+            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Label = "Read aloud";
+            this.button1.Name = "button1";
+            this.button1.ShowImage = true;
+            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
             // button2
             // 
