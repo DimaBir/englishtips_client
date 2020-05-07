@@ -24,6 +24,10 @@ namespace EnglishTips
 
         private void button4_Click(object sender, RibbonControlEventArgs e)
         {
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+
             // Underline first word
             /*(Word.Document myDocument = Globals.ThisAddIn.Application.ActiveDocument;
             foreach (Word.Paragraph paragraph in myDocument.Paragraphs)
@@ -44,7 +48,12 @@ namespace EnglishTips
             //rng.Font.ColorIndex = Word.WdColorIndex.wdRed;
             //rng.Underline = Microsoft.Office.Interop.Word.WdUnderline.wdUnderlineSingle;
 
+            rng.Font.Underline = Microsoft.Office.Interop.Word.WdUnderline.wdUnderlineThick;
+            rng.Font.UnderlineColor = Microsoft.Office.Interop.Word.WdColor.wdColorRed;
+            //Globals.ThisAddIn.Application.ActiveDocument.UndoClear();
 
+            // End coloring record
+            recordObj.EndCustomRecord();
         }
 
         private void checkBox4_Click(object sender, RibbonControlEventArgs e)
@@ -69,6 +78,11 @@ namespace EnglishTips
             }
 
             SayAloud.Say(text: selection.Text);
+        }
+
+        private void button2_Click(object sender, RibbonControlEventArgs e)
+        {
+
         }
     }
 }
