@@ -33,8 +33,8 @@ namespace EnglishTips
                 System.Diagnostics.Debug.WriteLine("Shape Count: " + shapes.Count);
             }*/
 
-            Word.Range rng = this.Application.ActiveDocument.Range(0, 0);
-            rng.Text = "New Text";
+            //Word.Range rng = this.Application.ActiveDocument.Range(0, 0);
+            //rng.Text = "New Text";
 
         }
 
