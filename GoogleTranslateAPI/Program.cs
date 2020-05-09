@@ -27,7 +27,9 @@ namespace GoogleTranslateAPI
             });
 
             string api = "https://englishtips.azurewebsites.net/api/translate";
-            // Sends created json to server and returns:  on success - response object that we have created, exception -  on failure
+            
+            // Sends created json to server and returns:
+            // returns: string
             string translation = GenericSender<string>.Send(json, api: api, "POST");
             Console.WriteLine($"Sending text to '{api}' to translate to hebrew...\n\n\n");
             Console.WriteLine($"Original text: {text_to_translate}");
