@@ -41,7 +41,7 @@ namespace VerbsAPI
             Dictionary<string, List<int>> response =
                 GenericSender<Dictionary<string, List<int>>>.Send(json, api: api, "POST");
 
-            Console.WriteLine($"Sending text to '{api}' to translate to hebrew...\n\n\n");
+            Console.WriteLine($"Sending text to '{api}' to find verbs...\n\n\n");
             Console.WriteLine($"Original text: {text_to_check}");
 
             // Print out verbs.
