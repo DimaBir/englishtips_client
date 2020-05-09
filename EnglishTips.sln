@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTApiExample", "RESTApiEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTips", "EnglishTips\EnglishTips.csproj", "{22600C67-F8ED-4F33-A202-6723FF81AA8D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTranslateAPI", "GoogleTranslateAPI\GoogleTranslateAPI.csproj", "{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{22600C67-F8ED-4F33-A202-6723FF81AA8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22600C67-F8ED-4F33-A202-6723FF81AA8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22600C67-F8ED-4F33-A202-6723FF81AA8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
