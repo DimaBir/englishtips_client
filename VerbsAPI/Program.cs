@@ -34,8 +34,8 @@ namespace VerbsAPI
             });
             string api = "https://englishtips.azurewebsites.net/api/verbs";
 
-            // Sends created json to server and returns:
-            // returns: VerbsResponse - represents response object with two fields:
+            // Sends created json to the server:
+            // returns: Dictionary - that contains verbs and their indexes in sended text:
             //      string = verb itself,
             //      List<int> - list of indexes of verb in the text
             Dictionary<string, List<int>> response =
