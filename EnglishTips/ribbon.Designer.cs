@@ -34,6 +34,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
             this.checkBox2 = this.Factory.CreateRibbonCheckBox();
@@ -112,6 +113,7 @@
             // button1
             // 
             this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.Label = "Read aloud";
             this.button1.Name = "button1";
             this.button1.ShowImage = true;
@@ -139,6 +141,7 @@
             // toggleButton1
             // 
             this.toggleButton1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.toggleButton1.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton1.Image")));
             this.toggleButton1.Label = "Translate";
             this.toggleButton1.Name = "toggleButton1";
             this.toggleButton1.ShowImage = true;

@@ -17,9 +17,11 @@ namespace EnglishTips
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
             userControlTranslate = new UserControlTranslate();
+            //userControlTranslate.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             TranslateCustomTaskPane = this.CustomTaskPanes.Add(userControlTranslate, "Translate");
             TranslateCustomTaskPane.Visible = false;
             TranslateCustomTaskPane.VisibleChanged += new EventHandler(TranslateCustomTaskPane_VisibleChanged);
+            TranslateCustomTaskPane.Width = 335;// userControlTranslate.Width;
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
