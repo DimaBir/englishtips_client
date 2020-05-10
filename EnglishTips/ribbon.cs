@@ -30,6 +30,9 @@ namespace EnglishTips
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
 
+            // Remove existing underline
+            Remove_underline();
+
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
             string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
 
@@ -56,8 +59,8 @@ namespace EnglishTips
                 foreach (int index in verbObject.Indexes)
                 {
                     Word.Range rng = Globals.ThisAddIn.Application.ActiveDocument.Range(index, index + verbObject.VerbLength);
-                    rng.Font.Underline = Microsoft.Office.Interop.Word.WdUnderline.wdUnderlineThick;
-                    rng.Font.UnderlineColor = Microsoft.Office.Interop.Word.WdColor.wdColorRed;
+                    rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
+                    rng.Font.UnderlineColor = Word.WdColor.wdColorRed;
                 }
             }
 
@@ -87,6 +90,26 @@ namespace EnglishTips
 
             // End coloring record
             recordObj.EndCustomRecord();
+        }
+
+        void Remove_underline()
+        {
+            Word.Range range = Globals.ThisAddIn.Application.ActiveDocument.Content;
+            Remove_underline(range, Word.WdColor.wdColorRed.GetHashCode());
+            //Remove_underline(range, 32769);
+            //Remove_underline(range, 16711681);
+        }
+        void Remove_underline(Word.Range range, int colorIndex)
+        {
+            range.Find.ClearFormatting();
+            range.Find.Replacement.ClearFormatting();
+            range.Find.Text = "";
+            range.Find.Font.UnderlineColor = (Word.WdColor)colorIndex;
+            range.Find.Font.Underline = Word.WdUnderline.wdUnderlineThick;
+            range.Find.Replacement.Text = "";
+            range.Find.Replacement.Font.Underline = Word.WdUnderline.wdUnderlineNone;
+            range.Find.Execute(Format: true, Replace: Word.WdReplace.wdReplaceAll);
+
         }
 
         private void checkBox4_Click(object sender, RibbonControlEventArgs e)
