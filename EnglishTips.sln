@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTranslateAPI", "Googl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerbsAPI", "VerbsAPI\VerbsAPI.csproj", "{3793203B-02F4-472F-B270-762397532E9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NounsAPI", "NounsAPI\NounsAPI.csproj", "{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3793203B-02F4-472F-B270-762397532E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3793203B-02F4-472F-B270-762397532E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3793203B-02F4-472F-B270-762397532E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
