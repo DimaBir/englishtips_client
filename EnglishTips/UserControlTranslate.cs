@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Word = Microsoft.Office.Interop.Word;
 using System.Web.Script.Serialization;
+using RESTApiExample;
 
 namespace EnglishTips
 {

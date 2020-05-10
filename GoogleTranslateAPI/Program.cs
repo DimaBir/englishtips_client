@@ -3,7 +3,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
-using EnglishTips;
 using RESTApiExample;
 
 namespace GoogleTranslateAPI
