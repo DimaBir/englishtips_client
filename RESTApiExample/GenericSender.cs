@@ -16,7 +16,7 @@ namespace EnglishTips
         ///
         /// Here working example;
         /// <example>
-        ///     string api = "https://englishtips.azurewebsites.net/api/verbs";
+        ///     string api = "http://127.0.0.1:5000/api/verbs";
         ///     Dictionary<string, List<int>> response = GenericSender<Dictionary<string, List<int>>>.Send(json: json, api: api, method: "POST");
         /// </example>
         /// </summary>
@@ -54,7 +54,10 @@ namespace EnglishTips
             using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream() ?? throw new InvalidOperationException()))
             {
                 string response = streamReader.ReadToEnd();
-
+                if (response.StartsWith("Error"))
+                {
+                    throw new InvalidOperationException(response);
+                }
                 // Here we pass our class as template that expected to be deserialized from response stream
                 responseJsonObject = JsonConvert.DeserializeObject<T>(response);
             }
