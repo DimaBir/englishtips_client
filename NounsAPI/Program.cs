@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using RESTApiExample;
 
@@ -33,7 +30,7 @@ namespace NounsAPI
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/verbs";
+            string api = "http://127.0.0.1:5000/api/noun-compound";
 
             // Sends created json to the server:
             // returns: Dictionary - that contains verbs and their indexes in sended text:
@@ -42,7 +39,7 @@ namespace NounsAPI
             Dictionary<string, List<int>> response =
                 GenericSender<Dictionary<string, List<int>>>.Send(json, api: api, "POST");
 
-            Console.WriteLine($"Sending text to '{api}' to find verbs...\n\n\n");
+            Console.WriteLine($"Sending text to '{api}' to find nouns...\n\n\n");
             Console.WriteLine($"Original text: {text_to_check}");
 
             // Print out verbs.
@@ -56,7 +53,7 @@ namespace NounsAPI
             }
 
             sw.Stop();
-            Console.WriteLine("\n\nTime Elapsed={0}", sw.Elapsed);
+            Console.WriteLine("\n\nClient Time Elapsed={0}", sw.Elapsed);
             Console.ReadKey();
             return;
         }
