@@ -80,9 +80,9 @@ namespace EnglishTips
             SayAloud.Say(text: selection.Text);
         }
 
-        private void button2_Click(object sender, RibbonControlEventArgs e)
+        private void toggleButton1_Click(object sender, RibbonControlEventArgs e)
         {
-
+            Globals.ThisAddIn.TranslateCustomTaskPane.Visible ^= true;
         }
     }
 }
