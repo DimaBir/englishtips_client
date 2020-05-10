@@ -27,13 +27,13 @@ namespace EnglishTips
         private void button1_Click(object sender, EventArgs e)
         {
             // Get current selection
-            Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
+            //Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
 
             // If selection is empty - Don't translate
-            if (selection.Text == null)
-            {
-                return;
-            }
+            //if (selection.Text == null)
+            //{
+            //    return;
+            //}
 
             //SayAloud.Say(text: selection.Text);
 
