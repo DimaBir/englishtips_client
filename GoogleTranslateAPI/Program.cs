@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
 using EnglishTips;
+using RESTApiExample;
 
 namespace GoogleTranslateAPI
 {
@@ -23,7 +24,7 @@ namespace GoogleTranslateAPI
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = text_to_translate,
-                language = "he"
+                language = Languages.HEBREW
             });
 
             string api = "https://englishtips.azurewebsites.net/api/translate";
