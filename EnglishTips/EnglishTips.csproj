@@ -218,6 +218,10 @@
       <Project>{4cff37c5-f10d-4af5-9b47-faf430869720}</Project>
       <Name>RESTApiExample</Name>
     </ProjectReference>
+    <ProjectReference Include="..\VerbsAPI\VerbsAPI.csproj">
+      <Project>{3793203b-02f4-472f-b270-762397532e9b}</Project>
+      <Name>VerbsAPI</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

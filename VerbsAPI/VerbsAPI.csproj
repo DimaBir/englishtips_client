@@ -52,10 +52,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EnglishTips\EnglishTips.csproj">
-      <Project>{22600c67-f8ed-4f33-a202-6723ff81aa8d}</Project>
-      <Name>EnglishTips</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RESTApiExample\RESTApiExample.csproj">
       <Project>{4CFF37C5-F10D-4AF5-9B47-FAF430869720}</Project>
       <Name>RESTApiExample</Name>
