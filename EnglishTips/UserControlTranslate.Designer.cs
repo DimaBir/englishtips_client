@@ -58,17 +58,19 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Amharic",
+            "Arabic",
+            "Chinese (Simplified)",
+            "Chinese (Traditional)",
             "French",
+            "German",
             "Hebrew",
             "Hindi",
             "Indonesian",
+            "Italian",
             "Japanese",
-            "Mandarin chinese",
             "Portuguese",
             "Russian",
-            "Spanish",
-            "Standard Arabic",
-            "Standard German"});
+            "Spanish"});
             this.comboBox1.Location = new System.Drawing.Point(89, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 24);

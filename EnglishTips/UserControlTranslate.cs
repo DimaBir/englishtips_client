@@ -21,7 +21,7 @@ namespace EnglishTips
 
         private void UserControlTranslate_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedText = "Hebrew";
+            comboBox1.SelectedItem = "Hebrew";
             comboBox2.SelectedIndex = comboBox2.Items.Count - 1;
         }
 
@@ -36,6 +36,20 @@ namespace EnglishTips
                 return;
             }
 
+            var EnglishCulture = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)
+                                .FirstOrDefault(r => r.EnglishName == comboBox1.SelectedItem.ToString());
+            string languageCode = EnglishCulture.TwoLetterISOLanguageName;
+
+            // Special languageCode cases
+            if (comboBox1.SelectedItem.ToString() == "Chinese (Simplified)")
+            {
+                languageCode = "zh-CN";
+            }
+            else if(comboBox1.SelectedItem.ToString() == "Chinese (Traditional)")
+            {
+                languageCode = "zh-TW";
+            }
+
             // Creates custom json
             // JSON body:
             // "text": (string)"Text you wanna to send to server"
@@ -43,7 +57,7 @@ namespace EnglishTips
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = selection.Text,
-                language = "he"
+                language = languageCode
             });
 
             string api = "https://englishtips.azurewebsites.net/api/translate";
@@ -59,7 +73,15 @@ namespace EnglishTips
                 if (lbxControl is RichTextBox)
                 {
                     ((RichTextBox)lbxControl).Text = translation;
-                    ((RichTextBox)lbxControl).RightToLeft = RightToLeft.Yes;
+                    if (languageCode == "he" || languageCode == "ar")
+                    {
+                        ((RichTextBox)lbxControl).RightToLeft = RightToLeft.Yes;
+                    }
+                    else
+                    {
+                        ((RichTextBox)lbxControl).RightToLeft = RightToLeft.No;
+                    }
+                    
                 }
             }
 
