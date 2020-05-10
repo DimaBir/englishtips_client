@@ -71,7 +71,7 @@ namespace RESTApiExample
         public const string PASHTO = "ps";
         public const string PERSIAN = "fa";
         public const string POLISH = "pl";
-        public const string PORTUGUESE = "pt-PT";
+        public const string PORTUGUESE = "pt";
         public const string PUNJABI = "pa";
         public const string ROMANIAN = "ro";
         public const string RUSSIAN = "ru";
