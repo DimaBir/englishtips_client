@@ -140,5 +140,10 @@ namespace EnglishTips
         {
             Globals.ThisAddIn.TranslateCustomTaskPane.Visible ^= true;
         }
+
+        private void toggleButton2_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
     }
 }
