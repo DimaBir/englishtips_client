@@ -4,7 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Web.Script.Serialization;
-using EnglishTips;
+using RESTApiExample;
+
 
 namespace VerbsAPI
 {
@@ -32,7 +33,7 @@ namespace VerbsAPI
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/verbs2";
+            string api = "http://127.0.0.1:5000/api/verbs2";
 
             // Sends created json to the server:
             // returns: Dictionary - that contains verbs and their indexes in sended text:

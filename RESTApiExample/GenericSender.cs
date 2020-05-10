@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 
-namespace EnglishTips
+namespace RESTApiExample
 {
     /// <summary>
     /// Static class no need to implement, using as namespace
