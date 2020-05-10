@@ -26,6 +26,7 @@ namespace EnglishTips
         /// <returns>T generic class that represents response as JSON object.</returns>
         public static T Send(string json, string api, string method)
         {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             // Creates request to specific API (/api/test), full path needed.
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(api);
             // Tells to Client what type of request to send, we are sending json, so 'application/json'
