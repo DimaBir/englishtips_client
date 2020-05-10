@@ -47,10 +47,10 @@ namespace EnglishTips
             // Get current selection
             Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
 
-            // If selection is empty - Don't translate
+            // If selection is empty - select entire document
             if (selection.Text == null)
             {
-                return;
+                selection = Globals.ThisAddIn.Application.ActiveDocument.Content;;
             }
 
             var EnglishCulture = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)
