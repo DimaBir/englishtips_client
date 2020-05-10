@@ -48,6 +48,7 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(0, 52);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(315, 572);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
@@ -55,30 +56,48 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Amharic",
             "Arabic",
             "Chinese (Simplified)",
             "Chinese (Traditional)",
+            "Czech",
+            "Danish",
+            "Dutch",
+            "Esperanto",
+            "Estonian",
+            "Finnish",
             "French",
+            "Georgian",
             "German",
+            "Greek",
             "Hebrew",
             "Hindi",
             "Indonesian",
+            "Irish",
             "Italian",
             "Japanese",
+            "Korean",
+            "Polish",
             "Portuguese",
             "Russian",
-            "Spanish"});
+            "Spanish",
+            "Thai",
+            "Ukrainian",
+            "Vietnamese",
+            "Yiddish"});
             this.comboBox1.Location = new System.Drawing.Point(89, 22);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(88, 24);
+            this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 4;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
             "Google Translate"});

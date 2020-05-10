@@ -22,7 +22,23 @@ namespace EnglishTips
         private void UserControlTranslate_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedItem = "Hebrew";
+            comboBox1.DropDownWidth = DropDownWidth(comboBox1);
             comboBox2.SelectedIndex = comboBox2.Items.Count - 1;
+            comboBox2.DropDownWidth = DropDownWidth(comboBox2);
+        }
+
+        int DropDownWidth(ComboBox myCombo)
+        {
+            int maxWidth = 0, temp = 0;
+            foreach (var obj in myCombo.Items)
+            {
+                temp = TextRenderer.MeasureText(obj.ToString(), myCombo.Font).Width;
+                if (temp > maxWidth)
+                {
+                    maxWidth = temp;
+                }
+            }
+            return maxWidth;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -73,7 +89,7 @@ namespace EnglishTips
                 if (lbxControl is RichTextBox)
                 {
                     ((RichTextBox)lbxControl).Text = translation;
-                    if (languageCode == "he" || languageCode == "ar")
+                    if (languageCode == "he" || languageCode == "ar" || languageCode == "yi")
                     {
                         ((RichTextBox)lbxControl).RightToLeft = RightToLeft.Yes;
                     }
