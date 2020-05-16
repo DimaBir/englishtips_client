@@ -16,14 +16,7 @@ namespace VerbsAPI
             sw.Start();
 
             string text_to_check =
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food." +
-                "Ian has written a lot of work, has bitten a lot of apples , has eaten a lot of food.\n\n\n";
+                "Ran run run run throw sit eat\n\n\n";
 
             // Creates custom json
             // JSON body:
