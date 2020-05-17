@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynonymAPI", "SynonymAPI\Sy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UncountableNoun", "UncountableNoun\UncountableNoun.csproj", "{80E4248D-FE16-4E13-AAF5-0915514556CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordinessAPI", "WordinessAPI\WordinessAPI.csproj", "{612BCEFB-3714-4F77-BBFC-B7591EE03057}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612BCEFB-3714-4F77-BBFC-B7591EE03057}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612BCEFB-3714-4F77-BBFC-B7591EE03057}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612BCEFB-3714-4F77-BBFC-B7591EE03057}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612BCEFB-3714-4F77-BBFC-B7591EE03057}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
