@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerbsAPI", "VerbsAPI\VerbsA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NounsAPI", "NounsAPI\NounsAPI.csproj", "{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SynonymAPI", "SynonymAPI\SynonymAPI.csproj", "{0767D074-5104-4B5B-A1B8-C393310D9AE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UncountableNoun", "UncountableNoun\UncountableNoun.csproj", "{80E4248D-FE16-4E13-AAF5-0915514556CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0767D074-5104-4B5B-A1B8-C393310D9AE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0767D074-5104-4B5B-A1B8-C393310D9AE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0767D074-5104-4B5B-A1B8-C393310D9AE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0767D074-5104-4B5B-A1B8-C393310D9AE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E4248D-FE16-4E13-AAF5-0915514556CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
