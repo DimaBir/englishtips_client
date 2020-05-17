@@ -6,11 +6,11 @@ namespace WordinessAPI
     public class WordinessResponse
     {
         [JsonProperty("Result")]
-        public IList<WordinessDate> Results { get; set; }
+        public IList<WordinessData> Results { get; set; }
         [JsonProperty("ServerExecutionTime")]
         public float ServerExecutionTime { get; set; }
 
-        public class WordinessDate
+        public class WordinessData
         {
             public string Wordiness { get; set; }
             public int Length { get; set; }
