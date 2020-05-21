@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using RESTApiExample;
 
 namespace GoogleTranslateAPI
 {
-    class Program
+    public static class GoogleTranslateAPIExample
     {
-        static void Main(string[] args)
+        public static void Send()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();

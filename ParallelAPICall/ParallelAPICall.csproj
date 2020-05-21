@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}</ProjectGuid>
+    <ProjectGuid>{85900D87-DFBD-4074-8155-CAF511BD3A91}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>NounsAPI</RootNamespace>
-    <AssemblyName>NounsAPI</AssemblyName>
+    <RootNamespace>ParallelAPICall</RootNamespace>
+    <AssemblyName>ParallelAPICall</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,12 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -47,19 +43,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NounCompundResponse.cs" />
-    <Compile Include="NounsAPIExample.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RESTApiExample\RESTApiExample.csproj">
-      <Project>{4CFF37C5-F10D-4AF5-9B47-FAF430869720}</Project>
-      <Name>RESTApiExample</Name>
+    <ProjectReference Include="..\GoogleTranslateAPI\GoogleTranslateAPI.csproj">
+      <Project>{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}</Project>
+      <Name>GoogleTranslateAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NounsAPI\NounsAPI.csproj">
+      <Project>{93D3BFFC-FA4E-4AA8-A357-CAB5302C5953}</Project>
+      <Name>NounsAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynonymAPI\SynonymAPI.csproj">
+      <Project>{0767D074-5104-4B5B-A1B8-C393310D9AE2}</Project>
+      <Name>SynonymAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopWordsAPI\TopWordsAPI.csproj">
+      <Project>{86C41B12-A8AE-4425-AF0D-66965B1AF5C8}</Project>
+      <Name>TopWordsAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UncountableNoun\UncountableNoun.csproj">
+      <Project>{80E4248D-FE16-4E13-AAF5-0915514556CD}</Project>
+      <Name>UncountableNoun</Name>
     </ProjectReference>
     <ProjectReference Include="..\VerbsAPI\VerbsAPI.csproj">
       <Project>{3793203B-02F4-472F-B270-762397532E9B}</Project>

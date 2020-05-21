@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Script.Serialization;
 using RESTApiExample;
 
 namespace VerbsAPI
 {
-    class Program
+    public static class VerbsAPIExamlpe
     {
-        static void Main(string[] args)
+        public static void Send()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();

@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Web.Script.Serialization;
 using RESTApiExample;
 
 namespace NounsAPI
 {
-    public static class Program
+    public static class NounsAPIExample
     {
-        static void Main(string[] args)
+        public static void Send()
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
@@ -43,7 +43,7 @@ namespace NounsAPI
             {
                 int startIndex = compoundIndexes[0];
                 int length = compoundIndexes[1];
-                String nounCompound = text_to_check.Substring(startIndex, length+1); // PAY ATTEMTION ADDED 1 MANUALLY TO LENGTH IN ORDER TO PRINT WHOLE WORD
+                String nounCompound = text_to_check.Substring(startIndex, length + 1); // PAY ATTEMTION ADDED 1 MANUALLY TO LENGTH IN ORDER TO PRINT WHOLE WORD
 
                 Console.WriteLine($"Noun Compound: '{nounCompound}' || Start at: {startIndex} || Length: {length}");
             }
@@ -51,7 +51,6 @@ namespace NounsAPI
             sw.Stop();
             Console.WriteLine("\n\nServer Execution Time = {0} (sec)", response.ServerExecutionTime);
             Console.WriteLine("Client Execution Time = {0} (sec)", sw.Elapsed);
-            Console.ReadKey();
             return;
         }
     }
