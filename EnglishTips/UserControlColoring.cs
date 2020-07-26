@@ -31,22 +31,50 @@ namespace EnglishTips
 
         private void Wordiness_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (Wordiness_checkBox.Checked)
+            {
+                Color_wordiness();
+            }
+            else
+            {
+                Remove_underline(SystemColorToWdColor(Wordiness_button.BackColor).GetHashCode());
+            }
         }
 
         private void Verbs_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (Verbs_checkBox.Checked)
+            {
+                Color_verbs();
+            }
+            else
+            {
+                Remove_underline(SystemColorToWdColor(Verbs_button.BackColor).GetHashCode());
+            }
         }
 
         private void NounCompound_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (NounCompound_checkBox.Checked)
+            {
+                Color_noun_compound();
+            }
+            else
+            {
+                Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
+            }
         }
 
         private void UncountableNouns_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (UncountableNouns_checkBox.Checked)
+            {
+                Color_uncountable_nouns();
+            }
+            else
+            {
+                Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
+            }
         }
 
         private void RefreshButton_Click(object sender, EventArgs e)
@@ -56,12 +84,28 @@ namespace EnglishTips
             recordObj.StartCustomRecord("");
 
             // Remove existing underline
-            Remove_underlines();
+            //Remove_underlines();
 
-            Color_wordiness();
-            Color_verbs();
-            Color_noun_compound();
-            Color_uncountable_nouns();
+            if (Wordiness_checkBox.Checked)
+            {
+                Remove_underline(SystemColorToWdColor(Wordiness_button.BackColor).GetHashCode());
+                Color_wordiness();
+            }
+            if (Verbs_checkBox.Checked)
+            {
+                Remove_underline(SystemColorToWdColor(Verbs_button.BackColor).GetHashCode());
+                Color_verbs();
+            }
+            if (NounCompound_checkBox.Checked)
+            {
+                Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
+                Color_noun_compound();
+            }
+            if (UncountableNouns_checkBox.Checked)
+            {
+                Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
+                Color_uncountable_nouns();
+            }
 
             recordObj.EndCustomRecord();
         }
@@ -185,14 +229,14 @@ namespace EnglishTips
 
         void Remove_underlines()
         {
-            Word.Range range = Globals.ThisAddIn.Application.ActiveDocument.Content;
-            Remove_underline(range, SystemColorToWdColor(Wordiness_button.BackColor).GetHashCode());
-            Remove_underline(range, SystemColorToWdColor(Verbs_button.BackColor).GetHashCode());
-            Remove_underline(range, SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
-            Remove_underline(range, SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
+            Remove_underline(SystemColorToWdColor(Wordiness_button.BackColor).GetHashCode());
+            Remove_underline(SystemColorToWdColor(Verbs_button.BackColor).GetHashCode());
+            Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
+            Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
         }
-        void Remove_underline(Word.Range range, int colorIndex)
+        void Remove_underline(int colorIndex)
         {
+            Word.Range range = Globals.ThisAddIn.Application.ActiveDocument.Content;
             range.Find.ClearFormatting();
             range.Find.Replacement.ClearFormatting();
             range.Find.Text = "";
