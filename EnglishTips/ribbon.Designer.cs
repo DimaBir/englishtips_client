@@ -44,8 +44,9 @@
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
-            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
+            this.Translate = this.Factory.CreateRibbonToggleButton();
+            this.Synonyms = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.ReadAloud.SuspendLayout();
@@ -116,19 +117,11 @@
             // 
             // group4
             // 
-            this.group4.Items.Add(this.toggleButton1);
+            this.group4.Items.Add(this.Translate);
             this.group4.Items.Add(this.toggleButton2);
+            this.group4.Items.Add(this.Synonyms);
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.toggleButton1.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton1.Image")));
-            this.toggleButton1.Label = "Translate";
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.ShowImage = true;
-            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton1_Click);
             // 
             // toggleButton2
             // 
@@ -138,6 +131,24 @@
             this.toggleButton2.Name = "toggleButton2";
             this.toggleButton2.ShowImage = true;
             this.toggleButton2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton2_Click);
+            // 
+            // Translate
+            // 
+            this.Translate.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Translate.Image = ((System.Drawing.Image)(resources.GetObject("Translate.Image")));
+            this.Translate.Label = "Translate";
+            this.Translate.Name = "Translate";
+            this.Translate.ShowImage = true;
+            this.Translate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Translate_Click);
+            // 
+            // Synonyms
+            // 
+            this.Synonyms.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Synonyms.Image = ((System.Drawing.Image)(resources.GetObject("Synonyms.Image")));
+            this.Synonyms.Label = "Synonyms";
+            this.Synonyms.Name = "Synonyms";
+            this.Synonyms.ShowImage = true;
+            this.Synonyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Synonyms_Click);
             // 
             // ribbon
             // 
@@ -167,11 +178,12 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton1;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton2;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Coloring;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StartReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Translate;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Synonyms;
     }
 
     partial class ThisRibbonCollection

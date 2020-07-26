@@ -233,6 +233,7 @@ namespace EnglishTips
             Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
             Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
         }
+
         void Remove_underline(int colorIndex)
         {
             Word.Range range = Globals.ThisAddIn.Application.ActiveDocument.Content;
@@ -244,11 +245,6 @@ namespace EnglishTips
             range.Find.Replacement.Text = "";
             range.Find.Replacement.Font.Underline = Word.WdUnderline.wdUnderlineNone;
             range.Find.Execute(Format: true, Replace: Word.WdReplace.wdReplaceAll);
-
-        }
-
-        private void Wordiness_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 

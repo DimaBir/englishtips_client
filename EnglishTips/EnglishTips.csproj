@@ -177,6 +177,12 @@
     <Compile Include="UserControlColoring.Designer.cs">
       <DependentUpon>UserControlColoring.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlSynonyms.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSynonyms.Designer.cs">
+      <DependentUpon>UserControlSynonyms.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlTranslate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -197,6 +203,9 @@
     </Compile>
     <EmbeddedResource Include="UserControlColoring.resx">
       <DependentUpon>UserControlColoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSynonyms.resx">
+      <DependentUpon>UserControlSynonyms.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlTranslate.resx">
       <DependentUpon>UserControlTranslate.cs</DependentUpon>
