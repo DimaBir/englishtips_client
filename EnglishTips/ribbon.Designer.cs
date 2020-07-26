@@ -37,17 +37,18 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.group2 = this.Factory.CreateRibbonGroup();
+            this.Coloring = this.Factory.CreateRibbonToggleButton();
+            this.ReadAloud = this.Factory.CreateRibbonGroup();
+            this.StartReadingButton = this.Factory.CreateRibbonButton();
+            this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
-            this.Coloring = this.Factory.CreateRibbonToggleButton();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
-            this.group2.SuspendLayout();
+            this.ReadAloud.SuspendLayout();
             this.group3.SuspendLayout();
             this.group4.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +56,7 @@
             // tab2
             // 
             this.tab2.Groups.Add(this.group1);
-            this.tab2.Groups.Add(this.group2);
+            this.tab2.Groups.Add(this.ReadAloud);
             this.tab2.Groups.Add(this.group3);
             this.tab2.Groups.Add(this.group4);
             this.tab2.Label = "English Tips";
@@ -67,11 +68,38 @@
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
             // 
-            // group2
+            // Coloring
             // 
-            this.group2.Items.Add(this.button1);
-            this.group2.Label = "group2";
-            this.group2.Name = "group2";
+            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Coloring.Label = "Coloring";
+            this.Coloring.Name = "Coloring";
+            this.Coloring.ShowImage = true;
+            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
+            // 
+            // ReadAloud
+            // 
+            this.ReadAloud.Items.Add(this.StartReadingButton);
+            this.ReadAloud.Items.Add(this.StopReadingButton);
+            this.ReadAloud.Label = "Read aloud";
+            this.ReadAloud.Name = "ReadAloud";
+            // 
+            // StartReadingButton
+            // 
+            this.StartReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.StartReadingButton.Image = ((System.Drawing.Image)(resources.GetObject("StartReadingButton.Image")));
+            this.StartReadingButton.Label = "Start";
+            this.StartReadingButton.Name = "StartReadingButton";
+            this.StartReadingButton.ShowImage = true;
+            this.StartReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StartReadingButton_Click);
+            // 
+            // StopReadingButton
+            // 
+            this.StopReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.StopReadingButton.Image = ((System.Drawing.Image)(resources.GetObject("StopReadingButton.Image")));
+            this.StopReadingButton.Label = "Stop";
+            this.StopReadingButton.Name = "StopReadingButton";
+            this.StopReadingButton.ShowImage = true;
+            this.StopReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StopReadingButton_Click);
             // 
             // group3
             // 
@@ -92,23 +120,6 @@
             this.group4.Items.Add(this.toggleButton2);
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
-            // 
-            // Coloring
-            // 
-            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.Coloring.Label = "Coloring";
-            this.Coloring.Name = "Coloring";
-            this.Coloring.ShowImage = true;
-            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
-            // 
-            // button1
-            // 
-            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Label = "Read aloud";
-            this.button1.Name = "button1";
-            this.button1.ShowImage = true;
-            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
             // toggleButton1
             // 
@@ -138,8 +149,8 @@
             this.tab2.PerformLayout();
             this.group1.ResumeLayout(false);
             this.group1.PerformLayout();
-            this.group2.ResumeLayout(false);
-            this.group2.PerformLayout();
+            this.ReadAloud.ResumeLayout(false);
+            this.ReadAloud.PerformLayout();
             this.group3.ResumeLayout(false);
             this.group3.PerformLayout();
             this.group4.ResumeLayout(false);
@@ -152,14 +163,15 @@
 
         private Microsoft.Office.Tools.Ribbon.RibbonTab tab2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup ReadAloud;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton1;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton2;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Coloring;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton StartReadingButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
     }
 
     partial class ThisRibbonCollection
