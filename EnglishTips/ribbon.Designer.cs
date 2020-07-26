@@ -37,15 +37,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.Coloring = this.Factory.CreateRibbonToggleButton();
             this.ReadAloud = this.Factory.CreateRibbonGroup();
-            this.StartReadingButton = this.Factory.CreateRibbonButton();
-            this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
-            this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
+            this.Coloring = this.Factory.CreateRibbonToggleButton();
+            this.StartReadingButton = this.Factory.CreateRibbonButton();
+            this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.Translate = this.Factory.CreateRibbonToggleButton();
+            this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.Synonyms = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
@@ -69,38 +69,12 @@
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
             // 
-            // Coloring
-            // 
-            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.Coloring.Label = "Coloring";
-            this.Coloring.Name = "Coloring";
-            this.Coloring.ShowImage = true;
-            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
-            // 
             // ReadAloud
             // 
             this.ReadAloud.Items.Add(this.StartReadingButton);
             this.ReadAloud.Items.Add(this.StopReadingButton);
             this.ReadAloud.Label = "Read aloud";
             this.ReadAloud.Name = "ReadAloud";
-            // 
-            // StartReadingButton
-            // 
-            this.StartReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.StartReadingButton.Image = ((System.Drawing.Image)(resources.GetObject("StartReadingButton.Image")));
-            this.StartReadingButton.Label = "Start";
-            this.StartReadingButton.Name = "StartReadingButton";
-            this.StartReadingButton.ShowImage = true;
-            this.StartReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StartReadingButton_Click);
-            // 
-            // StopReadingButton
-            // 
-            this.StopReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.StopReadingButton.Image = ((System.Drawing.Image)(resources.GetObject("StopReadingButton.Image")));
-            this.StopReadingButton.Label = "Stop";
-            this.StopReadingButton.Name = "StopReadingButton";
-            this.StopReadingButton.ShowImage = true;
-            this.StopReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StopReadingButton_Click);
             // 
             // group3
             // 
@@ -123,14 +97,31 @@
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
             // 
-            // toggleButton2
+            // Coloring
             // 
-            this.toggleButton2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
-            this.toggleButton2.Label = "Oxford Dictionary";
-            this.toggleButton2.Name = "toggleButton2";
-            this.toggleButton2.ShowImage = true;
-            this.toggleButton2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton2_Click);
+            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Coloring.Label = "Coloring";
+            this.Coloring.Name = "Coloring";
+            this.Coloring.ShowImage = true;
+            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
+            // 
+            // StartReadingButton
+            // 
+            this.StartReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.StartReadingButton.Image = ((System.Drawing.Image)(resources.GetObject("StartReadingButton.Image")));
+            this.StartReadingButton.Label = "Start";
+            this.StartReadingButton.Name = "StartReadingButton";
+            this.StartReadingButton.ShowImage = true;
+            this.StartReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StartReadingButton_Click);
+            // 
+            // StopReadingButton
+            // 
+            this.StopReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.StopReadingButton.Image = ((System.Drawing.Image)(resources.GetObject("StopReadingButton.Image")));
+            this.StopReadingButton.Label = "Stop";
+            this.StopReadingButton.Name = "StopReadingButton";
+            this.StopReadingButton.ShowImage = true;
+            this.StopReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StopReadingButton_Click);
             // 
             // Translate
             // 
@@ -140,6 +131,15 @@
             this.Translate.Name = "Translate";
             this.Translate.ShowImage = true;
             this.Translate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Translate_Click);
+            // 
+            // toggleButton2
+            // 
+            this.toggleButton2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
+            this.toggleButton2.Label = "Oxford Dictionary";
+            this.toggleButton2.Name = "toggleButton2";
+            this.toggleButton2.ShowImage = true;
+            this.toggleButton2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton2_Click);
             // 
             // Synonyms
             // 
