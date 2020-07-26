@@ -7,17 +7,18 @@ using Word = Microsoft.Office.Interop.Word;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Word;
 using System.Web.Script.Serialization;
-
-using VerbsAPI;
-using WordinessAPI;
-using NounsAPI;
-using UncountableNoun;
-using RESTApiExample;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Speech.Synthesis;
 
 namespace EnglishTips
 {
     public partial class ribbon
     {
+        // Initialization of synthesizer.
+        private SpeechSynthesizer synth = null;
+        private Prompt prompt;
+
         private void Coloring_Load(object sender, RibbonUIEventArgs e)
         {
 
@@ -27,7 +28,6 @@ namespace EnglishTips
         {
 
         }
-
 
         private void checkBox4_Click(object sender, RibbonControlEventArgs e)
         {
@@ -39,7 +39,7 @@ namespace EnglishTips
 
         }
 
-        private void button1_Click(object sender, RibbonControlEventArgs e)
+        void readAloud()
         {
             // Get current selection
             Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
@@ -50,7 +50,32 @@ namespace EnglishTips
                 selection = Globals.ThisAddIn.Application.ActiveDocument.Content;
             }
 
-            SayAloud.Say(text: selection.Text);
+            prompt = synth.SpeakAsync(selection.Text);
+        
+        }
+
+        private void StartReadingButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            if (synth == null)
+            {
+                synth = new SpeechSynthesizer();
+
+                // Configure the audio output.
+                synth.SetOutputToDefaultAudioDevice();
+            }
+
+            if (synth.State == SynthesizerState.Ready)
+            {
+                readAloud();
+            }
+        }
+
+        private void StopReadingButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            if (synth != null && synth.State == SynthesizerState.Speaking)
+            {
+                synth.SpeakAsyncCancel(prompt);
+            }
         }
 
         private void toggleButton1_Click(object sender, RibbonControlEventArgs e)
