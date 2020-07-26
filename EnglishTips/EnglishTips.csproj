@@ -171,6 +171,12 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UserControlColoring.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlColoring.Designer.cs">
+      <DependentUpon>UserControlColoring.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlTranslate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +195,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlColoring.resx">
+      <DependentUpon>UserControlColoring.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlTranslate.resx">
       <DependentUpon>UserControlTranslate.cs</DependentUpon>
     </EmbeddedResource>
@@ -214,13 +223,33 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NounsAPI\NounsAPI.csproj">
+      <Project>{93d3bffc-fa4e-4aa8-a357-cab5302c5953}</Project>
+      <Name>NounsAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RESTApiExample\RESTApiExample.csproj">
       <Project>{4cff37c5-f10d-4af5-9b47-faf430869720}</Project>
       <Name>RESTApiExample</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SynonymAPI\SynonymAPI.csproj">
+      <Project>{0767d074-5104-4b5b-a1b8-c393310d9ae2}</Project>
+      <Name>SynonymAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TopWordsAPI\TopWordsAPI.csproj">
+      <Project>{86c41b12-a8ae-4425-af0d-66965b1af5c8}</Project>
+      <Name>TopWordsAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UncountableNoun\UncountableNoun.csproj">
+      <Project>{80e4248d-fe16-4e13-aaf5-0915514556cd}</Project>
+      <Name>UncountableNoun</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VerbsAPI\VerbsAPI.csproj">
       <Project>{3793203b-02f4-472f-b270-762397532e9b}</Project>
       <Name>VerbsAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WordinessAPI\WordinessAPI.csproj">
+      <Project>{612bcefb-3714-4f77-bbfc-b7591ee03057}</Project>
+      <Name>WordinessAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
