@@ -32,10 +32,13 @@
             this.Verbs_checkBox = new System.Windows.Forms.CheckBox();
             this.NounCompound_checkBox = new System.Windows.Forms.CheckBox();
             this.UncountableNouns_checkBox = new System.Windows.Forms.CheckBox();
-            this.Wordiness_comboBox = new System.Windows.Forms.ComboBox();
-            this.Verbs_comboBox = new System.Windows.Forms.ComboBox();
-            this.NounCompound_comboBox = new System.Windows.Forms.ComboBox();
-            this.UncountableNouns_comboBox = new System.Windows.Forms.ComboBox();
+            this.Wordiness_button = new System.Windows.Forms.Button();
+            this.RefreshButton = new System.Windows.Forms.Button();
+            this.Verbs_button = new System.Windows.Forms.Button();
+            this.NounCompound_button = new System.Windows.Forms.Button();
+            this.UncountableNouns_button = new System.Windows.Forms.Button();
+            this.ColorDialog = new System.Windows.Forms.ColorDialog();
+            this.RemoveButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Wordiness_checkBox
@@ -82,63 +85,83 @@
             this.UncountableNouns_checkBox.UseVisualStyleBackColor = true;
             this.UncountableNouns_checkBox.CheckedChanged += new System.EventHandler(this.UncountableNouns_checkBox_CheckedChanged);
             // 
-            // Wordiness_comboBox
+            // Wordiness_button
             // 
-            this.Wordiness_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Wordiness_comboBox.FormattingEnabled = true;
-            this.Wordiness_comboBox.Items.AddRange(new object[] {
-            "Blue",
-            "Red"});
-            this.Wordiness_comboBox.Location = new System.Drawing.Point(180, 14);
-            this.Wordiness_comboBox.Name = "Wordiness_comboBox";
-            this.Wordiness_comboBox.Size = new System.Drawing.Size(121, 24);
-            this.Wordiness_comboBox.Sorted = true;
-            this.Wordiness_comboBox.TabIndex = 7;
+            this.Wordiness_button.BackColor = System.Drawing.Color.Red;
+            this.Wordiness_button.Location = new System.Drawing.Point(174, 14);
+            this.Wordiness_button.Name = "Wordiness_button";
+            this.Wordiness_button.Size = new System.Drawing.Size(82, 23);
+            this.Wordiness_button.TabIndex = 11;
+            this.Wordiness_button.Text = "\r\n";
+            this.Wordiness_button.UseVisualStyleBackColor = false;
+            this.Wordiness_button.Click += new System.EventHandler(this.Wordiness_button_Click);
             // 
-            // Verbs_comboBox
+            // RefreshButton
             // 
-            this.Verbs_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Verbs_comboBox.FormattingEnabled = true;
-            this.Verbs_comboBox.Location = new System.Drawing.Point(180, 44);
-            this.Verbs_comboBox.Name = "Verbs_comboBox";
-            this.Verbs_comboBox.Size = new System.Drawing.Size(121, 24);
-            this.Verbs_comboBox.Sorted = true;
-            this.Verbs_comboBox.TabIndex = 8;
+            this.RefreshButton.Location = new System.Drawing.Point(13, 146);
+            this.RefreshButton.Name = "RefreshButton";
+            this.RefreshButton.Size = new System.Drawing.Size(243, 36);
+            this.RefreshButton.TabIndex = 12;
+            this.RefreshButton.Text = "Refresh";
+            this.RefreshButton.UseVisualStyleBackColor = true;
+            this.RefreshButton.Click += new System.EventHandler(this.RefreshButton_Click);
             // 
-            // NounCompound_comboBox
+            // Verbs_button
             // 
-            this.NounCompound_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.NounCompound_comboBox.FormattingEnabled = true;
-            this.NounCompound_comboBox.Location = new System.Drawing.Point(180, 74);
-            this.NounCompound_comboBox.Name = "NounCompound_comboBox";
-            this.NounCompound_comboBox.Size = new System.Drawing.Size(121, 24);
-            this.NounCompound_comboBox.Sorted = true;
-            this.NounCompound_comboBox.TabIndex = 9;
+            this.Verbs_button.BackColor = System.Drawing.Color.Blue;
+            this.Verbs_button.Location = new System.Drawing.Point(174, 44);
+            this.Verbs_button.Name = "Verbs_button";
+            this.Verbs_button.Size = new System.Drawing.Size(82, 23);
+            this.Verbs_button.TabIndex = 13;
+            this.Verbs_button.UseVisualStyleBackColor = false;
+            this.Verbs_button.Click += new System.EventHandler(this.Verbs_button_Click);
             // 
-            // UncountableNouns_comboBox
+            // NounCompound_button
             // 
-            this.UncountableNouns_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.UncountableNouns_comboBox.FormattingEnabled = true;
-            this.UncountableNouns_comboBox.Location = new System.Drawing.Point(180, 104);
-            this.UncountableNouns_comboBox.Name = "UncountableNouns_comboBox";
-            this.UncountableNouns_comboBox.Size = new System.Drawing.Size(121, 24);
-            this.UncountableNouns_comboBox.Sorted = true;
-            this.UncountableNouns_comboBox.TabIndex = 10;
+            this.NounCompound_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.NounCompound_button.Location = new System.Drawing.Point(174, 74);
+            this.NounCompound_button.Name = "NounCompound_button";
+            this.NounCompound_button.Size = new System.Drawing.Size(82, 23);
+            this.NounCompound_button.TabIndex = 14;
+            this.NounCompound_button.UseVisualStyleBackColor = false;
+            this.NounCompound_button.Click += new System.EventHandler(this.NounCompound_button_Click);
+            // 
+            // UncountableNouns_button
+            // 
+            this.UncountableNouns_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.UncountableNouns_button.Location = new System.Drawing.Point(174, 104);
+            this.UncountableNouns_button.Name = "UncountableNouns_button";
+            this.UncountableNouns_button.Size = new System.Drawing.Size(82, 23);
+            this.UncountableNouns_button.TabIndex = 15;
+            this.UncountableNouns_button.UseVisualStyleBackColor = false;
+            this.UncountableNouns_button.Click += new System.EventHandler(this.UncountableNouns_button_Click);
+            // 
+            // RemoveButton
+            // 
+            this.RemoveButton.Location = new System.Drawing.Point(13, 200);
+            this.RemoveButton.Name = "RemoveButton";
+            this.RemoveButton.Size = new System.Drawing.Size(243, 36);
+            this.RemoveButton.TabIndex = 16;
+            this.RemoveButton.Text = "Remove";
+            this.RemoveButton.UseVisualStyleBackColor = true;
+            this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
             // UserControlColoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.UncountableNouns_comboBox);
-            this.Controls.Add(this.NounCompound_comboBox);
-            this.Controls.Add(this.Verbs_comboBox);
-            this.Controls.Add(this.Wordiness_comboBox);
+            this.Controls.Add(this.RemoveButton);
+            this.Controls.Add(this.UncountableNouns_button);
+            this.Controls.Add(this.NounCompound_button);
+            this.Controls.Add(this.Verbs_button);
+            this.Controls.Add(this.RefreshButton);
+            this.Controls.Add(this.Wordiness_button);
             this.Controls.Add(this.UncountableNouns_checkBox);
             this.Controls.Add(this.NounCompound_checkBox);
             this.Controls.Add(this.Verbs_checkBox);
             this.Controls.Add(this.Wordiness_checkBox);
             this.Name = "UserControlColoring";
-            this.Size = new System.Drawing.Size(320, 640);
+            this.Size = new System.Drawing.Size(271, 640);
             this.Load += new System.EventHandler(this.UserControlColoring_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -150,9 +173,12 @@
         private System.Windows.Forms.CheckBox Verbs_checkBox;
         private System.Windows.Forms.CheckBox NounCompound_checkBox;
         private System.Windows.Forms.CheckBox UncountableNouns_checkBox;
-        private System.Windows.Forms.ComboBox Wordiness_comboBox;
-        private System.Windows.Forms.ComboBox Verbs_comboBox;
-        private System.Windows.Forms.ComboBox NounCompound_comboBox;
-        private System.Windows.Forms.ComboBox UncountableNouns_comboBox;
+        private System.Windows.Forms.Button Wordiness_button;
+        private System.Windows.Forms.Button RefreshButton;
+        private System.Windows.Forms.Button Verbs_button;
+        private System.Windows.Forms.Button NounCompound_button;
+        private System.Windows.Forms.Button UncountableNouns_button;
+        private System.Windows.Forms.ColorDialog ColorDialog;
+        private System.Windows.Forms.Button RemoveButton;
     }
 }

@@ -12,7 +12,7 @@ namespace EnglishTips
     public partial class ThisAddIn
     {
         private UserControlTranslate userControlTranslate;
-        private UserControlColoring userControlColoring;
+        public UserControlColoring userControlColoring;
         internal Microsoft.Office.Tools.CustomTaskPane TranslateCustomTaskPane;
         internal Microsoft.Office.Tools.CustomTaskPane ColoringCustomTaskPane;
 

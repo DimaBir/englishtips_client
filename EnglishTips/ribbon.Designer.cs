@@ -37,17 +37,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.checkBox2 = this.Factory.CreateRibbonCheckBox();
-            this.checkBox1 = this.Factory.CreateRibbonCheckBox();
-            this.checkBox3 = this.Factory.CreateRibbonCheckBox();
-            this.checkBox4 = this.Factory.CreateRibbonCheckBox();
-            this.btn_refresh_coloring = this.Factory.CreateRibbonButton();
-            this.Coloring = this.Factory.CreateRibbonToggleButton();
             this.group2 = this.Factory.CreateRibbonGroup();
-            this.button1 = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
+            this.btn_refresh_coloring = this.Factory.CreateRibbonButton();
+            this.Coloring = this.Factory.CreateRibbonToggleButton();
+            this.button1 = this.Factory.CreateRibbonButton();
             this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
@@ -68,67 +64,16 @@
             // 
             // group1
             // 
-            this.group1.Items.Add(this.checkBox2);
-            this.group1.Items.Add(this.checkBox1);
-            this.group1.Items.Add(this.checkBox3);
-            this.group1.Items.Add(this.checkBox4);
             this.group1.Items.Add(this.btn_refresh_coloring);
             this.group1.Items.Add(this.Coloring);
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
-            // 
-            // checkBox2
-            // 
-            this.checkBox2.Label = "Verbs";
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkBox2_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Label = "Wordiness";
-            this.checkBox1.Name = "checkBox1";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.Label = "Noun-compound";
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkBox3_Click);
-            // 
-            // checkBox4
-            // 
-            this.checkBox4.Label = "Uncountable nouns";
-            this.checkBox4.Name = "checkBox4";
-            this.checkBox4.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.checkBox4_Click);
-            // 
-            // btn_refresh_coloring
-            // 
-            this.btn_refresh_coloring.Label = "Refresh";
-            this.btn_refresh_coloring.Name = "btn_refresh_coloring";
-            this.btn_refresh_coloring.ShowImage = true;
-            this.btn_refresh_coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button4_Click);
-            // 
-            // Coloring
-            // 
-            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.Coloring.Label = "Coloring";
-            this.Coloring.Name = "Coloring";
-            this.Coloring.ShowImage = true;
-            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
             // 
             // group2
             // 
             this.group2.Items.Add(this.button1);
             this.group2.Label = "group2";
             this.group2.Name = "group2";
-            // 
-            // button1
-            // 
-            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Label = "Read aloud";
-            this.button1.Name = "button1";
-            this.button1.ShowImage = true;
-            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
             // group3
             // 
@@ -149,6 +94,30 @@
             this.group4.Items.Add(this.toggleButton2);
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
+            // 
+            // btn_refresh_coloring
+            // 
+            this.btn_refresh_coloring.Label = "Refresh";
+            this.btn_refresh_coloring.Name = "btn_refresh_coloring";
+            this.btn_refresh_coloring.ShowImage = true;
+            this.btn_refresh_coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button4_Click);
+            // 
+            // Coloring
+            // 
+            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Coloring.Label = "Coloring";
+            this.Coloring.Name = "Coloring";
+            this.Coloring.ShowImage = true;
+            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
+            // 
+            // button1
+            // 
+            this.button1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Label = "Read aloud";
+            this.button1.Name = "button1";
+            this.button1.ShowImage = true;
+            this.button1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.button1_Click);
             // 
             // toggleButton1
             // 
@@ -192,10 +161,6 @@
 
         private Microsoft.Office.Tools.Ribbon.RibbonTab tab2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox checkBox1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox checkBox2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox checkBox3;
-        internal Microsoft.Office.Tools.Ribbon.RibbonCheckBox checkBox4;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
