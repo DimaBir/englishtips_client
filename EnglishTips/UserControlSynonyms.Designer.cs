@@ -28,12 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.SynonymsRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.SynonymsButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // SynonymsRichTextBox
+            // 
+            this.SynonymsRichTextBox.Location = new System.Drawing.Point(3, 66);
+            this.SynonymsRichTextBox.Name = "SynonymsRichTextBox";
+            this.SynonymsRichTextBox.Size = new System.Drawing.Size(309, 503);
+            this.SynonymsRichTextBox.TabIndex = 0;
+            this.SynonymsRichTextBox.Text = "";
+            // 
+            // SynonymsButton
+            // 
+            this.SynonymsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SynonymsButton.Location = new System.Drawing.Point(15, 18);
+            this.SynonymsButton.Name = "SynonymsButton";
+            this.SynonymsButton.Size = new System.Drawing.Size(283, 33);
+            this.SynonymsButton.TabIndex = 1;
+            this.SynonymsButton.Text = "Get synonyms";
+            this.SynonymsButton.UseVisualStyleBackColor = true;
+            this.SynonymsButton.Click += new System.EventHandler(this.SynonymsButton_Click);
             // 
             // UserControlSynonyms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.SynonymsButton);
+            this.Controls.Add(this.SynonymsRichTextBox);
             this.Name = "UserControlSynonyms";
             this.Size = new System.Drawing.Size(315, 572);
             this.ResumeLayout(false);
@@ -41,5 +64,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.RichTextBox SynonymsRichTextBox;
+        private System.Windows.Forms.Button SynonymsButton;
     }
 }
