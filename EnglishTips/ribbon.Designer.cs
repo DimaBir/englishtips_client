@@ -37,15 +37,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.Coloring = this.Factory.CreateRibbonToggleButton();
             this.ReadAloud = this.Factory.CreateRibbonGroup();
-            this.StartReadingButton = this.Factory.CreateRibbonButton();
-            this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
-            this.toggleButton1 = this.Factory.CreateRibbonToggleButton();
+            this.Coloring = this.Factory.CreateRibbonToggleButton();
+            this.StartReadingButton = this.Factory.CreateRibbonButton();
+            this.StopReadingButton = this.Factory.CreateRibbonButton();
+            this.Translate = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
+            this.Synonyms = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.ReadAloud.SuspendLayout();
@@ -68,6 +69,34 @@
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
             // 
+            // ReadAloud
+            // 
+            this.ReadAloud.Items.Add(this.StartReadingButton);
+            this.ReadAloud.Items.Add(this.StopReadingButton);
+            this.ReadAloud.Label = "Read aloud";
+            this.ReadAloud.Name = "ReadAloud";
+            // 
+            // group3
+            // 
+            this.group3.Items.Add(this.editBox1);
+            this.group3.Label = "Analytics";
+            this.group3.Name = "group3";
+            // 
+            // editBox1
+            // 
+            this.editBox1.Label = "Amount of words";
+            this.editBox1.MaxLength = 2;
+            this.editBox1.Name = "editBox1";
+            this.editBox1.Text = "10";
+            // 
+            // group4
+            // 
+            this.group4.Items.Add(this.Translate);
+            this.group4.Items.Add(this.toggleButton2);
+            this.group4.Items.Add(this.Synonyms);
+            this.group4.Label = "Dictionary";
+            this.group4.Name = "group4";
+            // 
             // Coloring
             // 
             this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -75,13 +104,6 @@
             this.Coloring.Name = "Coloring";
             this.Coloring.ShowImage = true;
             this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
-            // 
-            // ReadAloud
-            // 
-            this.ReadAloud.Items.Add(this.StartReadingButton);
-            this.ReadAloud.Items.Add(this.StopReadingButton);
-            this.ReadAloud.Label = "Read aloud";
-            this.ReadAloud.Name = "ReadAloud";
             // 
             // StartReadingButton
             // 
@@ -101,34 +123,14 @@
             this.StopReadingButton.ShowImage = true;
             this.StopReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StopReadingButton_Click);
             // 
-            // group3
+            // Translate
             // 
-            this.group3.Items.Add(this.editBox1);
-            this.group3.Label = "Analytics";
-            this.group3.Name = "group3";
-            // 
-            // editBox1
-            // 
-            this.editBox1.Label = "Amount of words";
-            this.editBox1.MaxLength = 2;
-            this.editBox1.Name = "editBox1";
-            this.editBox1.Text = "10";
-            // 
-            // group4
-            // 
-            this.group4.Items.Add(this.toggleButton1);
-            this.group4.Items.Add(this.toggleButton2);
-            this.group4.Label = "Dictionary";
-            this.group4.Name = "group4";
-            // 
-            // toggleButton1
-            // 
-            this.toggleButton1.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.toggleButton1.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton1.Image")));
-            this.toggleButton1.Label = "Translate";
-            this.toggleButton1.Name = "toggleButton1";
-            this.toggleButton1.ShowImage = true;
-            this.toggleButton1.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton1_Click);
+            this.Translate.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Translate.Image = ((System.Drawing.Image)(resources.GetObject("Translate.Image")));
+            this.Translate.Label = "Translate";
+            this.Translate.Name = "Translate";
+            this.Translate.ShowImage = true;
+            this.Translate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Translate_Click);
             // 
             // toggleButton2
             // 
@@ -138,6 +140,15 @@
             this.toggleButton2.Name = "toggleButton2";
             this.toggleButton2.ShowImage = true;
             this.toggleButton2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton2_Click);
+            // 
+            // Synonyms
+            // 
+            this.Synonyms.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Synonyms.Image = ((System.Drawing.Image)(resources.GetObject("Synonyms.Image")));
+            this.Synonyms.Label = "Synonyms";
+            this.Synonyms.Name = "Synonyms";
+            this.Synonyms.ShowImage = true;
+            this.Synonyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Synonyms_Click);
             // 
             // ribbon
             // 
@@ -167,11 +178,12 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton1;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton2;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Coloring;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StartReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Translate;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Synonyms;
     }
 
     partial class ThisRibbonCollection

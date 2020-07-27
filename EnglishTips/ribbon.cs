@@ -78,19 +78,24 @@ namespace EnglishTips
             }
         }
 
-        private void toggleButton1_Click(object sender, RibbonControlEventArgs e)
-        {
-            Globals.ThisAddIn.TranslateCustomTaskPane.Visible ^= true;
-        }
-
         private void toggleButton2_Click(object sender, RibbonControlEventArgs e)
         {
 
         }
 
+        private void Translate_Click(object sender, RibbonControlEventArgs e)
+        {
+            Globals.ThisAddIn.TranslateCustomTaskPane.Visible ^= true;
+        }
+
         private void Coloring_Click(object sender, RibbonControlEventArgs e)
         {
             Globals.ThisAddIn.ColoringCustomTaskPane.Visible ^= true;
+        }
+
+        private void Synonyms_Click(object sender, RibbonControlEventArgs e)
+        {
+            Globals.ThisAddIn.SynonymsCustomTaskPane.Visible ^= true;
         }
     }
 }

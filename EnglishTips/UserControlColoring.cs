@@ -193,7 +193,6 @@ namespace EnglishTips
             }
         }
 
-
         void Color_uncountable_nouns()
         {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
@@ -234,6 +233,7 @@ namespace EnglishTips
             Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
             Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
         }
+
         void Remove_underline(int colorIndex)
         {
             Word.Range range = Globals.ThisAddIn.Application.ActiveDocument.Content;
@@ -248,11 +248,6 @@ namespace EnglishTips
 
         }
 
-        private void Wordiness_comboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void RemoveButton_Click(object sender, EventArgs e)
         {
             Remove_underlines();
@@ -262,7 +257,13 @@ namespace EnglishTips
         {
             if (ColorDialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
+                Color oldColor = Wordiness_button.BackColor;
                 Wordiness_button.BackColor = ColorDialog.Color;
+                if (Wordiness_checkBox.Checked)
+                {
+                    Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
+                    Color_wordiness();
+                }
             }
         }
 
@@ -270,7 +271,13 @@ namespace EnglishTips
         {
             if (ColorDialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
+                Color oldColor = Verbs_button.BackColor;
                 Verbs_button.BackColor = ColorDialog.Color;
+                if (Verbs_checkBox.Checked)
+                {
+                    Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
+                    Color_verbs();
+                }
             }
         }
 
@@ -278,7 +285,13 @@ namespace EnglishTips
         {
             if (ColorDialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
+                Color oldColor = NounCompound_button.BackColor;
                 NounCompound_button.BackColor = ColorDialog.Color;
+                if (NounCompound_checkBox.Checked)
+                {
+                    Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
+                    Color_noun_compound();
+                }
             }
         }
 
@@ -286,7 +299,13 @@ namespace EnglishTips
         {
             if (ColorDialog.ShowDialog() != System.Windows.Forms.DialogResult.Cancel)
             {
+                Color oldColor = UncountableNouns_button.BackColor;
                 UncountableNouns_button.BackColor = ColorDialog.Color;
+                if (UncountableNouns_checkBox.Checked)
+                {
+                    Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
+                    Color_uncountable_nouns();
+                }
             }
         }
     }

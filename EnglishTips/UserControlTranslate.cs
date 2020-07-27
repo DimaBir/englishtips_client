@@ -24,8 +24,6 @@ namespace EnglishTips
         {
             comboBox1.SelectedItem = "Hebrew";
             comboBox1.DropDownWidth = DropDownWidth(comboBox1);
-            comboBox2.SelectedIndex = comboBox2.Items.Count - 1;
-            comboBox2.DropDownWidth = DropDownWidth(comboBox2);
         }
 
         int DropDownWidth(ComboBox myCombo)
