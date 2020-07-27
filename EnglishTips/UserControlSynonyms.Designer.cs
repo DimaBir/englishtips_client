@@ -36,6 +36,7 @@
             // 
             this.SynonymsRichTextBox.Location = new System.Drawing.Point(3, 66);
             this.SynonymsRichTextBox.Name = "SynonymsRichTextBox";
+            this.SynonymsRichTextBox.ReadOnly = true;
             this.SynonymsRichTextBox.Size = new System.Drawing.Size(309, 503);
             this.SynonymsRichTextBox.TabIndex = 0;
             this.SynonymsRichTextBox.Text = "";
