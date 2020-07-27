@@ -21,6 +21,67 @@ namespace EnglishTips
             InitializeComponent();
         }
 
+        void printToRichTextBox(string txt)
+        {
+            //foreach (Control lbxControl in this.Controls)
+            //{
+            //    if (lbxControl is RichTextBox)
+            //    {
+            //        ((RichTextBox)lbxControl).Text = txt;
+            //    }
+            //}
+            //this.SynonymsRichTextBox.Text = txt;
+
+            if (this.SynonymsRichTextBox.InvokeRequired)
+            {
+                this.SynonymsRichTextBox.Invoke(new MethodInvoker(delegate { this.SynonymsRichTextBox.Text = txt; }));
+            }
+        }
+
+        void sendRequest(string json)
+        {
+            string api = "https://englishtips.azurewebsites.net/api/syn";
+
+            // Sends request json to the server:
+            // Response: List<string> - list of synonyms 
+            SynonymResponse response;
+            try
+            {
+                response = GenericSender<SynonymResponse>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                string error = "Can't connect to the server. Possible problems:\n";
+                error += "Your internet connection may have failed.\n";
+                error += "The security suit (firewall) may block Word from accessing the internet.";
+                printToRichTextBox(error);
+                return;
+            }
+            
+            String synonyms = "";
+
+            // Check if error has occured.
+            if (!string.IsNullOrEmpty(response.ErrorMessage))
+            {
+                synonyms = response.ErrorMessage;
+            }
+            else
+            {
+                // Print out synonyms
+                foreach (string synonym in response.Synonyms)
+                {
+                    synonyms += synonym;
+                    synonyms += '\n';
+                }
+            }
+
+            //Globals.ThisAddIn.TranslateCustomTaskPane
+            //TextBox txt = (TextBox)this.Parent.FindControl("txtid");
+            printToRichTextBox(synonyms);
+
+            return;
+        }
+
         private void SynonymsButton_Click(object sender, EventArgs e)
         {
             // Get current selection
@@ -37,31 +98,8 @@ namespace EnglishTips
                 word = selection.Text
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/syn";
-
-            // Sends request json to the server:
-            // Response: List<string> - list of synonyms 
-            SynonymResponse response = GenericSender<SynonymResponse>.Send(json, api: api, "POST");
-
-            // Print out synonyms
-            String synonyms = "";
-            foreach (string synonym in response.Synonyms)
-            {
-                synonyms += synonym;
-                synonyms += '\n';
-            }
-
-            //Globals.ThisAddIn.TranslateCustomTaskPane
-            //TextBox txt = (TextBox)this.Parent.FindControl("txtid");
-            foreach (Control lbxControl in this.Controls)
-            {
-                if (lbxControl is RichTextBox)
-                {
-                    ((RichTextBox)lbxControl).Text = synonyms;
-                }
-            }
-
-            return;
+            printToRichTextBox("Contacting server...");
+            Task.Run(() => sendRequest(json));
         }
     }
 }
