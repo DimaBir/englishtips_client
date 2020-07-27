@@ -110,11 +110,48 @@ namespace EnglishTips
             recordObj.EndCustomRecord();
         }
 
-        void Color_wordiness()
+        void printToRichTextBox(string txt, bool error = false)
         {
-            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            if (this.ColoringRichTextBox.InvokeRequired)
+            {
+                this.ColoringRichTextBox.Invoke(new MethodInvoker(delegate {
+                    this.ColoringRichTextBox.Visible = true;
+                    this.ColoringRichTextBox.Text = txt;
+                    this.ColoringRichTextBox.ForeColor = error ? Color.Red : Color.Black;
+                }));
+            }
+            else
+            {
+                this.ColoringRichTextBox.Visible = true;
+                this.ColoringRichTextBox.Text = txt;
+                this.ColoringRichTextBox.ForeColor = error ? Color.Red : Color.Black;
+            }
+        }
 
+        void printConnectionError()
+        {
+            string error = "Can't connect to the server. Possible problems:\n";
+            error += "Your internet connection may have failed.\n";
+            error += "The security suit (firewall) may block Word from accessing the internet.";
+            printToRichTextBox(error, true);
+        }
+
+        void hideRichTextBox()
+        {
+            if (this.ColoringRichTextBox.InvokeRequired)
+            {
+                this.ColoringRichTextBox.Invoke(new MethodInvoker(delegate {
+                    this.ColoringRichTextBox.Visible = false;
+                }));
+            }
+            else
+            {
+                this.ColoringRichTextBox.Visible = false;
+            }
+        }
+
+        void sendWordinessRequest(string text_to_check)
+        {
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = text_to_check
@@ -122,19 +159,39 @@ namespace EnglishTips
             string api = "https://englishtips.azurewebsites.net/api/wordiness";
 
             // Send request
-            WordinessResponse response = GenericSender<WordinessResponse>.Send(json, api: api, "POST");
+            WordinessResponse response;
+            try
+            {
+                printToRichTextBox("Contacting server...");
+                response = GenericSender<WordinessResponse>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return;
+            }
+
+            hideRichTextBox();
 
             foreach (WordinessResponse.WordinessData match in response.Results)
             {
-                //Console.Write($"Wordiness: '{match.Wordiness}' Length: {match.Length} Indexes: ");
                 foreach (int index in match.Indexes)
                 {
-                    Console.Write($"{index}, ");
                     Word.Range rng = Globals.ThisAddIn.Application.ActiveDocument.Range(index, index + match.Length);
                     rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
                     rng.Font.UnderlineColor = SystemColorToWdColor(Wordiness_button.BackColor);
                 }
             }
+
+            return;
+        }
+
+        void Color_wordiness()
+        {
+            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
+            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            //Task.Run(() => sendWordinessRequest(text_to_check));
+            sendWordinessRequest(text_to_check);
         }
 
         void Color_verbs()
@@ -149,13 +206,24 @@ namespace EnglishTips
             });
             string api = "https://englishtips.azurewebsites.net/api/verbs2";
 
-            // Sends created json to the server:
-            List<VerbsResponse> response = GenericSender<List<VerbsResponse>>.Send(json, api: api, "POST");
+            // Send request
+            List<VerbsResponse> response;
+            try
+            {
+                printToRichTextBox("Contacting server...");
+                response = GenericSender<List<VerbsResponse>>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return;
+            }
+
+            hideRichTextBox();
 
             // Print out verbs.
             foreach (VerbsResponse verbObject in response)
             {
-                //Console.Write($"Verb: '{verbObject.Verb}' - Length: {verbObject.VerbLength} - Index: ");
                 foreach (int index in verbObject.Indexes)
                 {
                     Word.Range rng = Globals.ThisAddIn.Application.ActiveDocument.Range(index, index + verbObject.VerbLength);
@@ -177,8 +245,20 @@ namespace EnglishTips
             });
             string api = "https://englishtips.azurewebsites.net/api/noun-compound";
 
-            // Sends created json to the server:
-            NounCompoundResponse response = GenericSender<NounCompoundResponse>.Send(json, api: api, "POST");
+            // Send request
+            NounCompoundResponse response;
+            try
+            {
+                printToRichTextBox("Contacting server...");
+                response = GenericSender<NounCompoundResponse>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return;
+            }
+
+            hideRichTextBox();
 
             // Print out verbs.
             foreach (List<int> compoundIndexes in response.Result)
@@ -205,12 +285,23 @@ namespace EnglishTips
             });
             string api = "https://englishtips.azurewebsites.net/api/uncountable";
 
-            // Sends created json to the server:
-            List<UncountableNounResponse> response = GenericSender<List<UncountableNounResponse>>.Send(json, api: api, "POST");
+            // Send request
+            List<UncountableNounResponse> response;
+            try
+            {
+                printToRichTextBox("Contacting server...");
+                response = GenericSender<List<UncountableNounResponse>>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return;
+            }
+
+            hideRichTextBox();
 
             foreach (UncountableNounResponse uncountableNoun in response)
             {
-                Console.Write($"Uncountable Noun: '{uncountableNoun.UncountableNoun}' - Length: {uncountableNoun.Length} - Index: ");
                 foreach (int index in uncountableNoun.Indexes)
                 {
                     Word.Range rng = Globals.ThisAddIn.Application.ActiveDocument.Range(index, index + uncountableNoun.Length);

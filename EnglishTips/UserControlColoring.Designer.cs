@@ -39,6 +39,7 @@
             this.UncountableNouns_button = new System.Windows.Forms.Button();
             this.ColorDialog = new System.Windows.Forms.ColorDialog();
             this.RemoveButton = new System.Windows.Forms.Button();
+            this.ColoringRichTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // Wordiness_checkBox
@@ -152,11 +153,25 @@
             this.RemoveButton.UseVisualStyleBackColor = true;
             this.RemoveButton.Click += new System.EventHandler(this.RemoveButton_Click);
             // 
+            // ColoringRichTextBox
+            // 
+            this.ColoringRichTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.ColoringRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColoringRichTextBox.ForeColor = System.Drawing.Color.Red;
+            this.ColoringRichTextBox.Location = new System.Drawing.Point(13, 285);
+            this.ColoringRichTextBox.Name = "ColoringRichTextBox";
+            this.ColoringRichTextBox.ReadOnly = true;
+            this.ColoringRichTextBox.Size = new System.Drawing.Size(258, 169);
+            this.ColoringRichTextBox.TabIndex = 17;
+            this.ColoringRichTextBox.Text = "";
+            this.ColoringRichTextBox.Visible = false;
+            // 
             // UserControlColoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.Controls.Add(this.ColoringRichTextBox);
             this.Controls.Add(this.RemoveButton);
             this.Controls.Add(this.UncountableNouns_button);
             this.Controls.Add(this.NounCompound_button);
@@ -187,5 +202,6 @@
         private System.Windows.Forms.Button UncountableNouns_button;
         private System.Windows.Forms.ColorDialog ColorDialog;
         private System.Windows.Forms.Button RemoveButton;
+        private System.Windows.Forms.RichTextBox ColoringRichTextBox;
     }
 }
