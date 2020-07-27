@@ -13,7 +13,7 @@ namespace SynonymAPI
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            string word_to_check = "Dog";
+            string word_to_check = "   Dog  ";
 
             // Creates request
             string json = new JavaScriptSerializer().Serialize(new
@@ -22,19 +22,28 @@ namespace SynonymAPI
             });
 
             string api = "https://englishtips.azurewebsites.net/api/syn";
+            //string api = "http://127.0.0.1:5000//api/syn";
 
             // Sends request json to the server:
             // Response: List<string> - list of synonyms 
             SynonymResponse response =
                 GenericSender<SynonymResponse>.Send(json, api: api, "POST");
 
-            Console.WriteLine($"Sending text to '{api}' to find synonyms...\n\n\n");
-            Console.WriteLine($"Original word: {word_to_check} \n\nSynonyms: \n");
+            Console.WriteLine($"Sending \"{word_to_check}\" to '{api}' to find synonyms...\n\n\n");
+            
+            // Check if error has occured.
+            if (!string.IsNullOrEmpty(response.ErrorMessage))
+            {
+                Console.WriteLine(response.ErrorMessage);
+            }
+            else
+            {
+                Console.WriteLine($"Original word: {word_to_check} \n\nSynonyms: \n");
 
-            // Print out synonyms
-            foreach (string synonym in response.Synonyms)
-                Console.WriteLine($"{synonym}");
-
+                // Print out synonyms
+                foreach (string synonym in response.Synonyms)
+                    Console.WriteLine($"{synonym}");
+            }
 
             sw.Stop();
             Console.WriteLine("\n\nServer Execution Time = {0} (sec)", response.ServerExecutionTime);
