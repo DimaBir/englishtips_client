@@ -40,7 +40,53 @@ namespace EnglishTips
             return maxWidth;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        void invokedPrintToRichTextBox(string txt, string languageCode)
+        {
+            this.TranslateRichTextBox.Text = txt;
+            if (languageCode == "he" || languageCode == "ar" || languageCode == "yi")
+            {
+                TranslateRichTextBox.RightToLeft = RightToLeft.Yes;
+            }
+            else
+            {
+                TranslateRichTextBox.RightToLeft = RightToLeft.No;
+            }
+        }
+
+        void printToRichTextBox(string txt, string languageCode)
+        {
+            if (this.TranslateRichTextBox.InvokeRequired)
+            {
+                this.TranslateRichTextBox.Invoke(new MethodInvoker(delegate { invokedPrintToRichTextBox(txt, languageCode); }));
+            }
+            else
+            {
+                invokedPrintToRichTextBox(txt, languageCode);
+            }
+        }
+
+        void sendRequest(string json, string languageCode)
+        {
+            string api = "https://englishtips.azurewebsites.net/api/translate";
+            string translation;
+            try
+            {
+                translation = GenericSender<string>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                string error = "Can't connect to the server. Possible problems:\n";
+                error += "Your internet connection may have failed.\n";
+                error += "The security suit (firewall) may block Word from accessing the internet.";
+                printToRichTextBox(error, "en");
+                return;
+            }
+
+            printToRichTextBox(translation, languageCode);
+            return;
+        }
+
+        private void TranslateButton_Click(object sender, EventArgs e)
         {
             // Get current selection
             Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
@@ -48,7 +94,7 @@ namespace EnglishTips
             // If selection is empty - select entire document
             if (selection.Text == null)
             {
-                selection = Globals.ThisAddIn.Application.ActiveDocument.Content;;
+                selection = Globals.ThisAddIn.Application.ActiveDocument.Content; ;
             }
 
             var EnglishCulture = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)
@@ -60,45 +106,19 @@ namespace EnglishTips
             {
                 languageCode = "zh-CN";
             }
-            else if(comboBox1.SelectedItem.ToString() == "Chinese (Traditional)")
+            else if (comboBox1.SelectedItem.ToString() == "Chinese (Traditional)")
             {
                 languageCode = "zh-TW";
             }
 
-            // Creates custom json
-            // JSON body:
-            // "text": (string)"Text you wanna to send to server"
-            // "language": (string)"he"
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = selection.Text,
                 language = languageCode
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/translate";
-
-            // Sends created json to server and returns:
-            // returns: string
-            string translation = GenericSender<string>.Send(json, api: api, "POST");
-
-            //Globals.ThisAddIn.TranslateCustomTaskPane
-            //TextBox txt = (TextBox)this.Parent.FindControl("txtid");
-            foreach (Control lbxControl in this.Controls)
-            {
-                if (lbxControl is RichTextBox)
-                {
-                    ((RichTextBox)lbxControl).Text = translation;
-                    if (languageCode == "he" || languageCode == "ar" || languageCode == "yi")
-                    {
-                        ((RichTextBox)lbxControl).RightToLeft = RightToLeft.Yes;
-                    }
-                    else
-                    {
-                        ((RichTextBox)lbxControl).RightToLeft = RightToLeft.No;
-                    }
-                    
-                }
-            }
+            printToRichTextBox("Contacting server...", "en");
+            Task.Run(() => sendRequest(json, languageCode));
 
             return;
         }

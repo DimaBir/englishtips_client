@@ -34,19 +34,20 @@
             // 
             // SynonymsRichTextBox
             // 
-            this.SynonymsRichTextBox.Location = new System.Drawing.Point(3, 66);
+            this.SynonymsRichTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.SynonymsRichTextBox.Location = new System.Drawing.Point(3, 42);
             this.SynonymsRichTextBox.Name = "SynonymsRichTextBox";
             this.SynonymsRichTextBox.ReadOnly = true;
-            this.SynonymsRichTextBox.Size = new System.Drawing.Size(309, 503);
+            this.SynonymsRichTextBox.Size = new System.Drawing.Size(309, 527);
             this.SynonymsRichTextBox.TabIndex = 0;
             this.SynonymsRichTextBox.Text = "";
             // 
             // SynonymsButton
             // 
             this.SynonymsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SynonymsButton.Location = new System.Drawing.Point(15, 18);
+            this.SynonymsButton.Location = new System.Drawing.Point(3, 3);
             this.SynonymsButton.Name = "SynonymsButton";
-            this.SynonymsButton.Size = new System.Drawing.Size(283, 33);
+            this.SynonymsButton.Size = new System.Drawing.Size(312, 33);
             this.SynonymsButton.TabIndex = 1;
             this.SynonymsButton.Text = "Get synonyms";
             this.SynonymsButton.UseVisualStyleBackColor = true;
@@ -56,6 +57,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.SynonymsButton);
             this.Controls.Add(this.SynonymsRichTextBox);
             this.Name = "UserControlSynonyms";

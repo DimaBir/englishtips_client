@@ -23,18 +23,13 @@ namespace EnglishTips
 
         void printToRichTextBox(string txt)
         {
-            //foreach (Control lbxControl in this.Controls)
-            //{
-            //    if (lbxControl is RichTextBox)
-            //    {
-            //        ((RichTextBox)lbxControl).Text = txt;
-            //    }
-            //}
-            //this.SynonymsRichTextBox.Text = txt;
-
             if (this.SynonymsRichTextBox.InvokeRequired)
             {
                 this.SynonymsRichTextBox.Invoke(new MethodInvoker(delegate { this.SynonymsRichTextBox.Text = txt; }));
+            }
+            else
+            {
+                this.SynonymsRichTextBox.Text = txt;
             }
         }
 
@@ -42,8 +37,6 @@ namespace EnglishTips
         {
             string api = "https://englishtips.azurewebsites.net/api/syn";
 
-            // Sends request json to the server:
-            // Response: List<string> - list of synonyms 
             SynonymResponse response;
             try
             {
@@ -75,8 +68,6 @@ namespace EnglishTips
                 }
             }
 
-            //Globals.ThisAddIn.TranslateCustomTaskPane
-            //TextBox txt = (TextBox)this.Parent.FindControl("txtid");
             printToRichTextBox(synonyms);
 
             return;
