@@ -22,6 +22,7 @@ namespace EnglishTips
         public UserControlColoring()
         {
             InitializeComponent();
+            Task.Run(() => sendWordinessRequest(""));
         }
 
         private void UserControlColoring_Load(object sender, EventArgs e)
@@ -150,7 +151,7 @@ namespace EnglishTips
             }
         }
 
-        void sendWordinessRequest(string text_to_check)
+        public void sendWordinessRequest(string text_to_check)
         {
             string json = new JavaScriptSerializer().Serialize(new
             {
