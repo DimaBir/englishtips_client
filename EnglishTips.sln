@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyponAPI", "HyponAPI\HyponA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperAPI", "HyperAPI\HyperAPI.csproj", "{EC2358FE-D170-4AC9-B450-1F1A7DFE7114}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfusedWordsAPI", "ConfusedWordsAPI\ConfusedWordsAPI.csproj", "{D6E895C7-93EA-4243-972D-AF618AF78198}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,10 @@ Global
 		{EC2358FE-D170-4AC9-B450-1F1A7DFE7114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC2358FE-D170-4AC9-B450-1F1A7DFE7114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC2358FE-D170-4AC9-B450-1F1A7DFE7114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6E895C7-93EA-4243-972D-AF618AF78198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6E895C7-93EA-4243-972D-AF618AF78198}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6E895C7-93EA-4243-972D-AF618AF78198}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6E895C7-93EA-4243-972D-AF618AF78198}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
