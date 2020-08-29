@@ -22,7 +22,7 @@ namespace WordinessAPI
                 text = text_to_check
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/wordiness";
+            string api = "https://avrl.cs.technion.ac.il:80/api/wordiness";
 
 
             // Send request

@@ -31,7 +31,7 @@ namespace TopWordsAPI
                 text = text_to_check
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/topwords";
+            string api = "https://avrl.cs.technion.ac.il:80/api/topwords";
 
 
             // Send request

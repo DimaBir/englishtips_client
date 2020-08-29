@@ -24,7 +24,7 @@ namespace SynonymAPI
                 word = word_to_check
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/syn";
+            string api = "https://avrl.cs.technion.ac.il:80/api/syn";
 
             // Sends request json to the server:
             // Response: List<string> - list of synonyms 

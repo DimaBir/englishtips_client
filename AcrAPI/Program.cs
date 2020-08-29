@@ -20,7 +20,7 @@ namespace AcrAPI
                 word = word_to_check
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/acr";
+            string api = "https://avrl.cs.technion.ac.il:80/api/acr";
             //string api = "http://127.0.0.1:5000/api/acr";
 
 

@@ -26,7 +26,7 @@ namespace GoogleTranslateAPI
                 language = destination_language
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/translate";
+            string api = "https://avrl.cs.technion.ac.il:80/api/translate";
 
             // Sends created json to server and returns:
             // returns: string

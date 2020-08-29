@@ -26,7 +26,7 @@ namespace VerbsAPI
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/verbs2";
+            string api = "https://avrl.cs.technion.ac.il:80/api/verbs2";
 
             // Sends created json to the server:
             // returns: Dictionary - that contains verbs and their indexes in sended text:

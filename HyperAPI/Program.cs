@@ -20,7 +20,7 @@ namespace HyperAPI
                 word = word_to_check
             });
 
-            string api = "https://englishtips.azurewebsites.net/api/hyper";
+            string api = "https://avrl.cs.technion.ac.il:80/api/hyper";
             //string api = "http://127.0.0.1:5000/api/hyper";
 
 

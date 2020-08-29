@@ -21,7 +21,7 @@ namespace UncountableNoun
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/uncountable";
+            string api = "https://avrl.cs.technion.ac.il:80/api/uncountable";
 
             List<UncountableNounResponse> response =
                 GenericSender<List<UncountableNounResponse>>.Send(json, api: api, "POST");
