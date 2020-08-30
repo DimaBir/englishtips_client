@@ -34,7 +34,8 @@ namespace EnglishTips
         {
             if (Wordiness_checkBox.Checked)
             {
-                Color_wordiness();
+                //Task.Run(() => Color_wordiness_Single_Record());
+                Color_wordiness_Single_Record();
             }
             else
             {
@@ -46,7 +47,7 @@ namespace EnglishTips
         {
             if (Verbs_checkBox.Checked)
             {
-                Color_verbs();
+                Color_verbs_Single_Record();
             }
             else
             {
@@ -58,7 +59,7 @@ namespace EnglishTips
         {
             if (NounCompound_checkBox.Checked)
             {
-                Color_noun_compound();
+                Color_noun_compound_Single_Record();
             }
             else
             {
@@ -70,7 +71,7 @@ namespace EnglishTips
         {
             if (UncountableNouns_checkBox.Checked)
             {
-                Color_uncountable_nouns();
+                Color_uncountable_nouns_Single_Record();
             }
             else
             {
@@ -83,7 +84,7 @@ namespace EnglishTips
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-
+            
             // Remove existing underline
             //Remove_underlines();
 
@@ -157,13 +158,14 @@ namespace EnglishTips
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/wordiness";
+            //string api = "https://englishtips.azurewebsites.net/api/wordiness";
+            string api = "https://avrl.cs.technion.ac.il:80/api/wordiness";
 
             // Send request
             WordinessResponse response;
             try
             {
-                printToRichTextBox("Contacting server...");
+                printToRichTextBox("Contacting server.\nPlease wait...");
                 response = GenericSender<WordinessResponse>.Send(json, api: api, "POST");
             }
             catch
@@ -171,8 +173,6 @@ namespace EnglishTips
                 printConnectionError();
                 return;
             }
-
-            hideRichTextBox();
 
             foreach (WordinessResponse.WordinessData match in response.Results)
             {
@@ -183,6 +183,8 @@ namespace EnglishTips
                     rng.Font.UnderlineColor = SystemColorToWdColor(Wordiness_button.BackColor);
                 }
             }
+
+            hideRichTextBox();
 
             return;
         }
@@ -195,6 +197,15 @@ namespace EnglishTips
             sendWordinessRequest(text_to_check);
         }
 
+        void Color_wordiness_Single_Record()
+        {
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_wordiness();
+            recordObj.EndCustomRecord();
+        }
+
         void Color_verbs()
         {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
@@ -205,13 +216,14 @@ namespace EnglishTips
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/verbs2";
+            //string api = "https://englishtips.azurewebsites.net/api/verbs2";
+            string api = "https://avrl.cs.technion.ac.il:80/api/verbs2";
 
             // Send request
             List<VerbsResponse> response;
             try
             {
-                printToRichTextBox("Contacting server...");
+                printToRichTextBox("Contacting server.\nPlease wait...");
                 response = GenericSender<List<VerbsResponse>>.Send(json, api: api, "POST");
             }
             catch
@@ -234,6 +246,15 @@ namespace EnglishTips
             }
         }
 
+        void Color_verbs_Single_Record()
+        {
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_verbs();
+            recordObj.EndCustomRecord();
+        }
+
         void Color_noun_compound()
         {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
@@ -244,13 +265,14 @@ namespace EnglishTips
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/noun-compound";
+            //string api = "https://englishtips.azurewebsites.net/api/noun-compound";
+            string api = "https://avrl.cs.technion.ac.il:80/api/noun-compound";
 
             // Send request
             NounCompoundResponse response;
             try
             {
-                printToRichTextBox("Contacting server...");
+                printToRichTextBox("Contacting server.\nPlease wait...");
                 response = GenericSender<NounCompoundResponse>.Send(json, api: api, "POST");
             }
             catch
@@ -274,6 +296,15 @@ namespace EnglishTips
             }
         }
 
+        void Color_noun_compound_Single_Record()
+        {
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_noun_compound();
+            recordObj.EndCustomRecord();
+        }
+
         void Color_uncountable_nouns()
         {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
@@ -284,13 +315,14 @@ namespace EnglishTips
             {
                 text = text_to_check
             });
-            string api = "https://englishtips.azurewebsites.net/api/uncountable";
+            //string api = "https://englishtips.azurewebsites.net/api/uncountable";
+            string api = "https://avrl.cs.technion.ac.il:80/api/uncountable";
 
             // Send request
             List<UncountableNounResponse> response;
             try
             {
-                printToRichTextBox("Contacting server...");
+                printToRichTextBox("Contacting server.\nPlease wait...");
                 response = GenericSender<List<UncountableNounResponse>>.Send(json, api: api, "POST");
             }
             catch
@@ -311,6 +343,15 @@ namespace EnglishTips
 
                 }
             }
+        }
+
+        void Color_uncountable_nouns_Single_Record()
+        {
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_uncountable_nouns();
+            recordObj.EndCustomRecord();
         }
 
         Word.WdColor SystemColorToWdColor(Color c)
@@ -354,7 +395,8 @@ namespace EnglishTips
                 if (Wordiness_checkBox.Checked)
                 {
                     Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
-                    Color_wordiness();
+                    //Task.Run(() => Color_wordiness_Single_Record());
+                    Color_wordiness_Single_Record();
                 }
             }
         }
@@ -368,7 +410,7 @@ namespace EnglishTips
                 if (Verbs_checkBox.Checked)
                 {
                     Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
-                    Color_verbs();
+                    Color_verbs_Single_Record();
                 }
             }
         }
@@ -382,7 +424,7 @@ namespace EnglishTips
                 if (NounCompound_checkBox.Checked)
                 {
                     Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
-                    Color_noun_compound();
+                    Color_noun_compound_Single_Record();
                 }
             }
         }
@@ -396,7 +438,7 @@ namespace EnglishTips
                 if (UncountableNouns_checkBox.Checked)
                 {
                     Remove_underline(SystemColorToWdColor(oldColor).GetHashCode());
-                    Color_uncountable_nouns();
+                    Color_uncountable_nouns_Single_Record();
                 }
             }
         }
