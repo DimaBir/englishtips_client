@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Speech.Synthesis;
 using static EnglishTips.ThisAddIn;
+using Microsoft.Office.Interop.Word;
 
 namespace EnglishTips
 {
@@ -86,43 +87,55 @@ namespace EnglishTips
 
         private void Translate_Click(object sender, RibbonControlEventArgs e)
         {
-            TaskPanes tp;
-            bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
-            if (hasValue)
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
             {
-                tp.TranslateTaskPane.Visible ^= true;
-            }
-            else
-            {
-                // do something when the value is not there
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.TranslateTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
             }
         }
 
         private void Mark_Click(object sender, RibbonControlEventArgs e)
         {
-            TaskPanes tp;
-            bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
-            if (hasValue)
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
             {
-                tp.MarkTaskPane.Visible ^= true;
-            }
-            else
-            {
-                // do something when the value is not there
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.MarkTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
             }
         }
 
         private void Synonyms_Click(object sender, RibbonControlEventArgs e)
         {
-            TaskPanes tp;
-            bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
-            if (hasValue)
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
             {
-                tp.SynonymsTaskPane.Visible ^= true;
-            }
-            else
-            {
-                // do something when the value is not there
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.SynonymsTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
             }
         }
     }

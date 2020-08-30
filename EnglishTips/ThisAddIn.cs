@@ -131,11 +131,11 @@ namespace EnglishTips
             return result;
         }
 
-        private void CreateTaskPaneWrapper(Word.Document Doc = null)
+        public void CreateTaskPaneWrapper(Word.Document Doc = null)
         {
             Window window = getActiveWindow();
 
-            if (TaskPanesDictionary.ContainsKey(window))
+            if (window == null || TaskPanesDictionary.ContainsKey(window))
             {
                 return;
             }
