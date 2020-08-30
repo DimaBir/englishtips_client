@@ -10,6 +10,7 @@ using System.Web.Script.Serialization;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Speech.Synthesis;
+using static EnglishTips.ThisAddIn;
 
 namespace EnglishTips
 {
@@ -85,17 +86,44 @@ namespace EnglishTips
 
         private void Translate_Click(object sender, RibbonControlEventArgs e)
         {
-            Globals.ThisAddIn.TranslateCustomTaskPane.Visible ^= true;
+            TaskPanes tp;
+            bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+            if (hasValue)
+            {
+                tp.TranslateTaskPane.Visible ^= true;
+            }
+            else
+            {
+                // do something when the value is not there
+            }
         }
 
-        private void Coloring_Click(object sender, RibbonControlEventArgs e)
+        private void Mark_Click(object sender, RibbonControlEventArgs e)
         {
-            Globals.ThisAddIn.ColoringCustomTaskPane.Visible ^= true;
+            TaskPanes tp;
+            bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+            if (hasValue)
+            {
+                tp.MarkTaskPane.Visible ^= true;
+            }
+            else
+            {
+                // do something when the value is not there
+            }
         }
 
         private void Synonyms_Click(object sender, RibbonControlEventArgs e)
         {
-            Globals.ThisAddIn.SynonymsCustomTaskPane.Visible ^= true;
+            TaskPanes tp;
+            bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+            if (hasValue)
+            {
+                tp.SynonymsTaskPane.Visible ^= true;
+            }
+            else
+            {
+                // do something when the value is not there
+            }
         }
     }
 }
