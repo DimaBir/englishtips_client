@@ -37,7 +37,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.Coloring = this.Factory.CreateRibbonToggleButton();
+            this.Mark = this.Factory.CreateRibbonToggleButton();
             this.ReadAloud = this.Factory.CreateRibbonGroup();
             this.StartReadingButton = this.Factory.CreateRibbonButton();
             this.StopReadingButton = this.Factory.CreateRibbonButton();
@@ -65,17 +65,17 @@
             // 
             // group1
             // 
-            this.group1.Items.Add(this.Coloring);
+            this.group1.Items.Add(this.Mark);
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
             // 
-            // Coloring
+            // Mark
             // 
-            this.Coloring.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.Coloring.Label = "Coloring";
-            this.Coloring.Name = "Coloring";
-            this.Coloring.ShowImage = true;
-            this.Coloring.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Coloring_Click);
+            this.Mark.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Mark.Label = "Mark";
+            this.Mark.Name = "Mark";
+            this.Mark.ShowImage = true;
+            this.Mark.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Mark_Click);
             // 
             // ReadAloud
             // 
@@ -179,7 +179,7 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Coloring;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Mark;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StartReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Translate;

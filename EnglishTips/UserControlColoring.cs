@@ -17,12 +17,12 @@ using System.Web.Script.Serialization;
 
 namespace EnglishTips
 {
-    public partial class UserControlColoring : UserControl
+    public partial class UserControlMark : UserControl
     {
-        public UserControlColoring()
+        public UserControlMark()
         {
             InitializeComponent();
-            Task.Run(() => sendWordinessRequest(""));
+            //Task.Run(() => sendWordinessRequest(""));
         }
 
         private void UserControlColoring_Load(object sender, EventArgs e)

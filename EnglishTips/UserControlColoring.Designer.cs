@@ -1,6 +1,6 @@
 ﻿namespace EnglishTips
 {
-    partial class UserControlColoring
+    partial class UserControlMark
     {
         /// <summary> 
         /// Required designer variable.
