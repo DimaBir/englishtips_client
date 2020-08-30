@@ -21,21 +21,26 @@ namespace EnglishTips
             InitializeComponent();
         }
 
-        void printToRichTextBox(string txt)
+        void printToRichTextBox(string txt, bool error = false)
         {
             if (this.SynonymsRichTextBox.InvokeRequired)
             {
-                this.SynonymsRichTextBox.Invoke(new MethodInvoker(delegate { this.SynonymsRichTextBox.Text = txt; }));
+                this.SynonymsRichTextBox.Invoke(new MethodInvoker(delegate {
+                    this.SynonymsRichTextBox.Text = txt;
+                    this.SynonymsRichTextBox.ForeColor = error ? Color.Red : Color.Black;
+                }));
             }
             else
             {
                 this.SynonymsRichTextBox.Text = txt;
+                this.SynonymsRichTextBox.ForeColor = error ? Color.Red : Color.Black;
             }
         }
 
         void sendRequest(string json)
         {
-            string api = "https://englishtips.azurewebsites.net/api/syn";
+            //string api = "https://englishtips.azurewebsites.net/api/syn";
+            string api = "https://avrl.cs.technion.ac.il:80/api/syn";
 
             SynonymResponse response;
             try
@@ -47,7 +52,7 @@ namespace EnglishTips
                 string error = "Can't connect to the server. Possible problems:\n";
                 error += "Your internet connection may have failed.\n";
                 error += "The security suit (firewall) may block Word from accessing the internet.";
-                printToRichTextBox(error);
+                printToRichTextBox(error, true);
                 return;
             }
             
@@ -89,7 +94,7 @@ namespace EnglishTips
                 word = selection.Text
             });
 
-            printToRichTextBox("Contacting server...");
+            printToRichTextBox("Contacting server.\nPlease wait...");
             Task.Run(() => sendRequest(json));
         }
     }
