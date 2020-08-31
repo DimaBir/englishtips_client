@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperAPI", "HyperAPI\HyperA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfusedWordsAPI", "ConfusedWordsAPI\ConfusedWordsAPI.csproj", "{D6E895C7-93EA-4243-972D-AF618AF78198}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentenceStructureAPI", "SentenceStructureAPI\SentenceStructureAPI.csproj", "{B7333685-C687-4C9C-A73F-2D63ECADB618}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvgSenLenAPI", "AvgSenLenAPI\AvgSenLenAPI.csproj", "{BB1FA09B-1646-4601-A6DA-4315E17CBF7F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{D6E895C7-93EA-4243-972D-AF618AF78198}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6E895C7-93EA-4243-972D-AF618AF78198}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6E895C7-93EA-4243-972D-AF618AF78198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7333685-C687-4C9C-A73F-2D63ECADB618}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7333685-C687-4C9C-A73F-2D63ECADB618}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7333685-C687-4C9C-A73F-2D63ECADB618}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7333685-C687-4C9C-A73F-2D63ECADB618}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB1FA09B-1646-4601-A6DA-4315E17CBF7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB1FA09B-1646-4601-A6DA-4315E17CBF7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB1FA09B-1646-4601-A6DA-4315E17CBF7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB1FA09B-1646-4601-A6DA-4315E17CBF7F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
