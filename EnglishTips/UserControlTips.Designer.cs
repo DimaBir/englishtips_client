@@ -37,7 +37,6 @@
             // SentenceStructure
             // 
             this.SentenceStructure.AutoSize = true;
-            this.SentenceStructure.Enabled = false;
             this.SentenceStructure.Location = new System.Drawing.Point(3, 3);
             this.SentenceStructure.Name = "SentenceStructure";
             this.SentenceStructure.Size = new System.Drawing.Size(150, 21);

@@ -269,6 +269,10 @@
       <Project>{1ee874be-d572-45a9-bd9a-3a1bd680bd41}</Project>
       <Name>AcrAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AvgSenLenAPI\AvgSenLenAPI.csproj">
+      <Project>{bb1fa09b-1646-4601-a6da-4315e17cbf7f}</Project>
+      <Name>AvgSenLenAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ConfusedWordsAPI\ConfusedWordsAPI.csproj">
       <Project>{d6e895c7-93ea-4243-972d-af618af78198}</Project>
       <Name>ConfusedWordsAPI</Name>
@@ -296,6 +300,10 @@
     <ProjectReference Include="..\RESTApiExample\RESTApiExample.csproj">
       <Project>{4cff37c5-f10d-4af5-9b47-faf430869720}</Project>
       <Name>RESTApiExample</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SentenceStructureAPI\SentenceStructureAPI.csproj">
+      <Project>{b7333685-c687-4c9c-a73f-2d63ecadb618}</Project>
+      <Name>SentenceStructureAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\SynonymAPI\SynonymAPI.csproj">
       <Project>{0767d074-5104-4b5b-a1b8-c393310d9ae2}</Project>

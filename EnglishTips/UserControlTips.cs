@@ -11,6 +11,7 @@ using System.Web.Script.Serialization;
 using RESTApiExample;
 using Microsoft.Office.Interop;
 using ConfusedWordsAPI;
+using SentenceStructureAPI;
 
 namespace EnglishTips
 {
@@ -23,14 +24,11 @@ namespace EnglishTips
 
         public void updateTips()
         {
-            if (this.ConfusedWords.Checked)
+            if (!this.ConfusedWords.Checked && !this.SentenceStructure.Checked)
             {
-                updateConfusedWords();
+                return;
             }
-        }
 
-        void updateConfusedWords()
-        {
             Microsoft.Office.Interop.Word.Selection selection = Globals.ThisAddIn.Application.Selection;
 
             // Save selection
@@ -42,7 +40,7 @@ namespace EnglishTips
             }
             //_wordApp.Selection.TypeText("NewWords");
 
-            string word_to_check = selection.Text;//"aloud";
+            string word_to_check = selection.Text;
 
             // Restore old selection
             oldRange.Select();
@@ -50,6 +48,21 @@ namespace EnglishTips
             if (word_to_check == "")
             {
                 return;
+            }
+
+            string tips = "";
+
+            if (updateConfusedWords(word_to_check, ref tips) && updateSentenceStructure(word_to_check, ref tips))
+            {
+                printToRichTextBox(tips);
+            }
+        }
+
+        bool updateConfusedWords(string word_to_check, ref string tips)
+        {
+            if (!this.ConfusedWords.Checked)
+            {
+                return true;
             }
 
             // Creates request
@@ -69,17 +82,53 @@ namespace EnglishTips
             catch
             {
                 printConnectionError();
-                return;
+                return false;
             }
 
-            if (response.Note == null)
+            if (response.Note != null)
             {
                 printToRichTextBox("");
+                tips += "Confused words for \"" + word_to_check + "\":\n" + response.Note + "\n\n";
             }
-            else
+
+            return true;
+        }
+
+        bool updateSentenceStructure(string word_to_check, ref string tips)
+        {
+            if (!this.SentenceStructure.Checked)
             {
-                printToRichTextBox("Confused words for \"" + word_to_check + "\":\n" + response.Note);
+                return true;
             }
+
+            // Creates request
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                word = word_to_check
+            });
+
+            string api = "https://avrl.cs.technion.ac.il:80/api/sentence_structure";
+
+            // Send request
+            SentenceStructureResponse response;
+            try
+            {
+                printToRichTextBox("Contacting server.\nPlease wait...");
+                response = GenericSender<SentenceStructureResponse>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return false;
+            }
+
+            if (response.Structure != null)
+            {
+                printToRichTextBox("");
+                tips += word_to_check + ":\n" + response.Structure + "\n\n";
+            }
+
+            return true;
         }
 
         void printToRichTextBox(string txt, bool error = false)
