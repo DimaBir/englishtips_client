@@ -18,6 +18,7 @@ namespace EnglishTips
             public Microsoft.Office.Tools.CustomTaskPane MarkTaskPane;
             public Microsoft.Office.Tools.CustomTaskPane TranslateTaskPane;
             public Microsoft.Office.Tools.CustomTaskPane SynonymsTaskPane;
+            public Microsoft.Office.Tools.CustomTaskPane TipsTaskPane;
         }
 
         public Dictionary<Microsoft.Office.Interop.Word.Window, TaskPanes> TaskPanesDictionary;
@@ -49,6 +50,23 @@ namespace EnglishTips
             {
                 //logger.Debug("No document loaded with word.");
             }
+        }
+
+        void ThisDocument_SelectionChange(object sender, Microsoft.Office.Tools.Word.SelectionEventArgs e)
+        {
+            bool hasValue = TaskPanesDictionary.TryGetValue(getActiveWindow(), out TaskPanes tp);
+            if (hasValue)
+            {
+                if (Globals.Ribbons.Coloring.Tips.Checked)
+                {
+                    ((UserControlTips)tp.TipsTaskPane.Control).updateTips();
+                }
+            }
+            else
+            {
+                //CreateTaskPaneWrapper();
+            }
+
         }
 
         private void OnShutdown(object sender, EventArgs eventArgs)
@@ -144,6 +162,9 @@ namespace EnglishTips
             //Globals.Factory.GetVstoObject(nativeDocument).Shutdown += OnShutdown;
             Globals.Factory.GetVstoObject(nativeDocument).Disposed += OnShutdown;
 
+            Microsoft.Office.Tools.Word.Document vstoDoc = Globals.Factory.GetVstoObject(this.Application.ActiveDocument);
+            vstoDoc.SelectionChange += new Microsoft.Office.Tools.Word.SelectionEventHandler(ThisDocument_SelectionChange);
+
             UserControlMark userControlMark = new UserControlMark();
             Microsoft.Office.Tools.CustomTaskPane MarkTaskPane = this.CustomTaskPanes.Add(userControlMark, "Mark");
             MarkTaskPane.Visible = false;
@@ -162,10 +183,17 @@ namespace EnglishTips
             SynonymsTaskPane.VisibleChanged += new EventHandler(SynonymsCustomTaskPane_VisibleChanged);
             SynonymsTaskPane.Width = 335;
 
+            UserControlTips userControlTips = new UserControlTips();
+            Microsoft.Office.Tools.CustomTaskPane TipsTaskPane = this.CustomTaskPanes.Add(userControlTips, "Tips");
+            TipsTaskPane.Visible = false;
+            TipsTaskPane.VisibleChanged += new EventHandler(TipsCustomTaskPane_VisibleChanged);
+            TipsTaskPane.Width = 335;
+
             TaskPanes tp = new TaskPanes();
             tp.MarkTaskPane = MarkTaskPane;
             tp.TranslateTaskPane = TranslateTaskPane;
             tp.SynonymsTaskPane = SynonymsTaskPane;
+            tp.TipsTaskPane = TipsTaskPane;
 
             // Save userControlColoring with current window
             TaskPanesDictionary.Add(window, tp);
@@ -179,6 +207,7 @@ namespace EnglishTips
                 Globals.Ribbons.Coloring.Translate.Checked = tp.TranslateTaskPane.Visible;
                 Globals.Ribbons.Coloring.Mark.Checked = tp.MarkTaskPane.Visible;
                 Globals.Ribbons.Coloring.Synonyms.Checked = tp.SynonymsTaskPane.Visible;
+                Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
             }
             else
             {
@@ -201,6 +230,7 @@ namespace EnglishTips
                     Globals.Ribbons.Coloring.Mark.Checked = tp.MarkTaskPane.Visible;
                     Globals.Ribbons.Coloring.Translate.Checked = tp.TranslateTaskPane.Visible;
                     Globals.Ribbons.Coloring.Synonyms.Checked = tp.SynonymsTaskPane.Visible;
+                    Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
                 }
             }
         }
@@ -216,6 +246,11 @@ namespace EnglishTips
         }
 
         private void SynonymsCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
+        {
+            visibleChanged();
+        }
+
+        private void TipsCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
         {
             visibleChanged();
         }

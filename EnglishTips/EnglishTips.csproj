@@ -206,6 +206,12 @@
     <Compile Include="UserControlSynonyms.Designer.cs">
       <DependentUpon>UserControlSynonyms.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlTips.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlTips.Designer.cs">
+      <DependentUpon>UserControlTips.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlTranslate.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSynonyms.resx">
       <DependentUpon>UserControlSynonyms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlTips.resx">
+      <DependentUpon>UserControlTips.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlTranslate.resx">
       <DependentUpon>UserControlTranslate.cs</DependentUpon>
@@ -256,9 +265,33 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AcrAPI\AcrAPI.csproj">
+      <Project>{1ee874be-d572-45a9-bd9a-3a1bd680bd41}</Project>
+      <Name>AcrAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConfusedWordsAPI\ConfusedWordsAPI.csproj">
+      <Project>{d6e895c7-93ea-4243-972d-af618af78198}</Project>
+      <Name>ConfusedWordsAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GoogleTranslateAPI\GoogleTranslateAPI.csproj">
+      <Project>{4e5affb7-567d-4ca3-8b2c-0a4413be4cdc}</Project>
+      <Name>GoogleTranslateAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HyperAPI\HyperAPI.csproj">
+      <Project>{ec2358fe-d170-4ac9-b450-1f1a7dfe7114}</Project>
+      <Name>HyperAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HyponAPI\HyponAPI.csproj">
+      <Project>{5173464e-d970-4ba0-b0f9-e50debf84402}</Project>
+      <Name>HyponAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NounsAPI\NounsAPI.csproj">
       <Project>{93d3bffc-fa4e-4aa8-a357-cab5302c5953}</Project>
       <Name>NounsAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ParallelAPICall\ParallelAPICall.csproj">
+      <Project>{85900d87-dfbd-4074-8155-caf511bd3a91}</Project>
+      <Name>ParallelAPICall</Name>
     </ProjectReference>
     <ProjectReference Include="..\RESTApiExample\RESTApiExample.csproj">
       <Project>{4cff37c5-f10d-4af5-9b47-faf430869720}</Project>
