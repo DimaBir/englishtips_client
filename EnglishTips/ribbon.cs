@@ -138,5 +138,38 @@ namespace EnglishTips
                 }
             }
         }
+
+        private void Acronyms_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void Hyponymy_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void Hypernymy_Click(object sender, RibbonControlEventArgs e)
+        {
+
+        }
+
+        private void Tips_Click(object sender, RibbonControlEventArgs e)
+        {
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
+            {
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.TipsTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
+            }
+        }
     }
 }

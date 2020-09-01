@@ -47,6 +47,10 @@
             this.Translate = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.Synonyms = this.Factory.CreateRibbonToggleButton();
+            this.Acronyms = this.Factory.CreateRibbonToggleButton();
+            this.Hyponymy = this.Factory.CreateRibbonToggleButton();
+            this.Hypernymy = this.Factory.CreateRibbonToggleButton();
+            this.Tips = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.ReadAloud.SuspendLayout();
@@ -66,6 +70,7 @@
             // group1
             // 
             this.group1.Items.Add(this.Mark);
+            this.group1.Items.Add(this.Tips);
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
             // 
@@ -120,6 +125,9 @@
             this.group4.Items.Add(this.Translate);
             this.group4.Items.Add(this.toggleButton2);
             this.group4.Items.Add(this.Synonyms);
+            this.group4.Items.Add(this.Acronyms);
+            this.group4.Items.Add(this.Hyponymy);
+            this.group4.Items.Add(this.Hypernymy);
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
             // 
@@ -136,7 +144,7 @@
             // 
             this.toggleButton2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
             this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
-            this.toggleButton2.Label = "Oxford Dictionary";
+            this.toggleButton2.Label = "Oxford";
             this.toggleButton2.Name = "toggleButton2";
             this.toggleButton2.ShowImage = true;
             this.toggleButton2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton2_Click);
@@ -149,6 +157,32 @@
             this.Synonyms.Name = "Synonyms";
             this.Synonyms.ShowImage = true;
             this.Synonyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Synonyms_Click);
+            // 
+            // Acronyms
+            // 
+            this.Acronyms.Label = "Acronyms";
+            this.Acronyms.Name = "Acronyms";
+            this.Acronyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Acronyms_Click);
+            // 
+            // Hyponymy
+            // 
+            this.Hyponymy.Label = "Hyponymy ";
+            this.Hyponymy.Name = "Hyponymy";
+            this.Hyponymy.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Hyponymy_Click);
+            // 
+            // Hypernymy
+            // 
+            this.Hypernymy.Label = "Hypernymy";
+            this.Hypernymy.Name = "Hypernymy";
+            this.Hypernymy.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Hypernymy_Click);
+            // 
+            // Tips
+            // 
+            this.Tips.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Tips.Label = "Tips";
+            this.Tips.Name = "Tips";
+            this.Tips.ShowImage = true;
+            this.Tips.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Tips_Click);
             // 
             // ribbon
             // 
@@ -184,6 +218,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Translate;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Synonyms;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Hyponymy;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Hypernymy;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Acronyms;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Tips;
     }
 
     partial class ThisRibbonCollection
