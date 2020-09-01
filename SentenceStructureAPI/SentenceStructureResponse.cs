@@ -2,7 +2,7 @@
 
 namespace SentenceStructureAPI
 {
-    class SentenceStructureResponse
+    public class SentenceStructureResponse
     {
         [JsonProperty("result")]
         public string Structure { get; set; }
