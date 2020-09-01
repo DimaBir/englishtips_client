@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace ConfusedWordsAPI
 {
-    class ConfusedWordsResponse
+    public class ConfusedWordsResponse
     {
         [JsonProperty("result")]
         public string Note { get; set; }
