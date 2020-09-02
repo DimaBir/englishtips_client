@@ -37,20 +37,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.Mark = this.Factory.CreateRibbonToggleButton();
             this.ReadAloud = this.Factory.CreateRibbonGroup();
-            this.StartReadingButton = this.Factory.CreateRibbonButton();
-            this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.group3 = this.Factory.CreateRibbonGroup();
             this.editBox1 = this.Factory.CreateRibbonEditBox();
             this.group4 = this.Factory.CreateRibbonGroup();
+            this.Mark = this.Factory.CreateRibbonToggleButton();
+            this.Tips = this.Factory.CreateRibbonToggleButton();
+            this.StartReadingButton = this.Factory.CreateRibbonButton();
+            this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.Translate = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.Synonyms = this.Factory.CreateRibbonToggleButton();
             this.Acronyms = this.Factory.CreateRibbonToggleButton();
             this.Hyponymy = this.Factory.CreateRibbonToggleButton();
             this.Hypernymy = this.Factory.CreateRibbonToggleButton();
-            this.Tips = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.ReadAloud.SuspendLayout();
@@ -74,6 +74,38 @@
             this.group1.Label = "Coloring";
             this.group1.Name = "group1";
             // 
+            // ReadAloud
+            // 
+            this.ReadAloud.Items.Add(this.StartReadingButton);
+            this.ReadAloud.Items.Add(this.StopReadingButton);
+            this.ReadAloud.Label = "Read aloud";
+            this.ReadAloud.Name = "ReadAloud";
+            // 
+            // group3
+            // 
+            this.group3.Items.Add(this.editBox1);
+            this.group3.Label = "Analytics";
+            this.group3.Name = "group3";
+            // 
+            // editBox1
+            // 
+            this.editBox1.Enabled = false;
+            this.editBox1.Label = "Amount of words";
+            this.editBox1.MaxLength = 2;
+            this.editBox1.Name = "editBox1";
+            this.editBox1.Text = "10";
+            // 
+            // group4
+            // 
+            this.group4.Items.Add(this.Translate);
+            this.group4.Items.Add(this.toggleButton2);
+            this.group4.Items.Add(this.Synonyms);
+            this.group4.Items.Add(this.Acronyms);
+            this.group4.Items.Add(this.Hyponymy);
+            this.group4.Items.Add(this.Hypernymy);
+            this.group4.Label = "Dictionary";
+            this.group4.Name = "group4";
+            // 
             // Mark
             // 
             this.Mark.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -82,12 +114,13 @@
             this.Mark.ShowImage = true;
             this.Mark.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Mark_Click);
             // 
-            // ReadAloud
+            // Tips
             // 
-            this.ReadAloud.Items.Add(this.StartReadingButton);
-            this.ReadAloud.Items.Add(this.StopReadingButton);
-            this.ReadAloud.Label = "Read aloud";
-            this.ReadAloud.Name = "ReadAloud";
+            this.Tips.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Tips.Label = "Tips";
+            this.Tips.Name = "Tips";
+            this.Tips.ShowImage = true;
+            this.Tips.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Tips_Click);
             // 
             // StartReadingButton
             // 
@@ -107,30 +140,6 @@
             this.StopReadingButton.ShowImage = true;
             this.StopReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StopReadingButton_Click);
             // 
-            // group3
-            // 
-            this.group3.Items.Add(this.editBox1);
-            this.group3.Label = "Analytics";
-            this.group3.Name = "group3";
-            // 
-            // editBox1
-            // 
-            this.editBox1.Label = "Amount of words";
-            this.editBox1.MaxLength = 2;
-            this.editBox1.Name = "editBox1";
-            this.editBox1.Text = "10";
-            // 
-            // group4
-            // 
-            this.group4.Items.Add(this.Translate);
-            this.group4.Items.Add(this.toggleButton2);
-            this.group4.Items.Add(this.Synonyms);
-            this.group4.Items.Add(this.Acronyms);
-            this.group4.Items.Add(this.Hyponymy);
-            this.group4.Items.Add(this.Hypernymy);
-            this.group4.Label = "Dictionary";
-            this.group4.Name = "group4";
-            // 
             // Translate
             // 
             this.Translate.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -143,6 +152,7 @@
             // toggleButton2
             // 
             this.toggleButton2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.toggleButton2.Enabled = false;
             this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
             this.toggleButton2.Label = "Oxford";
             this.toggleButton2.Name = "toggleButton2";
@@ -160,29 +170,24 @@
             // 
             // Acronyms
             // 
+            this.Acronyms.Enabled = false;
             this.Acronyms.Label = "Acronyms";
             this.Acronyms.Name = "Acronyms";
             this.Acronyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Acronyms_Click);
             // 
             // Hyponymy
             // 
+            this.Hyponymy.Enabled = false;
             this.Hyponymy.Label = "Hyponymy ";
             this.Hyponymy.Name = "Hyponymy";
             this.Hyponymy.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Hyponymy_Click);
             // 
             // Hypernymy
             // 
+            this.Hypernymy.Enabled = false;
             this.Hypernymy.Label = "Hypernymy";
             this.Hypernymy.Name = "Hypernymy";
             this.Hypernymy.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Hypernymy_Click);
-            // 
-            // Tips
-            // 
-            this.Tips.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.Tips.Label = "Tips";
-            this.Tips.Name = "Tips";
-            this.Tips.ShowImage = true;
-            this.Tips.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Tips_Click);
             // 
             // ribbon
             // 
