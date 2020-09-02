@@ -341,20 +341,22 @@ namespace EnglishTips
                 bool isKeyDown = ((ulong)lParam & 0x40000000) == 0;
                 if (isKeyDown)
                 {
-                    StringBuilder charPressed = new StringBuilder(256);
-                    ToUnicode((uint)key, 0, new byte[256], charPressed, charPressed.Capacity, 0);
-                    string str = charPressed.ToString();
-
-                    if (str == " " || str == "." || str == "," || str == ";" || str == "?" || str == ")")
-                        updateTips();
                     //onKeyDown(args);
                 }
-                /*else
+                else
                 {
                     bool isLastKeyUp = ((ulong)lParam & 0x80000000) == 0x80000000;
                     if (isLastKeyUp)
-                        onKeyUp(args);
-                }*/
+                    {
+                        //onKeyUp(args);
+                        StringBuilder charPressed = new StringBuilder(256);
+                        ToUnicode((uint)key, 0, new byte[256], charPressed, charPressed.Capacity, 0);
+                        string str = charPressed.ToString();
+
+                        //if (str == " " || str == "." || str == "," || str == ";" || str == "?" || str == ")")
+                        updateTips();
+                    }
+                }
             }
 
             return SafeNativeMethods.CallNextHookEx(
