@@ -50,8 +50,12 @@ namespace EnglishTips
                 return;
             }
 
-            string tips = "";
+            Task.Run(() => sendRequest(word_to_check));
+        }
 
+        void sendRequest(string word_to_check)
+        {
+            string tips = "";
             if (updateConfusedWords(word_to_check, ref tips) && updateSentenceStructure(word_to_check, ref tips))
             {
                 printToRichTextBox(tips);
