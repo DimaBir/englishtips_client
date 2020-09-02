@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace HyperAPI
 {
-    class HypernymyResponse
+    public class HypernymyResponse
     {
         [JsonProperty("result")]
         public IList<string> Hypernymies { get; set; }

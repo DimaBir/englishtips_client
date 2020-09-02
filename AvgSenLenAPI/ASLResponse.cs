@@ -2,7 +2,7 @@
 
 namespace AvgSenLenAPI
 {
-    class ASLResponse
+    public class ASLResponse
     {
         [JsonProperty("result")]
         public string Average { get; set; }

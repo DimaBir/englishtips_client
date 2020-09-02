@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace HyponAPI
 {
-    class HyponymResponse
+    public class HyponymResponse
     {
         [JsonProperty("result")]
         public IList<string> Hyponyms { get; set; }

@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace TopWordsAPI
 {
-    class TopWordsResponse
+    public class TopWordsResponse
     {
         [JsonProperty("Result")]
         public IList<TopWordsData> Results { get; set; }
