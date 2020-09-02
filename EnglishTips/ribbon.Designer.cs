@@ -62,8 +62,8 @@
             // 
             this.tab2.Groups.Add(this.group1);
             this.tab2.Groups.Add(this.ReadAloud);
-            this.tab2.Groups.Add(this.group3);
             this.tab2.Groups.Add(this.group4);
+            this.tab2.Groups.Add(this.group3);
             this.tab2.Label = "English Tips";
             this.tab2.Name = "tab2";
             // 
@@ -78,7 +78,7 @@
             // 
             this.ReadAloud.Items.Add(this.StartReadingButton);
             this.ReadAloud.Items.Add(this.StopReadingButton);
-            this.ReadAloud.Label = "Read text aloud";
+            this.ReadAloud.Label = "Read selected text aloud";
             this.ReadAloud.Name = "ReadAloud";
             // 
             // group3
