@@ -37,7 +37,7 @@ namespace EnglishTips
             }
         }
 
-        void sendRequest(string json)
+        void sendRequest(string json, string txt)
         {
             //string api = "https://englishtips.azurewebsites.net/api/syn";
             string api = "https://avrl.cs.technion.ac.il:80/api/syn";
@@ -65,6 +65,7 @@ namespace EnglishTips
             }
             else
             {
+                synonyms += "Synonyms for \"" + txt.Trim() + "\":\n";
                 // Print out synonyms
                 foreach (string synonym in response.Synonyms)
                 {
@@ -86,6 +87,7 @@ namespace EnglishTips
             // If selection is empty - do nothing
             if (selection.Text == null)
             {
+                printToRichTextBox("Please select text in the document");
                 return;
             }
 
@@ -95,7 +97,7 @@ namespace EnglishTips
             });
 
             printToRichTextBox("Contacting server.\nPlease wait...");
-            Task.Run(() => sendRequest(json));
+            Task.Run(() => sendRequest(json, selection.Text));
         }
     }
 }

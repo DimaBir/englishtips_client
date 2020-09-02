@@ -34,7 +34,8 @@
             // 
             // SynonymsRichTextBox
             // 
-            this.SynonymsRichTextBox.BackColor = System.Drawing.SystemColors.Window;
+            this.SynonymsRichTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.SynonymsRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SynonymsRichTextBox.Location = new System.Drawing.Point(3, 42);
             this.SynonymsRichTextBox.Name = "SynonymsRichTextBox";
             this.SynonymsRichTextBox.ReadOnly = true;
