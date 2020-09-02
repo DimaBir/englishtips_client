@@ -71,14 +71,14 @@
             // 
             this.group1.Items.Add(this.Mark);
             this.group1.Items.Add(this.Tips);
-            this.group1.Label = "Coloring";
+            this.group1.Label = "Grammar";
             this.group1.Name = "group1";
             // 
             // ReadAloud
             // 
             this.ReadAloud.Items.Add(this.StartReadingButton);
             this.ReadAloud.Items.Add(this.StopReadingButton);
-            this.ReadAloud.Label = "Read aloud";
+            this.ReadAloud.Label = "Read text aloud";
             this.ReadAloud.Name = "ReadAloud";
             // 
             // group3
@@ -109,6 +109,7 @@
             // Mark
             // 
             this.Mark.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Mark.Image = ((System.Drawing.Image)(resources.GetObject("Mark.Image")));
             this.Mark.Label = "Mark";
             this.Mark.Name = "Mark";
             this.Mark.ShowImage = true;
@@ -117,6 +118,7 @@
             // Tips
             // 
             this.Tips.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Tips.Image = ((System.Drawing.Image)(resources.GetObject("Tips.Image")));
             this.Tips.Label = "Tips";
             this.Tips.Name = "Tips";
             this.Tips.ShowImage = true;
