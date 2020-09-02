@@ -121,7 +121,7 @@
             this.BackToEnglishTextBox.Name = "BackToEnglishTextBox";
             this.BackToEnglishTextBox.Size = new System.Drawing.Size(314, 55);
             this.BackToEnglishTextBox.TabIndex = 8;
-            this.BackToEnglishTextBox.Text = "Write text to be translated back to english";
+            this.BackToEnglishTextBox.Text = "Write text to translate back to English";
             // 
             // BackInEnglishRichTextBox
             // 
