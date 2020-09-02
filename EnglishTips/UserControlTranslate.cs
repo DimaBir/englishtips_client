@@ -40,34 +40,45 @@ namespace EnglishTips
             return maxWidth;
         }
 
-        void invokedPrintToRichTextBox(string txt, string languageCode)
+        void invokedPrintToRichTextBox(RichTextBox textBox,string txt, string languageCode)
         {
-            this.TranslateRichTextBox.Text = txt;
+            textBox.Text = txt;
             if (languageCode == "he" || languageCode == "ar" || languageCode == "yi")
             {
-                TranslateRichTextBox.RightToLeft = RightToLeft.Yes;
+                textBox.RightToLeft = RightToLeft.Yes;
             }
             else
             {
-                TranslateRichTextBox.RightToLeft = RightToLeft.No;
+                textBox.RightToLeft = RightToLeft.No;
             }
         }
 
-        void printToRichTextBox(string txt, string languageCode)
+        void printToRichTextBox(RichTextBox textBox, string txt, string languageCode)
         {
-            if (this.TranslateRichTextBox.InvokeRequired)
+            // Print translation
+            if (textBox.InvokeRequired)
             {
-                this.TranslateRichTextBox.Invoke(new MethodInvoker(delegate { invokedPrintToRichTextBox(txt, languageCode); }));
+                textBox.Invoke(new MethodInvoker(delegate { invokedPrintToRichTextBox(textBox, txt, languageCode); }));
             }
             else
             {
-                invokedPrintToRichTextBox(txt, languageCode);
+                invokedPrintToRichTextBox(textBox, txt, languageCode);
+            }
+
+            // Update rightToLeft of BackToEnglishTextBox
+            if (BackToEnglishTextBox.InvokeRequired)
+            {
+                BackToEnglishTextBox.Invoke(new MethodInvoker(delegate { invokedPrintToRichTextBox(BackToEnglishTextBox, BackToEnglishTextBox.Text, languageCode); }));
+            }
+            else
+            {
+                invokedPrintToRichTextBox(BackToEnglishTextBox, BackToEnglishTextBox.Text, languageCode);
             }
         }
 
-        void sendRequest(string json, string languageCode)
+        void sendRequest(RichTextBox textBox, string json, string languageCode)
         {
-            string api = "https://englishtips.azurewebsites.net/api/translate";
+            string api = "https://avrl.cs.technion.ac.il:80/api/translate";
             string translation;
             try
             {
@@ -78,11 +89,11 @@ namespace EnglishTips
                 string error = "Can't connect to the server. Possible problems:\n";
                 error += "Your internet connection may have failed.\n";
                 error += "The security suit (firewall) may block Word from accessing the internet.";
-                printToRichTextBox(error, "en");
+                printToRichTextBox(textBox, error, "en");
                 return;
             }
 
-            printToRichTextBox(translation, languageCode);
+            printToRichTextBox(textBox, translation, languageCode);
             return;
         }
 
@@ -94,7 +105,9 @@ namespace EnglishTips
             // If selection is empty - select entire document
             if (selection.Text == null)
             {
-                selection = Globals.ThisAddIn.Application.ActiveDocument.Content; ;
+                //selection = Globals.ThisAddIn.Application.ActiveDocument.Content;
+                printToRichTextBox(TranslateRichTextBox, "Please select in the document text to translate", "en");
+                return;
             }
 
             var EnglishCulture = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)
@@ -117,8 +130,8 @@ namespace EnglishTips
                 language = languageCode
             });
 
-            printToRichTextBox("Contacting server...", "en");
-            Task.Run(() => sendRequest(json, languageCode));
+            printToRichTextBox(TranslateRichTextBox, "Contacting server. Please wait...", "en");
+            Task.Run(() => sendRequest(TranslateRichTextBox, json, languageCode));
 
             return;
         }
@@ -136,6 +149,34 @@ namespace EnglishTips
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void BackToEnglish_Click(object sender, EventArgs e)
+        {
+            var EnglishCulture = System.Globalization.CultureInfo.GetCultures(System.Globalization.CultureTypes.AllCultures)
+                                .FirstOrDefault(r => r.EnglishName == comboBox1.SelectedItem.ToString());
+            string languageCode = EnglishCulture.TwoLetterISOLanguageName;
+
+            // Special languageCode cases
+            if (comboBox1.SelectedItem.ToString() == "Chinese (Simplified)")
+            {
+                languageCode = "zh-CN";
+            }
+            else if (comboBox1.SelectedItem.ToString() == "Chinese (Traditional)")
+            {
+                languageCode = "zh-TW";
+            }
+
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                text = BackToEnglishTextBox.Text,
+                language = "en"
+            });
+
+            printToRichTextBox(BackInEnglishRichTextBox, "Contacting server. Please wait...", "en");
+            Task.Run(() => sendRequest(BackInEnglishRichTextBox, json, languageCode));
+
+            return;
         }
     }
 }
