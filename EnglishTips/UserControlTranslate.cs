@@ -94,6 +94,17 @@ namespace EnglishTips
             }
 
             printToRichTextBox(textBox, translation, languageCode);
+
+            // Update rightToLeft of BackInEnglishTextBox
+            if (BackInEnglishRichTextBox.InvokeRequired)
+            {
+                BackInEnglishRichTextBox.Invoke(new MethodInvoker(delegate { invokedPrintToRichTextBox(BackInEnglishRichTextBox, BackInEnglishRichTextBox.Text, "en"); }));
+            }
+            else
+            {
+                invokedPrintToRichTextBox(BackInEnglishRichTextBox, BackInEnglishRichTextBox.Text, "en");
+            }
+
             return;
         }
 

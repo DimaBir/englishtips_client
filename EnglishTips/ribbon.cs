@@ -12,6 +12,7 @@ using System.Threading;
 using System.Speech.Synthesis;
 using static EnglishTips.ThisAddIn;
 using Microsoft.Office.Interop.Word;
+using System.Windows.Forms;
 
 namespace EnglishTips
 {
@@ -23,7 +24,7 @@ namespace EnglishTips
 
         private void Coloring_Load(object sender, RibbonUIEventArgs e)
         {
-
+            Synonyms.Label = "Synonyms\nAcronyms\nHyponymy\nHypernymy";
         }
 
         private void checkBox3_Click(object sender, RibbonControlEventArgs e)
@@ -170,6 +171,38 @@ namespace EnglishTips
                     Globals.ThisAddIn.CreateTaskPaneWrapper();
                 }
             }
+        }
+
+        private void AnalyticsToggleButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
+            {
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.AnalyticsTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
+            }
+        }
+
+        private void AboutButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            string about = "";
+            about += "Developed by Dima Birenbaum & Netanel Lev\n";
+            about += "for the GIP laboratory in the CS department of the Technion,\n";
+            about += "under the supervision and guidance of:\n";
+            about += "  Mr. Yaron Honen\n";
+            about += "  Mr. Gary Mataev\n";
+            about += "  Dr. Tzipora Rakedzon\n";
+            about += "\nFor more information please visit\n";
+            about += "https://avrl.cs.technion.ac.il:80/";
+            MessageBox.Show(about);
         }
     }
 }

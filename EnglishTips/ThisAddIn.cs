@@ -26,6 +26,7 @@ namespace EnglishTips
             public Microsoft.Office.Tools.CustomTaskPane TranslateTaskPane;
             public Microsoft.Office.Tools.CustomTaskPane SynonymsTaskPane;
             public Microsoft.Office.Tools.CustomTaskPane TipsTaskPane;
+            public Microsoft.Office.Tools.CustomTaskPane AnalyticsTaskPane;
         }
 
         public Dictionary<Microsoft.Office.Interop.Word.Window, TaskPanes> TaskPanesDictionary;
@@ -202,7 +203,7 @@ namespace EnglishTips
             TranslateTaskPane.Width = 335;
 
             UserControlSynonyms userControlSynonyms = new UserControlSynonyms();
-            Microsoft.Office.Tools.CustomTaskPane SynonymsTaskPane = this.CustomTaskPanes.Add(userControlSynonyms, "Synonyms");
+            Microsoft.Office.Tools.CustomTaskPane SynonymsTaskPane = this.CustomTaskPanes.Add(userControlSynonyms, " ");
             SynonymsTaskPane.Visible = false;
             SynonymsTaskPane.VisibleChanged += new EventHandler(SynonymsCustomTaskPane_VisibleChanged);
             SynonymsTaskPane.Width = 335;
@@ -213,11 +214,18 @@ namespace EnglishTips
             TipsTaskPane.VisibleChanged += new EventHandler(TipsCustomTaskPane_VisibleChanged);
             TipsTaskPane.Width = 335;
 
+            UserControlAnalytics userControlAnalytics = new UserControlAnalytics();
+            Microsoft.Office.Tools.CustomTaskPane AnalyticsTaskPane = this.CustomTaskPanes.Add(userControlAnalytics, "Analytics");
+            AnalyticsTaskPane.Visible = false;
+            AnalyticsTaskPane.VisibleChanged += new EventHandler(AnalyticsCustomTaskPane_VisibleChanged);
+            AnalyticsTaskPane.Width = 335;
+
             TaskPanes tp = new TaskPanes();
             tp.MarkTaskPane = MarkTaskPane;
             tp.TranslateTaskPane = TranslateTaskPane;
             tp.SynonymsTaskPane = SynonymsTaskPane;
             tp.TipsTaskPane = TipsTaskPane;
+            tp.AnalyticsTaskPane = AnalyticsTaskPane;
 
             // Save userControlColoring with current window
             TaskPanesDictionary.Add(window, tp);
@@ -234,6 +242,7 @@ namespace EnglishTips
                 Globals.Ribbons.Coloring.Mark.Checked = tp.MarkTaskPane.Visible;
                 Globals.Ribbons.Coloring.Synonyms.Checked = tp.SynonymsTaskPane.Visible;
                 Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
+                Globals.Ribbons.Coloring.Analytics.Checked = tp.AnalyticsTaskPane.Visible;
             }
             else
             {
@@ -277,6 +286,11 @@ namespace EnglishTips
         }
 
         private void TipsCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
+        {
+            visibleChanged();
+        }
+
+        private void AnalyticsCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
         {
             visibleChanged();
         }

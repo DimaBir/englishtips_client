@@ -140,7 +140,7 @@
             this.BackToEnglishButton.Name = "BackToEnglishButton";
             this.BackToEnglishButton.Size = new System.Drawing.Size(314, 38);
             this.BackToEnglishButton.TabIndex = 10;
-            this.BackToEnglishButton.Text = "Back to english";
+            this.BackToEnglishButton.Text = "Back to English";
             this.BackToEnglishButton.UseVisualStyleBackColor = true;
             this.BackToEnglishButton.Click += new System.EventHandler(this.BackToEnglish_Click);
             // 

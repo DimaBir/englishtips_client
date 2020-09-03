@@ -37,25 +37,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ribbon));
             this.tab2 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.ReadAloud = this.Factory.CreateRibbonGroup();
-            this.group3 = this.Factory.CreateRibbonGroup();
-            this.editBox1 = this.Factory.CreateRibbonEditBox();
-            this.group4 = this.Factory.CreateRibbonGroup();
             this.Mark = this.Factory.CreateRibbonToggleButton();
             this.Tips = this.Factory.CreateRibbonToggleButton();
+            this.Analytics = this.Factory.CreateRibbonToggleButton();
+            this.ReadAloud = this.Factory.CreateRibbonGroup();
             this.StartReadingButton = this.Factory.CreateRibbonButton();
             this.StopReadingButton = this.Factory.CreateRibbonButton();
+            this.group4 = this.Factory.CreateRibbonGroup();
             this.Translate = this.Factory.CreateRibbonToggleButton();
             this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.Synonyms = this.Factory.CreateRibbonToggleButton();
-            this.Acronyms = this.Factory.CreateRibbonToggleButton();
-            this.Hyponymy = this.Factory.CreateRibbonToggleButton();
-            this.Hypernymy = this.Factory.CreateRibbonToggleButton();
+            this.group2 = this.Factory.CreateRibbonGroup();
+            this.AboutButton = this.Factory.CreateRibbonButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.ReadAloud.SuspendLayout();
-            this.group3.SuspendLayout();
             this.group4.SuspendLayout();
+            this.group2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tab2
@@ -63,7 +61,7 @@
             this.tab2.Groups.Add(this.group1);
             this.tab2.Groups.Add(this.ReadAloud);
             this.tab2.Groups.Add(this.group4);
-            this.tab2.Groups.Add(this.group3);
+            this.tab2.Groups.Add(this.group2);
             this.tab2.Label = "English Tips";
             this.tab2.Name = "tab2";
             // 
@@ -71,40 +69,9 @@
             // 
             this.group1.Items.Add(this.Mark);
             this.group1.Items.Add(this.Tips);
+            this.group1.Items.Add(this.Analytics);
             this.group1.Label = "Grammar";
             this.group1.Name = "group1";
-            // 
-            // ReadAloud
-            // 
-            this.ReadAloud.Items.Add(this.StartReadingButton);
-            this.ReadAloud.Items.Add(this.StopReadingButton);
-            this.ReadAloud.Label = "Read selected text aloud";
-            this.ReadAloud.Name = "ReadAloud";
-            // 
-            // group3
-            // 
-            this.group3.Items.Add(this.editBox1);
-            this.group3.Label = "Analytics";
-            this.group3.Name = "group3";
-            // 
-            // editBox1
-            // 
-            this.editBox1.Enabled = false;
-            this.editBox1.Label = "Amount of words";
-            this.editBox1.MaxLength = 2;
-            this.editBox1.Name = "editBox1";
-            this.editBox1.Text = "10";
-            // 
-            // group4
-            // 
-            this.group4.Items.Add(this.Translate);
-            this.group4.Items.Add(this.toggleButton2);
-            this.group4.Items.Add(this.Synonyms);
-            this.group4.Items.Add(this.Acronyms);
-            this.group4.Items.Add(this.Hyponymy);
-            this.group4.Items.Add(this.Hypernymy);
-            this.group4.Label = "Dictionary";
-            this.group4.Name = "group4";
             // 
             // Mark
             // 
@@ -124,6 +91,22 @@
             this.Tips.ShowImage = true;
             this.Tips.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Tips_Click);
             // 
+            // Analytics
+            // 
+            this.Analytics.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Analytics.Image = ((System.Drawing.Image)(resources.GetObject("Analytics.Image")));
+            this.Analytics.Label = "Analytics";
+            this.Analytics.Name = "Analytics";
+            this.Analytics.ShowImage = true;
+            this.Analytics.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.AnalyticsToggleButton_Click);
+            // 
+            // ReadAloud
+            // 
+            this.ReadAloud.Items.Add(this.StartReadingButton);
+            this.ReadAloud.Items.Add(this.StopReadingButton);
+            this.ReadAloud.Label = "Read selected text aloud";
+            this.ReadAloud.Name = "ReadAloud";
+            // 
             // StartReadingButton
             // 
             this.StartReadingButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
@@ -141,6 +124,14 @@
             this.StopReadingButton.Name = "StopReadingButton";
             this.StopReadingButton.ShowImage = true;
             this.StopReadingButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.StopReadingButton_Click);
+            // 
+            // group4
+            // 
+            this.group4.Items.Add(this.Translate);
+            this.group4.Items.Add(this.toggleButton2);
+            this.group4.Items.Add(this.Synonyms);
+            this.group4.Label = "Dictionary";
+            this.group4.Name = "group4";
             // 
             // Translate
             // 
@@ -163,33 +154,24 @@
             // 
             // Synonyms
             // 
-            this.Synonyms.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.Synonyms.Image = ((System.Drawing.Image)(resources.GetObject("Synonyms.Image")));
             this.Synonyms.Label = "Synonyms";
             this.Synonyms.Name = "Synonyms";
             this.Synonyms.ShowImage = true;
             this.Synonyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Synonyms_Click);
             // 
-            // Acronyms
+            // group2
             // 
-            this.Acronyms.Enabled = false;
-            this.Acronyms.Label = "Acronyms";
-            this.Acronyms.Name = "Acronyms";
-            this.Acronyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Acronyms_Click);
+            this.group2.Items.Add(this.AboutButton);
+            this.group2.Name = "group2";
             // 
-            // Hyponymy
+            // AboutButton
             // 
-            this.Hyponymy.Enabled = false;
-            this.Hyponymy.Label = "Hyponymy ";
-            this.Hyponymy.Name = "Hyponymy";
-            this.Hyponymy.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Hyponymy_Click);
-            // 
-            // Hypernymy
-            // 
-            this.Hypernymy.Enabled = false;
-            this.Hypernymy.Label = "Hypernymy";
-            this.Hypernymy.Name = "Hypernymy";
-            this.Hypernymy.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Hypernymy_Click);
+            this.AboutButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.AboutButton.Image = ((System.Drawing.Image)(resources.GetObject("AboutButton.Image")));
+            this.AboutButton.Label = "About";
+            this.AboutButton.Name = "AboutButton";
+            this.AboutButton.ShowImage = true;
+            this.AboutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.AboutButton_Click);
             // 
             // ribbon
             // 
@@ -203,10 +185,10 @@
             this.group1.PerformLayout();
             this.ReadAloud.ResumeLayout(false);
             this.ReadAloud.PerformLayout();
-            this.group3.ResumeLayout(false);
-            this.group3.PerformLayout();
             this.group4.ResumeLayout(false);
             this.group4.PerformLayout();
+            this.group2.ResumeLayout(false);
+            this.group2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -216,8 +198,6 @@
         private Microsoft.Office.Tools.Ribbon.RibbonTab tab2;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup ReadAloud;
-        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
-        internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBox1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton2;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Mark;
@@ -225,10 +205,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Translate;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Synonyms;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Hyponymy;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Hypernymy;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Acronyms;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Tips;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Analytics;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton AboutButton;
     }
 
     partial class ThisRibbonCollection
