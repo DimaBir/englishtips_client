@@ -39,14 +39,17 @@ namespace RESTApiExample
                 httpWebRequest.ContentType = "application/json";
 
                 // Method POST we want send something to server. GET we want get something from server
-                httpWebRequest.Method = "POST";
+                httpWebRequest.Method = method;
 
                 // Writes json to request stream, we can send more than one request, also sending can be asynchronous (in the future)
                 // Here using is necessary. readers/writers are open stream, that consumes memory. Stream need to be closed, else memory leak, 
-                // if we use using, it will close automatically, when we leave {} block. 
-                using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                // if we use using, it will close automatically, when we leave {} block.
+                if (!string.IsNullOrEmpty(json))
                 {
-                    streamWriter.Write(json);
+                    using (StreamWriter streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+                    {
+                        streamWriter.Write(json);
+                    }
                 }
 
                 // Sends our requests to server, and gets response, if there any error - exception will be thrown here.
