@@ -161,10 +161,7 @@ namespace EnglishTips
 
         void printConnectionError()
         {
-            string error = "Can't connect to the server. Possible problems:\n";
-            error += "Your internet connection may have failed.\n";
-            error += "The security suit (firewall) may block Word from accessing the internet.";
-            printToRichTextBox(error, true);
+            printToRichTextBox(Constants.no_connection_error, true);
         }
 
         void hideRichTextBox()

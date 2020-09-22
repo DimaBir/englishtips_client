@@ -56,10 +56,7 @@ namespace EnglishTips
             }
             catch
             {
-                string error = "Can't connect to the server. Possible problems:\n";
-                error += "Your internet connection may have failed.\n";
-                error += "The security suit (firewall) may block Word from accessing the internet.";
-                printToRichTextBox(AnalyticsRichTextBox, error);
+                printToRichTextBox(AnalyticsRichTextBox, Constants.no_connection_error);
                 return false;
             }
 
@@ -91,10 +88,7 @@ namespace EnglishTips
             }
             catch
             {
-                string error = "Can't connect to the server. Possible problems:\n";
-                error += "Your internet connection may have failed.\n";
-                error += "The security suit (firewall) may block Word from accessing the internet.";
-                printToRichTextBox(AnalyticsRichTextBox, error);
+                printToRichTextBox(AnalyticsRichTextBox, Constants.no_connection_error);
                 return false;
             }
 

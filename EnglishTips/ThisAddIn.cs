@@ -18,6 +18,15 @@ using System.Windows.Forms;
 
 namespace EnglishTips
 {
+    static class Constants
+    {
+        public const string no_connection_error = 
+            "Can't connect to the server.\nPossible problems:\n\n" +
+            " - No internet connection\n" +
+            " - Firewall blocks Word\n" +
+            " - Server is down";
+    }
+    
     public partial class ThisAddIn
     {
         public class TaskPanes
