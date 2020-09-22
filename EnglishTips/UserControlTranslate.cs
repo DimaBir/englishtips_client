@@ -64,16 +64,6 @@ namespace EnglishTips
             {
                 invokedPrintToRichTextBox(textBox, txt, languageCode);
             }
-
-            // Update rightToLeft of BackToEnglishTextBox
-            if (BackToEnglishTextBox.InvokeRequired)
-            {
-                BackToEnglishTextBox.Invoke(new MethodInvoker(delegate { invokedPrintToRichTextBox(BackToEnglishTextBox, BackToEnglishTextBox.Text, languageCode); }));
-            }
-            else
-            {
-                invokedPrintToRichTextBox(BackToEnglishTextBox, BackToEnglishTextBox.Text, languageCode);
-            }
         }
 
         void sendRequest(RichTextBox textBox, string json, string languageCode)
@@ -180,7 +170,7 @@ namespace EnglishTips
 
             string json = new JavaScriptSerializer().Serialize(new
             {
-                text = BackToEnglishTextBox.Text,
+                text = TranslateRichTextBox.Text,
                 language = "en"
             });
 

@@ -32,7 +32,6 @@
             this.TranslateButton = new System.Windows.Forms.Button();
             this.TranslateRichTextBox = new System.Windows.Forms.RichTextBox();
             this.To = new System.Windows.Forms.RichTextBox();
-            this.BackToEnglishTextBox = new System.Windows.Forms.RichTextBox();
             this.BackInEnglishRichTextBox = new System.Windows.Forms.RichTextBox();
             this.BackToEnglishButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -40,7 +39,7 @@
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Amharic",
@@ -74,7 +73,7 @@
             "Yiddish"});
             this.comboBox1.Location = new System.Drawing.Point(48, 42);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(269, 33);
+            this.comboBox1.Size = new System.Drawing.Size(269, 28);
             this.comboBox1.Sorted = true;
             this.comboBox1.TabIndex = 4;
             this.comboBox1.Tag = "";
@@ -97,8 +96,7 @@
             this.TranslateRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TranslateRichTextBox.Location = new System.Drawing.Point(3, 81);
             this.TranslateRichTextBox.Name = "TranslateRichTextBox";
-            this.TranslateRichTextBox.ReadOnly = true;
-            this.TranslateRichTextBox.Size = new System.Drawing.Size(314, 371);
+            this.TranslateRichTextBox.Size = new System.Drawing.Size(314, 354);
             this.TranslateRichTextBox.TabIndex = 6;
             this.TranslateRichTextBox.Text = "";
             // 
@@ -106,37 +104,28 @@
             // 
             this.To.BackColor = System.Drawing.SystemColors.ControlLight;
             this.To.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.To.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.To.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.To.Location = new System.Drawing.Point(3, 45);
             this.To.Name = "To";
             this.To.ReadOnly = true;
-            this.To.Size = new System.Drawing.Size(39, 33);
+            this.To.Size = new System.Drawing.Size(39, 25);
             this.To.TabIndex = 7;
             this.To.Text = "To";
-            // 
-            // BackToEnglishTextBox
-            // 
-            this.BackToEnglishTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackToEnglishTextBox.Location = new System.Drawing.Point(3, 477);
-            this.BackToEnglishTextBox.Name = "BackToEnglishTextBox";
-            this.BackToEnglishTextBox.Size = new System.Drawing.Size(314, 55);
-            this.BackToEnglishTextBox.TabIndex = 8;
-            this.BackToEnglishTextBox.Text = "Write text to translate back to English";
             // 
             // BackInEnglishRichTextBox
             // 
             this.BackInEnglishRichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BackInEnglishRichTextBox.Location = new System.Drawing.Point(3, 582);
+            this.BackInEnglishRichTextBox.Location = new System.Drawing.Point(3, 485);
             this.BackInEnglishRichTextBox.Name = "BackInEnglishRichTextBox";
             this.BackInEnglishRichTextBox.ReadOnly = true;
-            this.BackInEnglishRichTextBox.Size = new System.Drawing.Size(314, 55);
+            this.BackInEnglishRichTextBox.Size = new System.Drawing.Size(314, 152);
             this.BackInEnglishRichTextBox.TabIndex = 9;
             this.BackInEnglishRichTextBox.Text = "";
             // 
             // BackToEnglishButton
             // 
             this.BackToEnglishButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.BackToEnglishButton.Location = new System.Drawing.Point(3, 538);
+            this.BackToEnglishButton.Location = new System.Drawing.Point(3, 441);
             this.BackToEnglishButton.Name = "BackToEnglishButton";
             this.BackToEnglishButton.Size = new System.Drawing.Size(314, 38);
             this.BackToEnglishButton.TabIndex = 10;
@@ -152,7 +141,6 @@
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.BackToEnglishButton);
             this.Controls.Add(this.BackInEnglishRichTextBox);
-            this.Controls.Add(this.BackToEnglishTextBox);
             this.Controls.Add(this.To);
             this.Controls.Add(this.TranslateRichTextBox);
             this.Controls.Add(this.TranslateButton);
@@ -169,7 +157,6 @@
         private System.Windows.Forms.Button TranslateButton;
         private System.Windows.Forms.RichTextBox TranslateRichTextBox;
         private System.Windows.Forms.RichTextBox To;
-        private System.Windows.Forms.RichTextBox BackToEnglishTextBox;
         private System.Windows.Forms.RichTextBox BackInEnglishRichTextBox;
         private System.Windows.Forms.Button BackToEnglishButton;
     }
