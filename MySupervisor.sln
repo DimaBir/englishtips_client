@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RESTApiExample", "RESTApiExample\RESTApiExample.csproj", "{4CFF37C5-F10D-4AF5-9B47-FAF430869720}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglishTips", "EnglishTips\EnglishTips.csproj", "{22600C67-F8ED-4F33-A202-6723FF81AA8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySupervisor", "EnglishTips\MySupervisor.csproj", "{22600C67-F8ED-4F33-A202-6723FF81AA8D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleTranslateAPI", "GoogleTranslateAPI\GoogleTranslateAPI.csproj", "{4E5AFFB7-567D-4CA3-8B2C-0A4413BE4CDC}"
 EndProject
