@@ -266,6 +266,7 @@ namespace EnglishTips
                     Globals.Ribbons.Coloring.Translate.Checked = tp.TranslateTaskPane.Visible;
                     Globals.Ribbons.Coloring.Synonyms.Checked = tp.SynonymsTaskPane.Visible;
                     Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
+                    Globals.Ribbons.Coloring.Analytics.Checked = tp.AnalyticsTaskPane.Visible;
                 }
             }
         }
