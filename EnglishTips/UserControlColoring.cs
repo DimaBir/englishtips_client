@@ -92,6 +92,19 @@ namespace EnglishTips
 
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
             string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+
+            // Bug patch:
+            //  1. Open Word
+            //  2. Don't type anything !
+            //  3. Hit any of the Mark buttons (wordiness, verbs...)
+            //  4. Hit "Refresh"
+            //  5. The application reaches here with text_to_check == "\r" and crashes in Remove_underline
+            // This patches the bug. Ugly, but works (I think)...
+            if (text_to_check == "\r")
+            {
+                return;
+            }
+            
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = text_to_check
@@ -132,17 +145,18 @@ namespace EnglishTips
             if (this.ColoringRichTextBox.InvokeRequired)
             {
                 this.ColoringRichTextBox.Invoke(new MethodInvoker(delegate {
-                    this.ColoringRichTextBox.Visible = true;
                     this.ColoringRichTextBox.Text = txt;
                     this.ColoringRichTextBox.ForeColor = error ? Color.Red : Color.Black;
+                    this.ColoringRichTextBox.Visible = true;
                 }));
             }
             else
             {
-                this.ColoringRichTextBox.Visible = true;
                 this.ColoringRichTextBox.Text = txt;
                 this.ColoringRichTextBox.ForeColor = error ? Color.Red : Color.Black;
+                this.ColoringRichTextBox.Visible = true;
             }
+            Application.DoEvents();
         }
 
         void printConnectionError()
