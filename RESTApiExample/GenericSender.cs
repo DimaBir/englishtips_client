@@ -35,6 +35,8 @@ namespace RESTApiExample
                 Uri uri = new Uri(api);
                 // Creates request to specific API (/api/test), full path needed.
                 HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(uri);
+                // Set the  'Timeout' property of the HttpWebRequest to 10 seconds.
+                httpWebRequest.Timeout = 10000;
                 // Tells to Client what type of request to send, we are sending json, so 'application/json'
                 httpWebRequest.ContentType = "application/json";
 
