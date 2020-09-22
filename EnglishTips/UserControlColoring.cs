@@ -81,35 +81,50 @@ namespace EnglishTips
 
         private void RefreshButton_Click(object sender, EventArgs e)
         {
+            //Task.Run(() => { 
+
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-            
+
             // Remove existing underline
             //Remove_underlines();
 
-            if (Wordiness_checkBox.Checked)
+            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
+            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                text = text_to_check
+            });
+            bool server_is_up = true;
+
+            if (server_is_up && Wordiness_checkBox.Checked)
             {
                 Remove_underline(SystemColorToWdColor(Wordiness_button.BackColor).GetHashCode());
-                Color_wordiness();
+                //Task.Run(() => Color_wordiness(text_to_check));
+                server_is_up = Color_wordiness(json);
             }
-            if (Verbs_checkBox.Checked)
+            if (server_is_up && Verbs_checkBox.Checked)
             {
                 Remove_underline(SystemColorToWdColor(Verbs_button.BackColor).GetHashCode());
-                Color_verbs();
+                //Task.Run(() => Color_verbs(json));
+                server_is_up = Color_verbs(json);
             }
-            if (NounCompound_checkBox.Checked)
+            if (server_is_up && NounCompound_checkBox.Checked)
             {
                 Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
-                Color_noun_compound();
+                //Task.Run(() => Color_noun_compound(json));
+                server_is_up = Color_noun_compound(json);
             }
-            if (UncountableNouns_checkBox.Checked)
+            if (server_is_up && UncountableNouns_checkBox.Checked)
             {
                 Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
-                Color_uncountable_nouns();
+                //Task.Run(() => Color_uncountable_nouns(json));
+                server_is_up = Color_uncountable_nouns(json);
             }
 
             recordObj.EndCustomRecord();
+            //});
         }
 
         void printToRichTextBox(string txt, bool error = false)
@@ -152,12 +167,8 @@ namespace EnglishTips
             }
         }
 
-        public void sendWordinessRequest(string text_to_check)
+        public bool sendWordinessRequest(string json)
         {
-            string json = new JavaScriptSerializer().Serialize(new
-            {
-                text = text_to_check
-            });
             //string api = "https://englishtips.azurewebsites.net/api/wordiness";
             string api = "https://avrl.cs.technion.ac.il:80/api/wordiness";
 
@@ -171,8 +182,10 @@ namespace EnglishTips
             catch
             {
                 printConnectionError();
-                return;
+                return false;
             }
+
+            printToRichTextBox("Marking Wordiness.\nPlease wait...");
 
             foreach (WordinessResponse.WordinessData match in response.Results)
             {
@@ -186,36 +199,32 @@ namespace EnglishTips
 
             hideRichTextBox();
 
-            return;
+            return true;
         }
 
-        void Color_wordiness()
+        bool Color_wordiness(string json)
         {
-            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
-            //Task.Run(() => sendWordinessRequest(text_to_check));
-            sendWordinessRequest(text_to_check);
+            return sendWordinessRequest(json);
         }
 
         void Color_wordiness_Single_Record()
         {
-            // Store all coloring actions in a single record
-            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
-            recordObj.StartCustomRecord("");
-            Color_wordiness();
-            recordObj.EndCustomRecord();
-        }
-
-        void Color_verbs()
-        {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
             string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
-
-            // Creates custom json
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = text_to_check
             });
+
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_wordiness(json);
+            recordObj.EndCustomRecord();
+        }
+
+        bool Color_verbs(string json)
+        {
             //string api = "https://englishtips.azurewebsites.net/api/verbs2";
             string api = "https://avrl.cs.technion.ac.il:80/api/verbs2";
 
@@ -229,10 +238,10 @@ namespace EnglishTips
             catch
             {
                 printConnectionError();
-                return;
+                return false;
             }
 
-            hideRichTextBox();
+            printToRichTextBox("Marking verbs.\nPlease wait...");
 
             // Print out verbs.
             foreach (VerbsResponse verbObject in response)
@@ -244,27 +253,28 @@ namespace EnglishTips
                     rng.Font.UnderlineColor = SystemColorToWdColor(Verbs_button.BackColor);
                 }
             }
+            hideRichTextBox();
+            return true;
         }
 
         void Color_verbs_Single_Record()
         {
-            // Store all coloring actions in a single record
-            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
-            recordObj.StartCustomRecord("");
-            Color_verbs();
-            recordObj.EndCustomRecord();
-        }
-
-        void Color_noun_compound()
-        {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
             string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
-
-            // Creates custom json
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = text_to_check
             });
+
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_verbs(json);
+            recordObj.EndCustomRecord();
+        }
+
+        bool Color_noun_compound(string json)
+        {
             //string api = "https://englishtips.azurewebsites.net/api/noun-compound";
             string api = "https://avrl.cs.technion.ac.il:80/api/noun-compound";
 
@@ -278,10 +288,10 @@ namespace EnglishTips
             catch
             {
                 printConnectionError();
-                return;
+                return false;
             }
 
-            hideRichTextBox();
+            printToRichTextBox("Marking noun compounds.\nPlease wait...");
 
             // Print out verbs.
             foreach (List<int> compoundIndexes in response.Result)
@@ -294,27 +304,30 @@ namespace EnglishTips
                 rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
                 rng.Font.UnderlineColor = SystemColorToWdColor(NounCompound_button.BackColor);
             }
+
+            hideRichTextBox();
+
+            return true;
         }
 
         void Color_noun_compound_Single_Record()
         {
-            // Store all coloring actions in a single record
-            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
-            recordObj.StartCustomRecord("");
-            Color_noun_compound();
-            recordObj.EndCustomRecord();
-        }
-
-        void Color_uncountable_nouns()
-        {
             var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
             string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
-
-            // Creates custom json
             string json = new JavaScriptSerializer().Serialize(new
             {
                 text = text_to_check
             });
+
+            // Store all coloring actions in a single record
+            Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
+            recordObj.StartCustomRecord("");
+            Color_noun_compound(json);
+            recordObj.EndCustomRecord();
+        }
+
+        bool Color_uncountable_nouns(string json)
+        {
             //string api = "https://englishtips.azurewebsites.net/api/uncountable";
             string api = "https://avrl.cs.technion.ac.il:80/api/uncountable";
 
@@ -328,10 +341,10 @@ namespace EnglishTips
             catch
             {
                 printConnectionError();
-                return;
+                return false;
             }
 
-            hideRichTextBox();
+            printToRichTextBox("Marking uncountable nouns.\nPlease wait...");
 
             foreach (UncountableNounResponse uncountableNoun in response)
             {
@@ -343,14 +356,23 @@ namespace EnglishTips
 
                 }
             }
+            hideRichTextBox();
+            return true;
         }
 
         void Color_uncountable_nouns_Single_Record()
         {
+            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
+            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            string json = new JavaScriptSerializer().Serialize(new
+            {
+                text = text_to_check
+            });
+
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-            Color_uncountable_nouns();
+            Color_uncountable_nouns(json);
             recordObj.EndCustomRecord();
         }
 
