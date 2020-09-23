@@ -2,7 +2,7 @@
 
 namespace TextSummarizationAPI
 {
-    class TextSummarizationResponse
+    public class TextSummarizationResponse
     {
         [JsonProperty("result")] 
         public string Summary { get; set; }

@@ -210,6 +210,24 @@
     <Compile Include="UserControlColoring.Designer.cs">
       <DependentUpon>UserControlColoring.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlDictionary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlDictionary.Designer.cs">
+      <DependentUpon>UserControlDictionary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlPhrases.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlPhrases.Designer.cs">
+      <DependentUpon>UserControlPhrases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlSummary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlSummary.Designer.cs">
+      <DependentUpon>UserControlSummary.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlSynonyms.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -230,6 +248,7 @@
     </Compile>
     <EmbeddedResource Include="ribbon.resx">
       <DependentUpon>ribbon.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -239,12 +258,22 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="UserControlAnalytics.resx">
       <DependentUpon>UserControlAnalytics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlColoring.resx">
       <DependentUpon>UserControlColoring.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlDictionary.resx">
+      <DependentUpon>UserControlDictionary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlPhrases.resx">
+      <DependentUpon>UserControlPhrases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlSummary.resx">
+      <DependentUpon>UserControlSummary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlSynonyms.resx">
       <DependentUpon>UserControlSynonyms.cs</DependentUpon>
@@ -290,6 +319,10 @@
       <Project>{d6e895c7-93ea-4243-972d-af618af78198}</Project>
       <Name>ConfusedWordsAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DictionaryAPI\DictionaryAPI.csproj">
+      <Project>{ff6da7fe-71d3-4c62-b5dd-05d6eb0dd7ef}</Project>
+      <Name>DictionaryAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleTranslateAPI\GoogleTranslateAPI.csproj">
       <Project>{4e5affb7-567d-4ca3-8b2c-0a4413be4cdc}</Project>
       <Name>GoogleTranslateAPI</Name>
@@ -322,6 +355,10 @@
       <Project>{0767d074-5104-4b5b-a1b8-c393310d9ae2}</Project>
       <Name>SynonymAPI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TextSummarizationAPI\TextSummarizationAPI.csproj">
+      <Project>{14941b2d-8073-4069-a070-7bfcaeffaae6}</Project>
+      <Name>TextSummarizationAPI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TopWordsAPI\TopWordsAPI.csproj">
       <Project>{86c41b12-a8ae-4425-af0d-66965b1af5c8}</Project>
       <Name>TopWordsAPI</Name>
@@ -329,6 +366,10 @@
     <ProjectReference Include="..\UncountableNoun\UncountableNoun.csproj">
       <Project>{80e4248d-fe16-4e13-aaf5-0915514556cd}</Project>
       <Name>UncountableNoun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UsefulPhrasesAPI\UsefulPhrasesAPI.csproj">
+      <Project>{0a4875c4-c28a-45cf-9684-264f08cb5ba6}</Project>
+      <Name>UsefulPhrasesAPI</Name>
     </ProjectReference>
     <ProjectReference Include="..\VerbsAPI\VerbsAPI.csproj">
       <Project>{3793203b-02f4-472f-b270-762397532e9b}</Project>
@@ -338,6 +379,9 @@
       <Project>{612bcefb-3714-4f77-bbfc-b7591ee03057}</Project>
       <Name>WordinessAPI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

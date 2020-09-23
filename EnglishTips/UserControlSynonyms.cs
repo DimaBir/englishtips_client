@@ -66,7 +66,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(Constants.no_connection_error, true);
+                printToRichTextBox(Constants.connection_error, true);
                 return;
             }
             
@@ -104,7 +104,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(Constants.no_connection_error, true);
+                printToRichTextBox(Constants.connection_error, true);
                 return;
             }
 
@@ -137,7 +137,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(Constants.no_connection_error, true);
+                printToRichTextBox(Constants.connection_error, true);
                 return;
             }
 
@@ -175,7 +175,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(Constants.no_connection_error, true);
+                printToRichTextBox(Constants.connection_error, true);
                 return;
             }
 

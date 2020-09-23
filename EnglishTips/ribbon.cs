@@ -81,11 +81,6 @@ namespace EnglishTips
             }
         }
 
-        private void toggleButton2_Click(object sender, RibbonControlEventArgs e)
-        {
-
-        }
-
         private void Translate_Click(object sender, RibbonControlEventArgs e)
         {
             Window window = Globals.ThisAddIn.getActiveWindow();
@@ -183,6 +178,60 @@ namespace EnglishTips
                 if (hasValue)
                 {
                     tp.AnalyticsTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
+            }
+        }
+
+        private void Dictionary_Click(object sender, RibbonControlEventArgs e)
+        {
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
+            {
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.DictionaryTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
+            }
+        }
+
+        private void Phrases_Click(object sender, RibbonControlEventArgs e)
+        {
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
+            {
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.PhrasesTaskPane.Visible ^= true;
+                }
+                else
+                {
+                    Globals.ThisAddIn.CreateTaskPaneWrapper();
+                }
+            }
+        }
+
+        private void Summary_Click(object sender, RibbonControlEventArgs e)
+        {
+            Window window = Globals.ThisAddIn.getActiveWindow();
+            if (window != null)
+            {
+                ThisAddIn.TaskPanes tp;
+                bool hasValue = Globals.ThisAddIn.TaskPanesDictionary.TryGetValue(Globals.ThisAddIn.getActiveWindow(), out tp);
+                if (hasValue)
+                {
+                    tp.SummaryTaskPane.Visible ^= true;
                 }
                 else
                 {

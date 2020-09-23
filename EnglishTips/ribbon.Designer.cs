@@ -39,6 +39,7 @@
             this.group1 = this.Factory.CreateRibbonGroup();
             this.ReadAloud = this.Factory.CreateRibbonGroup();
             this.group4 = this.Factory.CreateRibbonGroup();
+            this.group3 = this.Factory.CreateRibbonGroup();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.Mark = this.Factory.CreateRibbonToggleButton();
             this.Tips = this.Factory.CreateRibbonToggleButton();
@@ -46,13 +47,18 @@
             this.StartReadingButton = this.Factory.CreateRibbonButton();
             this.StopReadingButton = this.Factory.CreateRibbonButton();
             this.Translate = this.Factory.CreateRibbonToggleButton();
-            this.toggleButton2 = this.Factory.CreateRibbonToggleButton();
             this.Synonyms = this.Factory.CreateRibbonToggleButton();
+            this.Phrases = this.Factory.CreateRibbonToggleButton();
+            this.Summary = this.Factory.CreateRibbonToggleButton();
             this.AboutButton = this.Factory.CreateRibbonButton();
+            this.UsefulPhrasesToggleButton = this.Factory.CreateRibbonToggleButton();
+            this.SummaryToggleButton = this.Factory.CreateRibbonToggleButton();
+            this.Dictionary = this.Factory.CreateRibbonToggleButton();
             this.tab2.SuspendLayout();
             this.group1.SuspendLayout();
             this.ReadAloud.SuspendLayout();
             this.group4.SuspendLayout();
+            this.group3.SuspendLayout();
             this.group2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +67,7 @@
             this.tab2.Groups.Add(this.group1);
             this.tab2.Groups.Add(this.ReadAloud);
             this.tab2.Groups.Add(this.group4);
+            this.tab2.Groups.Add(this.group3);
             this.tab2.Groups.Add(this.group2);
             this.tab2.Label = "MySupervisor";
             this.tab2.Name = "tab2";
@@ -83,10 +90,17 @@
             // group4
             // 
             this.group4.Items.Add(this.Translate);
-            this.group4.Items.Add(this.toggleButton2);
+            this.group4.Items.Add(this.Dictionary);
             this.group4.Items.Add(this.Synonyms);
             this.group4.Label = "Dictionary";
             this.group4.Name = "group4";
+            // 
+            // group3
+            // 
+            this.group3.Items.Add(this.Phrases);
+            this.group3.Items.Add(this.Summary);
+            this.group3.Label = "group3";
+            this.group3.Name = "group3";
             // 
             // group2
             // 
@@ -147,22 +161,30 @@
             this.Translate.ShowImage = true;
             this.Translate.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Translate_Click);
             // 
-            // toggleButton2
-            // 
-            this.toggleButton2.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.toggleButton2.Enabled = false;
-            this.toggleButton2.Image = ((System.Drawing.Image)(resources.GetObject("toggleButton2.Image")));
-            this.toggleButton2.Label = "Oxford";
-            this.toggleButton2.Name = "toggleButton2";
-            this.toggleButton2.ShowImage = true;
-            this.toggleButton2.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.toggleButton2_Click);
-            // 
             // Synonyms
             // 
             this.Synonyms.Label = "Synonyms";
             this.Synonyms.Name = "Synonyms";
             this.Synonyms.ShowImage = true;
             this.Synonyms.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Synonyms_Click);
+            // 
+            // Phrases
+            // 
+            this.Phrases.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Phrases.Image = ((System.Drawing.Image)(resources.GetObject("Phrases.Image")));
+            this.Phrases.Label = "Useful phrases";
+            this.Phrases.Name = "Phrases";
+            this.Phrases.ShowImage = true;
+            this.Phrases.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Phrases_Click);
+            // 
+            // Summary
+            // 
+            this.Summary.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Summary.Image = ((System.Drawing.Image)(resources.GetObject("Summary.Image")));
+            this.Summary.Label = "Summary";
+            this.Summary.Name = "Summary";
+            this.Summary.ShowImage = true;
+            this.Summary.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Summary_Click);
             // 
             // AboutButton
             // 
@@ -172,6 +194,31 @@
             this.AboutButton.Name = "AboutButton";
             this.AboutButton.ShowImage = true;
             this.AboutButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.AboutButton_Click);
+            // 
+            // UsefulPhrasesToggleButton
+            // 
+            this.UsefulPhrasesToggleButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.UsefulPhrasesToggleButton.Image = ((System.Drawing.Image)(resources.GetObject("UsefulPhrasesToggleButton.Image")));
+            this.UsefulPhrasesToggleButton.Label = "Useful phrases";
+            this.UsefulPhrasesToggleButton.Name = "UsefulPhrasesToggleButton";
+            this.UsefulPhrasesToggleButton.ShowImage = true;
+            // 
+            // SummaryToggleButton
+            // 
+            this.SummaryToggleButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.SummaryToggleButton.Image = ((System.Drawing.Image)(resources.GetObject("SummaryToggleButton.Image")));
+            this.SummaryToggleButton.Label = "Summary";
+            this.SummaryToggleButton.Name = "SummaryToggleButton";
+            this.SummaryToggleButton.ShowImage = true;
+            // 
+            // Dictionary
+            // 
+            this.Dictionary.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.Dictionary.Image = ((System.Drawing.Image)(resources.GetObject("Dictionary.Image")));
+            this.Dictionary.Label = "Dictionary";
+            this.Dictionary.Name = "Dictionary";
+            this.Dictionary.ShowImage = true;
+            this.Dictionary.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Dictionary_Click);
             // 
             // ribbon
             // 
@@ -187,6 +234,8 @@
             this.ReadAloud.PerformLayout();
             this.group4.ResumeLayout(false);
             this.group4.PerformLayout();
+            this.group3.ResumeLayout(false);
+            this.group3.PerformLayout();
             this.group2.ResumeLayout(false);
             this.group2.PerformLayout();
             this.ResumeLayout(false);
@@ -199,7 +248,6 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup ReadAloud;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group4;
-        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton toggleButton2;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Mark;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StartReadingButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton StopReadingButton;
@@ -209,6 +257,12 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Analytics;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group2;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton AboutButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup group3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Phrases;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Summary;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton UsefulPhrasesToggleButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton SummaryToggleButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton Dictionary;
     }
 
     partial class ThisRibbonCollection

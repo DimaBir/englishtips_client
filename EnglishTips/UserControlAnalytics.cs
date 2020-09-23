@@ -56,7 +56,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(AnalyticsRichTextBox, Constants.no_connection_error);
+                printToRichTextBox(AnalyticsRichTextBox, Constants.connection_error);
                 return false;
             }
 
@@ -88,7 +88,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(AnalyticsRichTextBox, Constants.no_connection_error);
+                printToRichTextBox(AnalyticsRichTextBox, Constants.connection_error);
                 return false;
             }
 

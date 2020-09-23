@@ -2,7 +2,7 @@
 
 namespace DictionaryAPI
 {
-    class DictionaryResponse
+    public class DictionaryResponse
     {
         [JsonProperty("result")]
         public string Definition { get; set; }

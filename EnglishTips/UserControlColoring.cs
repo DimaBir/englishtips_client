@@ -161,7 +161,7 @@ namespace EnglishTips
 
         void printConnectionError()
         {
-            printToRichTextBox(Constants.no_connection_error, true);
+            printToRichTextBox(Constants.connection_error, true);
         }
 
         void hideRichTextBox()

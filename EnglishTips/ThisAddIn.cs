@@ -20,7 +20,7 @@ namespace EnglishTips
 {
     static class Constants
     {
-        public const string no_connection_error = 
+        public const string connection_error = 
             "Can't connect to the server.\nPossible problems:\n\n" +
             " - No internet connection\n" +
             " - Firewall blocks Word\n" +
@@ -36,6 +36,9 @@ namespace EnglishTips
             public Microsoft.Office.Tools.CustomTaskPane SynonymsTaskPane;
             public Microsoft.Office.Tools.CustomTaskPane TipsTaskPane;
             public Microsoft.Office.Tools.CustomTaskPane AnalyticsTaskPane;
+            public Microsoft.Office.Tools.CustomTaskPane DictionaryTaskPane;
+            public Microsoft.Office.Tools.CustomTaskPane PhrasesTaskPane;
+            public Microsoft.Office.Tools.CustomTaskPane SummaryTaskPane;
         }
 
         public Dictionary<Microsoft.Office.Interop.Word.Window, TaskPanes> TaskPanesDictionary;
@@ -229,12 +232,33 @@ namespace EnglishTips
             AnalyticsTaskPane.VisibleChanged += new EventHandler(AnalyticsCustomTaskPane_VisibleChanged);
             AnalyticsTaskPane.Width = 335;
 
+            UserControlDictionary userControlDictionary = new UserControlDictionary();
+            Microsoft.Office.Tools.CustomTaskPane DictionaryTaskPane = this.CustomTaskPanes.Add(userControlDictionary, "Dictionary");
+            DictionaryTaskPane.Visible = false;
+            DictionaryTaskPane.VisibleChanged += new EventHandler(DictionaryCustomTaskPane_VisibleChanged);
+            DictionaryTaskPane.Width = 335;
+
+            UserControlPhrases userControlPhrases = new UserControlPhrases();
+            Microsoft.Office.Tools.CustomTaskPane PhrasesTaskPane = this.CustomTaskPanes.Add(userControlPhrases, "Useful phrases");
+            PhrasesTaskPane.Visible = false;
+            PhrasesTaskPane.VisibleChanged += new EventHandler(PhrasesCustomTaskPane_VisibleChanged);
+            PhrasesTaskPane.Width = 335;
+
+            UserControlSummary userControlSummary = new UserControlSummary();
+            Microsoft.Office.Tools.CustomTaskPane SummaryTaskPane = this.CustomTaskPanes.Add(userControlSummary, "Summary");
+            SummaryTaskPane.Visible = false;
+            SummaryTaskPane.VisibleChanged += new EventHandler(SummaryCustomTaskPane_VisibleChanged);
+            SummaryTaskPane.Width = 335;
+
             TaskPanes tp = new TaskPanes();
             tp.MarkTaskPane = MarkTaskPane;
             tp.TranslateTaskPane = TranslateTaskPane;
             tp.SynonymsTaskPane = SynonymsTaskPane;
             tp.TipsTaskPane = TipsTaskPane;
             tp.AnalyticsTaskPane = AnalyticsTaskPane;
+            tp.DictionaryTaskPane = DictionaryTaskPane;
+            tp.PhrasesTaskPane = PhrasesTaskPane;
+            tp.SummaryTaskPane = SummaryTaskPane;
 
             // Save userControlColoring with current window
             TaskPanesDictionary.Add(window, tp);
@@ -252,6 +276,9 @@ namespace EnglishTips
                 Globals.Ribbons.Coloring.Synonyms.Checked = tp.SynonymsTaskPane.Visible;
                 Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
                 Globals.Ribbons.Coloring.Analytics.Checked = tp.AnalyticsTaskPane.Visible;
+                Globals.Ribbons.Coloring.Dictionary.Checked = tp.DictionaryTaskPane.Visible;
+                Globals.Ribbons.Coloring.Phrases.Checked = tp.PhrasesTaskPane.Visible;
+                Globals.Ribbons.Coloring.Summary.Checked = tp.SummaryTaskPane.Visible;
             }
             else
             {
@@ -276,6 +303,9 @@ namespace EnglishTips
                     Globals.Ribbons.Coloring.Synonyms.Checked = tp.SynonymsTaskPane.Visible;
                     Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
                     Globals.Ribbons.Coloring.Analytics.Checked = tp.AnalyticsTaskPane.Visible;
+                    Globals.Ribbons.Coloring.Dictionary.Checked = tp.DictionaryTaskPane.Visible;
+                    Globals.Ribbons.Coloring.Phrases.Checked = tp.PhrasesTaskPane.Visible;
+                    Globals.Ribbons.Coloring.Summary.Checked = tp.SummaryTaskPane.Visible;
                 }
             }
         }
@@ -301,6 +331,21 @@ namespace EnglishTips
         }
 
         private void AnalyticsCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
+        {
+            visibleChanged();
+        }
+
+        private void DictionaryCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
+        {
+            visibleChanged();
+        }
+
+        private void PhrasesCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
+        {
+            visibleChanged();
+        }
+
+        private void SummaryCustomTaskPane_VisibleChanged(object sender, System.EventArgs e)
         {
             visibleChanged();
         }

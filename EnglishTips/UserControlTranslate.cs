@@ -76,7 +76,7 @@ namespace EnglishTips
             }
             catch
             {
-                printToRichTextBox(textBox, Constants.no_connection_error, "en");
+                printToRichTextBox(textBox, Constants.connection_error, "en");
                 return;
             }
 

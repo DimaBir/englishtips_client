@@ -155,7 +155,7 @@ namespace EnglishTips
 
         void printConnectionError()
         {
-            printToRichTextBox(Constants.no_connection_error, true);
+            printToRichTextBox(Constants.connection_error, true);
         }
 
         private void richTextBox1_TextChanged(object sender, EventArgs e)
