@@ -74,7 +74,7 @@ namespace EnglishTips
 
             string json = new JavaScriptSerializer().Serialize(new
             {
-                text = selection.Text
+                word = selection.Text
             });
 
             printToRichTextBox(DictionaryRichTextBox, "Contacting server. Please wait...");
