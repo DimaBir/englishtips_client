@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlPhrases : UserControl
     {

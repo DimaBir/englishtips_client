@@ -2,7 +2,7 @@
 using System.Speech.Synthesis;
 
 
-namespace EnglishTips
+namespace MySupervisor
 {
     /// <summary>
     /// Example of static class, doesnt need to be initialized, just use it like namespace.

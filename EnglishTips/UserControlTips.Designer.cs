@@ -1,4 +1,4 @@
-﻿namespace EnglishTips
+﻿namespace MySupervisor
 {
     partial class UserControlTips
     {
@@ -30,7 +30,6 @@
         {
             this.SentenceStructure = new System.Windows.Forms.CheckBox();
             this.ConfusedWords = new System.Windows.Forms.CheckBox();
-            this.Examples = new System.Windows.Forms.CheckBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -55,24 +54,13 @@
             this.ConfusedWords.UseVisualStyleBackColor = true;
             this.ConfusedWords.CheckedChanged += new System.EventHandler(this.ConfusedWords_CheckedChanged);
             // 
-            // Examples
-            // 
-            this.Examples.AutoSize = true;
-            this.Examples.Enabled = false;
-            this.Examples.Location = new System.Drawing.Point(3, 57);
-            this.Examples.Name = "Examples";
-            this.Examples.Size = new System.Drawing.Size(272, 21);
-            this.Examples.TabIndex = 2;
-            this.Examples.Text = "Sentence examples with selected word";
-            this.Examples.UseVisualStyleBackColor = true;
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(3, 84);
+            this.richTextBox1.Location = new System.Drawing.Point(3, 57);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(314, 553);
+            this.richTextBox1.Size = new System.Drawing.Size(314, 580);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -83,7 +71,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.Examples);
             this.Controls.Add(this.ConfusedWords);
             this.Controls.Add(this.SentenceStructure);
             this.Name = "UserControlTips";
@@ -97,7 +84,6 @@
 
         private System.Windows.Forms.CheckBox SentenceStructure;
         private System.Windows.Forms.CheckBox ConfusedWords;
-        private System.Windows.Forms.CheckBox Examples;
         private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

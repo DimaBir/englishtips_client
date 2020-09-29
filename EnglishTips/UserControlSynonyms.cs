@@ -15,7 +15,7 @@ using AcrAPI;
 using HyponAPI;
 using HyperAPI;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlSynonyms : UserControl
     {

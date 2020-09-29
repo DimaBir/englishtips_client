@@ -16,7 +16,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     static class Constants
     {
@@ -277,7 +277,7 @@ namespace EnglishTips
                 Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
                 Globals.Ribbons.Coloring.Analytics.Checked = tp.AnalyticsTaskPane.Visible;
                 Globals.Ribbons.Coloring.Dictionary.Checked = tp.DictionaryTaskPane.Visible;
-                Globals.Ribbons.Coloring.Phrases.Checked = tp.PhrasesTaskPane.Visible;
+                //Globals.Ribbons.Coloring.Phrases.Checked = tp.PhrasesTaskPane.Visible;
                 Globals.Ribbons.Coloring.Summary.Checked = tp.SummaryTaskPane.Visible;
             }
             else
@@ -304,7 +304,7 @@ namespace EnglishTips
                     Globals.Ribbons.Coloring.Tips.Checked = tp.TipsTaskPane.Visible;
                     Globals.Ribbons.Coloring.Analytics.Checked = tp.AnalyticsTaskPane.Visible;
                     Globals.Ribbons.Coloring.Dictionary.Checked = tp.DictionaryTaskPane.Visible;
-                    Globals.Ribbons.Coloring.Phrases.Checked = tp.PhrasesTaskPane.Visible;
+                    //Globals.Ribbons.Coloring.Phrases.Checked = tp.PhrasesTaskPane.Visible;
                     Globals.Ribbons.Coloring.Summary.Checked = tp.SummaryTaskPane.Visible;
                 }
             }

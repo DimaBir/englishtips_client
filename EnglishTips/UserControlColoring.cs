@@ -15,7 +15,7 @@ using UncountableNoun;
 using RESTApiExample;
 using System.Web.Script.Serialization;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlMark : UserControl
     {
@@ -180,7 +180,7 @@ namespace EnglishTips
 
         public bool sendWordinessRequest(string json)
         {
-            //string api = "https://englishtips.azurewebsites.net/api/wordiness";
+            //string api = "https://MySupervisor.azurewebsites.net/api/wordiness";
             string api = "https://avrl.cs.technion.ac.il:80/api/wordiness";
 
             // Send request
@@ -236,7 +236,7 @@ namespace EnglishTips
 
         bool Color_verbs(string json)
         {
-            //string api = "https://englishtips.azurewebsites.net/api/verbs2";
+            //string api = "https://MySupervisor.azurewebsites.net/api/verbs2";
             string api = "https://avrl.cs.technion.ac.il:80/api/verbs2";
 
             // Send request
@@ -286,7 +286,7 @@ namespace EnglishTips
 
         bool Color_noun_compound(string json)
         {
-            //string api = "https://englishtips.azurewebsites.net/api/noun-compound";
+            //string api = "https://MySupervisor.azurewebsites.net/api/noun-compound";
             string api = "https://avrl.cs.technion.ac.il:80/api/noun-compound";
 
             // Send request
@@ -339,7 +339,7 @@ namespace EnglishTips
 
         bool Color_uncountable_nouns(string json)
         {
-            //string api = "https://englishtips.azurewebsites.net/api/uncountable";
+            //string api = "https://MySupervisor.azurewebsites.net/api/uncountable";
             string api = "https://avrl.cs.technion.ac.il:80/api/uncountable";
 
             // Send request

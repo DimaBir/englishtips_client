@@ -284,7 +284,7 @@
     <EmbeddedResource Include="UserControlTranslate.resx">
       <DependentUpon>UserControlTranslate.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="EnglishTips_TemporaryKey.pfx" />
+    <None Include="MySupervisor_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

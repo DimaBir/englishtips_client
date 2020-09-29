@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RESTApiExample
 {
-    public class EnglishTipsResponse
+    public class MySupervisorResponse
     {
         public string Text { get; set; }
         public List<int> Indexes { get; set; }

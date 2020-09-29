@@ -14,7 +14,7 @@ using System.Web.Script.Serialization;
 using RESTApiExample;
 using DictionaryAPI;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlDictionary : UserControl
     {

@@ -12,7 +12,7 @@ using System.Web.Script.Serialization;
 using RESTApiExample;
 using TextSummarizationAPI;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlSummary : UserControl
     {

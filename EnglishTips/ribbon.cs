@@ -10,11 +10,11 @@ using System.Web.Script.Serialization;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Speech.Synthesis;
-using static EnglishTips.ThisAddIn;
+using static MySupervisor.ThisAddIn;
 using Microsoft.Office.Interop.Word;
 using System.Windows.Forms;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class ribbon
     {

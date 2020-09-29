@@ -13,7 +13,7 @@ using Microsoft.Office.Interop;
 using ConfusedWordsAPI;
 using SentenceStructureAPI;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlTips : UserControl
     {

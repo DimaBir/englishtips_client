@@ -11,7 +11,7 @@ using Word = Microsoft.Office.Interop.Word;
 using System.Web.Script.Serialization;
 using RESTApiExample;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlTranslate : UserControl
     {

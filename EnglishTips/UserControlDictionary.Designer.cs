@@ -1,4 +1,4 @@
-﻿namespace EnglishTips
+﻿namespace MySupervisor
 {
     partial class UserControlDictionary
     {

@@ -7,7 +7,7 @@ namespace RESTApiExample
 {
     class Sender
     {
-        public EnglishTipsResponse Send(string json, string api)
+        public MySupervisorResponse Send(string json, string api)
         {
             // Creates request to specific API (/api/test), full path needed.
             HttpWebRequest httpWebRequest = (HttpWebRequest)WebRequest.Create(api);
@@ -30,7 +30,7 @@ namespace RESTApiExample
             
             // Just reads respons and returns them, we expect here only one response so we will return it, but if there will be more
             // in the future we can use List<string>
-            EnglishTipsResponse responseJsonObject;
+            MySupervisorResponse responseJsonObject;
 
             // Statemnt with ?? called Nullable it checks if httpResponse.GetResponseStream() is not Null, if it is null we will throw exception, else we will continue
             using (StreamReader streamReader = new StreamReader(httpResponse.GetResponseStream() ?? throw new InvalidOperationException()))
@@ -38,7 +38,7 @@ namespace RESTApiExample
                 string response = streamReader.ReadToEnd();
 
                 // Here we pass our class as template that expected to be deserialized from response stream
-                responseJsonObject = JsonConvert.DeserializeObject<EnglishTipsResponse>(response);
+                responseJsonObject = JsonConvert.DeserializeObject<MySupervisorResponse>(response);
             }
 
             // Just to be more informative if server returned 200 (OK) status but no text (maybe some logic error om server side) we will

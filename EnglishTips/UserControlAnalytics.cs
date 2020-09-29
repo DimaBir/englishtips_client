@@ -13,7 +13,7 @@ using RESTApiExample;
 using TopWordsAPI;
 using AvgSenLenAPI;
 
-namespace EnglishTips
+namespace MySupervisor
 {
     public partial class UserControlAnalytics : UserControl
     {
