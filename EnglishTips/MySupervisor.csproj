@@ -24,7 +24,7 @@
     <ProjectGuid>{22600C67-F8ED-4F33-A202-6723FF81AA8D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <RootNamespace>EnglishTips</RootNamespace>
+    <RootNamespace>MySupervisor</RootNamespace>
     <AssemblyName>MySupervisor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <DefineConstants>VSTO40</DefineConstants>
@@ -41,7 +41,7 @@
     <ProductName>MySupervisor</ProductName>
     <PublisherName />
     <SupportUrl />
-    <FriendlyName>EnglishTips</FriendlyName>
+    <FriendlyName>MySupervisor</FriendlyName>
     <OfficeApplicationDescription />
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
@@ -394,7 +394,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>EnglishTips_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>MySupervisor_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E94847646C0C84ECC69AE218B06AE8DAB7B9FBE7</ManifestCertificateThumbprint>
@@ -411,7 +411,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="Word" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="15.0" VstxVersion="4.0" ApplicationType="Word" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\16.0\Word\InstallRoot\Path#WINWORD.EXE" DebugInfoCommandLine="/x" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
-        <Host Name="Word" GeneratedCodeNamespace="EnglishTips" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
+        <Host Name="Word" GeneratedCodeNamespace="MySupervisor" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
           <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" PublishedHash="1CB063B503CE5B50EF730B47A28FDF6FCF1EBC22" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>
