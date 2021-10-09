@@ -28,7 +28,7 @@ namespace GoogleTranslateAPI
                 language = destination_language
             });
 
-            string api = "https://avrl.cs.technion.ac.il:80/api/translate";
+            string api = "http://164.90.160.20/api/translate";
 
             // Sends created json to server and returns:
             // returns: string

@@ -17,7 +17,7 @@ namespace UsefulPhrasesAPI
             Stopwatch sw = new Stopwatch();
             sw.Start();
 
-            string api = "https://avrl.cs.technion.ac.il:80/api/useful";
+            string api = "http://164.90.160.20/api/useful";
 
             // You get response as a list of keys and a list of values separately, pay attention: 
             // as a json send NULL, and as a method GET method

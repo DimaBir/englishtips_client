@@ -24,7 +24,7 @@ namespace DictionaryAPI
                 word = word_to_check
             });
 
-            string api = "https://avrl.cs.technion.ac.il:80/api/dictionary";
+            string api = "http://164.90.160.20/api/dictionary";
 
 
             DictionaryResponse response =

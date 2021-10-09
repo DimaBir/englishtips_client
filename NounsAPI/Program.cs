@@ -29,7 +29,7 @@ namespace NounsAPI
                 text = text_to_check
             });
 
-            string api = "https://avrl.cs.technion.ac.il:80/api/noun-compound";
+            string api = "http://164.90.160.20/api/noun-compound";
 
 
             NounCompoundResponse response =

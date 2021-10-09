@@ -19,10 +19,51 @@ namespace MySupervisor
 {
     public partial class UserControlMark : UserControl
     {
+        private static bool isWordinessMarked = false;
+        private static bool isVerbsMarked = false;
+        private static bool isNounsMarked = false;
+        private static bool isUncountableMarked = false;
         public UserControlMark()
         {
             InitializeComponent();
             //Task.Run(() => sendWordinessRequest(""));
+        }
+        public bool sendWordinessRequestRange(Word.Range range, string json)
+        {
+            //string api = "https://MySupervisor.azurewebsites.net/api/wordiness";
+            string api = "http://164.90.160.20/api/wordiness";
+
+            // Send request
+            WordinessResponse response;
+            try
+            {
+                printToRichTextBox("Contacting server.\nPlease wait...");
+                response = GenericSender<WordinessResponse>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return false;
+            }
+
+            printToRichTextBox("Marking Wordiness.\nPlease wait...");
+
+            foreach (WordinessResponse.WordinessData match in response.Results)
+            {
+                foreach (int index in match.Indexes)
+                {
+                    //Word.Range rng = Globals.ThisAddIn.Application.ActiveDocument.Range(index, index + match.Length);
+                    Word.Range rng = Globals.ThisAddIn.Application.Selection.Range;
+                    rng.Start = range.Start + index;
+                    rng.End = range.Start + index + match.Length;
+                    rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
+                    rng.Font.UnderlineColor = SystemColorToWdColor(Wordiness_button.BackColor);
+                }
+            }
+
+            hideRichTextBox();
+
+            return true;
         }
 
         private void UserControlColoring_Load(object sender, EventArgs e)
@@ -218,26 +259,31 @@ namespace MySupervisor
             return sendWordinessRequest(json);
         }
 
+        bool Color_wordiness_selection(Word.Range range, string json)
+        {
+            return sendWordinessRequestRange(range, json);
+        }
+
         void Color_wordiness_Single_Record()
         {
-            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
+
             string json = new JavaScriptSerializer().Serialize(new
             {
-                text = text_to_check
+                text = selection.Text
             });
 
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-            Color_wordiness(json);
+            Color_wordiness_selection(selection, json);
             recordObj.EndCustomRecord();
         }
 
         bool Color_verbs(string json)
         {
             //string api = "https://MySupervisor.azurewebsites.net/api/verbs2";
-            string api = "https://avrl.cs.technion.ac.il:80/api/verbs2";
+            string api = "http://164.90.160.20/api/verbs2";
 
             // Send request
             List<VerbsResponse> response;
@@ -268,26 +314,62 @@ namespace MySupervisor
             return true;
         }
 
+        bool Color_verbs_selection(Word.Range range, string json)
+        {
+            //string api = "https://MySupervisor.azurewebsites.net/api/verbs2";
+            string api = "http://164.90.160.20/api/verbs2";
+
+            // Send request
+            List<VerbsResponse> response;
+            try
+            {
+                printToRichTextBox("Contacting server.\nPlease wait...");
+                response = GenericSender<List<VerbsResponse>>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return false;
+            }
+
+            printToRichTextBox("Marking verbs.\nPlease wait...");
+
+            // Print out verbs.
+            foreach (VerbsResponse verbObject in response)
+            {
+                foreach (int index in verbObject.Indexes)
+                {
+                    Word.Range rng = Globals.ThisAddIn.Application.Selection.Range;
+                    rng.Start = range.Start + index;
+                    rng.End = range.Start + index + verbObject.VerbLength;
+                    rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
+                    rng.Font.UnderlineColor = SystemColorToWdColor(Verbs_button.BackColor);
+                }
+            }
+            hideRichTextBox();
+            return true;
+        }
+
         void Color_verbs_Single_Record()
         {
-            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
+
             string json = new JavaScriptSerializer().Serialize(new
             {
-                text = text_to_check
+                text = selection.Text
             });
 
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-            Color_verbs(json);
+            Color_verbs_selection(selection, json);
             recordObj.EndCustomRecord();
         }
 
         bool Color_noun_compound(string json)
         {
             //string api = "https://MySupervisor.azurewebsites.net/api/noun-compound";
-            string api = "https://avrl.cs.technion.ac.il:80/api/noun-compound";
+            string api = "http://164.90.160.20/api/noun-compound";
 
             // Send request
             NounCompoundResponse response;
@@ -321,26 +403,65 @@ namespace MySupervisor
             return true;
         }
 
+        bool Color_noun_compound_selection(Word.Range range, string json)
+        {
+            //string api = "https://MySupervisor.azurewebsites.net/api/noun-compound";
+            string api = "http://164.90.160.20/api/noun-compound";
+
+            // Send request
+            NounCompoundResponse response;
+            try
+            {
+                printToRichTextBox("Contacting server.\nPlease wait...");
+                response = GenericSender<NounCompoundResponse>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return false;
+            }
+
+            printToRichTextBox("Marking noun compounds.\nPlease wait...");
+
+            // Print out verbs.
+            foreach (List<int> compoundIndexes in response.Result)
+            {
+                int startIndex = compoundIndexes[0];
+                int length = compoundIndexes[1];
+                //String nounCompound = text_to_check.Substring(startIndex, length + 1); // PAY ATTEMTION ADDED 1 MANUALLY TO LENGTH IN ORDER TO PRINT WHOLE WORD
+
+                Word.Range rng = Globals.ThisAddIn.Application.Selection.Range;
+                rng.Start = range.Start + startIndex;
+                rng.End = range.Start + startIndex + length + 1;
+                rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
+                rng.Font.UnderlineColor = SystemColorToWdColor(NounCompound_button.BackColor);
+            }
+
+            hideRichTextBox();
+
+            return true;
+        }
+
         void Color_noun_compound_Single_Record()
         {
-            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
+
             string json = new JavaScriptSerializer().Serialize(new
             {
-                text = text_to_check
+                text = selection.Text
             });
 
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-            Color_noun_compound(json);
+            Color_noun_compound_selection(selection, json);
             recordObj.EndCustomRecord();
         }
 
         bool Color_uncountable_nouns(string json)
         {
             //string api = "https://MySupervisor.azurewebsites.net/api/uncountable";
-            string api = "https://avrl.cs.technion.ac.il:80/api/uncountable";
+            string api = "http://164.90.160.20/api/uncountable";
 
             // Send request
             List<UncountableNounResponse> response;
@@ -371,21 +492,58 @@ namespace MySupervisor
             return true;
         }
 
+        bool Color_uncountable_nouns_selection(Word.Range range, string json)
+        {
+            //string api = "https://MySupervisor.azurewebsites.net/api/uncountable";
+            string api = "http://164.90.160.20/api/uncountable";
+
+            // Send request
+            List<UncountableNounResponse> response;
+            try
+            {
+                printToRichTextBox("Contacting server.\nPlease wait...");
+                response = GenericSender<List<UncountableNounResponse>>.Send(json, api: api, "POST");
+            }
+            catch
+            {
+                printConnectionError();
+                return false;
+            }
+
+            printToRichTextBox("Marking uncountable nouns.\nPlease wait...");
+
+            foreach (UncountableNounResponse uncountableNoun in response)
+            {
+                foreach (int index in uncountableNoun.Indexes)
+                {
+                    Word.Range rng = Globals.ThisAddIn.Application.Selection.Range;
+                    rng.Start = range.Start + index;
+                    rng.End = range.Start + index + uncountableNoun.Length;
+                    rng.Font.Underline = Word.WdUnderline.wdUnderlineThick;
+                    rng.Font.UnderlineColor = SystemColorToWdColor(UncountableNouns_button.BackColor);
+
+                }
+            }
+            hideRichTextBox();
+            return true;
+        }
+
         void Color_uncountable_nouns_Single_Record()
         {
-            var activeDocument = Globals.ThisAddIn.Application.ActiveDocument;
-            string text_to_check = activeDocument.Range(activeDocument.Content.Start, activeDocument.Content.End).Text;
+            Word.Range selection = Globals.ThisAddIn.Application.Selection.Range;
+
             string json = new JavaScriptSerializer().Serialize(new
             {
-                text = text_to_check
+                text = selection.Text
             });
 
             // Store all coloring actions in a single record
             Word.UndoRecord recordObj = Globals.ThisAddIn.Application.UndoRecord;
             recordObj.StartCustomRecord("");
-            Color_uncountable_nouns(json);
+            Color_uncountable_nouns_selection(selection, json);
             recordObj.EndCustomRecord();
         }
+
 
         Word.WdColor SystemColorToWdColor(Color c)
         {
@@ -474,6 +632,54 @@ namespace MySupervisor
                     Color_uncountable_nouns_Single_Record();
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (!isWordinessMarked) {
+                Color_wordiness_Single_Record();
+            } else {
+                Remove_underline(SystemColorToWdColor(Wordiness_button.BackColor).GetHashCode());
+            }
+            isWordinessMarked = !isWordinessMarked;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (!isVerbsMarked)
+            {
+                Color_verbs_Single_Record();
+            }
+            else
+            {
+                Remove_underline(SystemColorToWdColor(Verbs_button.BackColor).GetHashCode());
+            }
+            isVerbsMarked = !isVerbsMarked;   
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (!isNounsMarked)
+            {
+                Color_noun_compound_Single_Record();
+            } else
+            {
+                Remove_underline(SystemColorToWdColor(NounCompound_button.BackColor).GetHashCode());
+            }
+            isNounsMarked = !isNounsMarked;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (!isUncountableMarked)
+            {
+                Color_uncountable_nouns_Single_Record();
+            }
+            else
+            {
+                Remove_underline(SystemColorToWdColor(UncountableNouns_button.BackColor).GetHashCode());
+            }
+            isUncountableMarked = !isUncountableMarked;
         }
     }
 }

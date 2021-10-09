@@ -20,7 +20,7 @@ namespace HyponAPI
                 word = word_to_check
             });
 
-            string api = "https://avrl.cs.technion.ac.il:80/api/hypon";
+            string api = "http://164.90.160.20/api/hypon";
             //string api = "http://127.0.0.1:5000/api/hypon";
 
 

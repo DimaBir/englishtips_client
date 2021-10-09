@@ -27,7 +27,7 @@ namespace TopWordsAPI
                 text = text_to_check
             });
 
-            string api = "https://avrl.cs.technion.ac.il:80/api/topwords";
+            string api = "http://164.90.160.20/api/topwords";
 
 
             // Send request

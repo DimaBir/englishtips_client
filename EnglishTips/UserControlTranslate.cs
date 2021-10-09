@@ -68,7 +68,7 @@ namespace MySupervisor
 
         void sendRequest(RichTextBox textBox, string json, string languageCode)
         {
-            string api = "https://avrl.cs.technion.ac.il:80/api/translate";
+            string api = "http://164.90.160.20/api/translate";
             string translation;
             try
             {

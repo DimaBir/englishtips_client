@@ -41,7 +41,7 @@ namespace MySupervisor
 
         void sendRequest(RichTextBox textBox, string json)
         {
-            string api = "https://avrl.cs.technion.ac.il:80/api/summ";
+            string api = "http://164.90.160.20/api/summ";
             TextSummarizationResponse response;
                 
             try

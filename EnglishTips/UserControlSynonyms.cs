@@ -57,7 +57,7 @@ namespace MySupervisor
 
         void sendSynonymsRequest(string json, string txt)
         {
-            string api = "https://avrl.cs.technion.ac.il:80/api/syn";
+            string api = "http://164.90.160.20/api/syn";
 
             SynonymResponse response;
             try
@@ -95,7 +95,7 @@ namespace MySupervisor
 
         void sendAcronymsRequest(string json, string txt)
         {
-            string api = "https://avrl.cs.technion.ac.il:80/api/acr";
+            string api = "http://164.90.160.20/api/acr";
 
             AcronymResponse response;
             try
@@ -128,7 +128,7 @@ namespace MySupervisor
 
         void sendHyponymyRequest(string json, string txt)
         {
-            string api = "https://avrl.cs.technion.ac.il:80/api/hypon";
+            string api = "http://164.90.160.20/api/hypon";
 
             HyponymResponse response;
             try
@@ -166,7 +166,7 @@ namespace MySupervisor
 
         void sendHypernymyRequest(string json, string txt)
         {
-            string api = "https://avrl.cs.technion.ac.il:80/api/hyper";
+            string api = "http://164.90.160.20/api/hyper";
 
             HypernymyResponse response;
             try

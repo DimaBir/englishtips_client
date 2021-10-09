@@ -18,7 +18,7 @@ namespace RESTApiExample
             });
 
             // Sends created json to server and returns:  on success - response object that we have created, exception -  on failure
-            MySupervisorResponse response = exampleSender.Send(json, "https://avrl.cs.technion.ac.il:80/api/test");
+            MySupervisorResponse response = exampleSender.Send(json, "http://www.birenbaum.co:5555/api/test");
 
             Console.WriteLine($"Say Aloud the: {response.Text}");
 
